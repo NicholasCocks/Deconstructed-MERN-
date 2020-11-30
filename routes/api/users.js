@@ -43,6 +43,7 @@ router.post('/signup', (request, response) => {
 })
 
 router.post('/login', (request, response) => {
+    debugger
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;

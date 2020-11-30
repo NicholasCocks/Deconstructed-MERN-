@@ -3,13 +3,12 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users")
-const tweets = require("./routes/api/tweets")
 const User = require('./models/User');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const questions = require('./routes/api/questions');
 
-//mongodb+srv://dev:gbzd69Wi9FIgyXhJ@cluster0.dt5ye.mongodb.net/<dbname>?retryWrites=true&w=majority
-
+debugger
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('connected to mongoDB'))
@@ -32,7 +31,8 @@ app.get("/", (request, response) => {
 });
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
+debugger
+app.use("/api/questions", questions);
 
 const port = process.env.PORT || 5000;
 
