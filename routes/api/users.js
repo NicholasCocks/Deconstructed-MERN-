@@ -5,15 +5,15 @@ const bcrypt = require("bcryptjs");
 const { response } = require('express');
 const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
-const validateRegisterInput = require('../../validation/register');
+const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 
 router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
 });
 
-router.post('/register', (request, response) => {
-    const { errors, isValid } = validateRegisterInput(request.body);
+router.post('/signup', (request, response) => {
+    const { errors, isValid } = validateSignupInput(request.body);
 
     if (!isValid) {
         return response.status(400).json(errors)
@@ -26,7 +26,6 @@ router.post('/register', (request, response) => {
                 return response.status(400).json({ email: "A user already registered with that email" })
             } else {
                 const newUser = new User({
-                    handle: request.body.handle,
                     email: request.body.email,
                     password: request.body.password
                 });
@@ -58,7 +57,6 @@ router.post('/login', (request, response) => {
                     if (isMatch) {
                         const payload = {
                             id: user.id,
-                            handle: user.handle,
                             email: user.email
                         }
                         jwt.sign(

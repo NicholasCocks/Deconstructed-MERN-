@@ -1,21 +1,12 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
 
-module.exports = function validateRegisterInput(data) {
+module.exports = function validateSignupInput(data) {
     let errors = {};
 
-    data.handle = validText(data.handle) ? data.handle : "";
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
     data.password2 = validText(data.password2) ? data.password2 : "";
-
-    if (!Validator.isLength(data.handle, { min: 2, max: 20 })) {
-        errors.handle = "Handle must be between 2 and 30 characters"
-    }
-
-    if (!Validator.isEmpty(data.handle)) {
-        errors.handle = "Handle field is required"
-    }
 
     if (Validator.isEmpty(data.email)) {
         errors.email = "email field is required"
