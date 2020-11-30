@@ -13,7 +13,9 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    answers: [{ type: Schema.type.objectId, ref: 'questions' }],
+    // tasks also go here
 });
 
 const User = mongoose.model('users', UserSchema);

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router(); //router obj from router
 const User = require('../../models/User');
 const bcrypt = require("bcryptjs");
-const { response } = require('express');
 const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
@@ -42,37 +41,40 @@ router.post('/signup', (request, response) => {
             }
         })
 })
-router.post('/login', (request, response) => {
-    const email = request.body.email;
-    const password = request.body.password;
 
-    User.findOne({ email: email })
+router.post('/login', (request, response) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if (!isValid) return res.status(400).json(errors)
+
+    User.findOne({ email })
         .then(user => {
             if (!user) {
-                return response.status(404).json({ email: "This user doesn't exist" });
+                errors.email = 'User not found'
+                return res.status(400).json(errors);
             }
 
-            bcrypt.compare(password, user.password)
-                .then(isMatch => {
-                    if (isMatch) {
-                        const payload = {
-                            id: user.id,
-                            email: user.email
-                        }
-                        jwt.sign(
-                            payload,
-                            keys.secretOrKey, { expiresIn: 3600 },
-                            (err, token) => {
-                                response.json({
-                                    success: true,
-                                    token: "Bearer " + token
-                                });
-                            }
-                        )
-                    } else {
-                        return response.status(400).json({ password: "password incorrect" })
-                    }
-                })
+            bcrypt.compare(password, user.password).then(isMatch => {
+                if (isMatch) {
+                    const payload = { id: user.id, handle: user.handle };
+
+                    jwt.sign(
+                        payload,
+                        keys.secretOrKey,
+                        // Tell the key to expire in one hour
+                        { expiresIn: 3600 },
+                        (err, token) => {
+                            res.json({
+                                sucess: true,
+                                token: 'Bearer ' + token
+                            });
+                        });
+                } else {
+                    return res.status(400).json({ password: 'Incorrect password' });
+                }
+            })
         })
 })
 
