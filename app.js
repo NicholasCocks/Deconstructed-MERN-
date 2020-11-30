@@ -6,6 +6,7 @@ const users = require("./routes/api/users")
 const tweets = require("./routes/api/tweets")
 const User = require('./models/User');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 //mongodb+srv://dev:gbzd69Wi9FIgyXhJ@cluster0.dt5ye.mongodb.net/<dbname>?retryWrites=true&w=majority
 
