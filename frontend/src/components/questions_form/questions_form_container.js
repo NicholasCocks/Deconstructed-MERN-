@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchAllData } from '../../actions/question_actions';
+import { fetchAllData, fetchAllQuestions } from '../../actions/question_actions';
 import QuestionsForm from './questions_form'
 
 // const mSTP = state => {
@@ -10,6 +10,7 @@ import QuestionsForm from './questions_form'
 
 const mDTP = dispatch => {
     return {
+        fetchAllQuestions: () => dispatch(fetchAllQuestions()),
         fetchAllData: () => dispatch(fetchAllData())
     }
 }
