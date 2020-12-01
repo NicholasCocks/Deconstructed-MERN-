@@ -1,0 +1,10 @@
+{
+    "location": {
+        "class": "location",
+        "companiesCollecting": ["Youtube", "Facebook"]
+    },
+    "age": {
+        "class": "age",
+        "companiesCollecting": ["Youtube", "Facebook"]
+    }
+}

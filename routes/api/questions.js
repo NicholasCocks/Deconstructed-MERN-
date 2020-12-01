@@ -24,19 +24,40 @@ router.post('/new', (req, res) => {
 
     if (!isValid) return res.status(400).json(errors)
 
-    Question.findOne({ question: req.body.question })
+    const toLower = req.body.question.toLowerCase()
+    Question.findOne({ question: toLower })
         .then(question => {
             if (question) {
                 errors.question = 'Question already exists'
                 return res.status(400).json(errors)
             } else {
-                const newQuestion = new Question({ question: req.body.question })
+                const newQuestion = new Question({ question: toLower })
                 newQuestion.save()
                     .then(question => res.json(question))
                     .catch(error => console.log(error))
             }
         })
 
+})
+
+router.patch('/upate', (req, res) => {
+    const { errors, isValid } = validateQuestionInput(req.body);
+
+    if (!isValid) return res.status(400).json(errors)
+
+    const toLower = req.body.question.toLowerCase()
+    Question.findOne({ question: toLower })
+        .then(question => {
+            if (question) {
+                question._doc.dataclassCollection.push(req.body.class)
+                question.update(req.body)
+                    .then(question => res.json(question))
+                    .catch(error => console.log(error))
+            } else {
+                errors.class = "can't find this question"
+                return res.status(400).json(errors)
+            }
+        })
 })
 
 module.exports = router;
