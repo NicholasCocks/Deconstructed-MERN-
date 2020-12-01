@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const db = require("./config/keys").mongoURI;
+const db = require("./config/keys_dev").mongoURI;
 const users = require("./routes/api/users")
 const User = require('./models/User');
 const bodyParser = require('body-parser');
@@ -27,7 +27,6 @@ app.get("/", (request, response) => {
 app.use("/api/users", users);
 app.use("/api/questions", questions);
 app.use("/api/dataclasses", dataclasses)
-
 
 const port = process.env.PORT || 5000;
 
