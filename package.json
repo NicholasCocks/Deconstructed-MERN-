@@ -7,9 +7,8 @@
         "server": "nodemon app.js",
         "server:debug": "nodemon --inspect app.js",
         "start": "node app.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
         "frontend-install": "npm install --prefix frontend",
-        "frontend": "npm start --prefix frontend",
+        "frontend": "./frontend/node_modules/.bin/react-scripts start",
         "dev": "concurrently \"npm run server\" \"npm run frontend\""
     },
     "author": "",
@@ -26,6 +25,7 @@
         "jsonwebtoken": "^8.5.1",
         "jwt-decode": "^3.1.2",
         "mongoose": "^5.10.17",
+        "mongoose-seed": "^0.6.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
         "react-redux": "^7.2.2",
