@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); //router obj from router
 const User = require('../../models/User');
 const bcrypt = require("bcryptjs");
-const keys = require('../../config/keys');
+const keys = require('../../config/keys_dev');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
@@ -42,11 +42,11 @@ router.post('/signup', (request, response) => {
         })
 })
 
-router.post('/login', (request, response) => {
+router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;
-
+    debugger;
     if (!isValid) return res.status(400).json(errors)
 
     User.findOne({ email })
@@ -58,7 +58,7 @@ router.post('/login', (request, response) => {
 
             bcrypt.compare(password, user.password).then(isMatch => {
                 if (isMatch) {
-                    const payload = { id: user.id, handle: user.handle };
+                    const payload = { id: user.id, email: user.email};
 
                     jwt.sign(
                         payload,
@@ -67,7 +67,7 @@ router.post('/login', (request, response) => {
                         { expiresIn: 3600 },
                         (err, token) => {
                             res.json({
-                                sucess: true,
+                                success: true,
                                 token: 'Bearer ' + token
                             });
                         });
