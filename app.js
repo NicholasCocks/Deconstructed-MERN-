@@ -7,6 +7,7 @@ const User = require('./models/User');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const questions = require('./routes/api/questions');
+const dataclasses = require('./routes/api/dataclasses');
 
 mongoose
     .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -20,17 +21,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get("/", (request, response) => {
-    const user = new User({
-        handle: 'JIM',
-        email: 'jim@jim.jim',
-        password: 'jimisgreat123'
-    })
-    user.save();
     response.send("Hello a/A");
 });
 
 app.use("/api/users", users);
 app.use("/api/questions", questions);
+app.use("/api/dataclasses", dataclasses)
 
 const port = process.env.PORT || 5000;
 
