@@ -1,0 +1,12 @@
+{
+    "Youtube": {
+        "question": "YouTube",
+        "url": "",
+        "dataclassCollection": ["age", "location"]
+    },
+    "Facebook": {
+        "question": "Facebook",
+        "url": "",
+        "dataclassCollection": ["age", "location"]
+    }
+}

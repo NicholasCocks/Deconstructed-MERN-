@@ -8,7 +8,7 @@
         "server:debug": "nodemon --inspect app.js",
         "start": "node app.js",
         "frontend-install": "npm install --prefix frontend",
-        "frontend": "./frontend/node_modules/.bin/react-scripts start",
+        "frontend": "npm start --prefix frontend",
         "dev": "concurrently \"npm run server\" \"npm run frontend\""
     },
     "author": "",
@@ -33,6 +33,7 @@
         "redux": "^4.0.5",
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.3.0",
+        "seedgoose": "^2.0.2",
         "validator": "^13.1.17"
     },
     "devDependencies": {

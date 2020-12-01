@@ -24,19 +24,42 @@ router.post('/new', (req, res) => {
 
     if (!isValid) return res.status(400).json(errors)
 
-    Dataclass.findOne({ class: req.body.class })
+    const toLower = req.body.class.toLowerCase()
+    Dataclass.findOne({ class: toLower })
         .then(dataclass => {
+            //lowercase 
             if (dataclass) {
-                errors.dataclass = 'Dataclass already exists'
+                errors.class = 'Dataclass already exists'
                 return res.status(400).json(errors)
             } else {
-                const newDataclass = new Dataclass({ class: req.body.class })
+                const newDataclass = new Dataclass({ class: toLower })
                 newDataclass.save()
                     .then(dataclass => res.json(dataclass))
                     .catch(error => console.log(error))
             }
         })
 
+})
+
+router.patch('/update', (req, res) => {
+    const { errors, isValid } = validateDataclass(req.body);
+
+    if (!isValid) return res.status(400).json(errors)
+
+    const toLower = req.body.class.toLowerCase()
+    Dataclass.findOne({ class: toLower })
+        .then(dataclass => {
+            if (dataclass) {
+                dataclass._doc.companiesCollecting.push(req.body.company)
+                debugger
+                dataclass.update({ class: toLower })
+                    .then(data => res.json(data))
+                    .catch(error => console.log(error))
+            } else {
+                errors.class = "can't find this dataclass"
+                return res.status(400).json(errors)
+            }
+        })
 })
 
 //update dataclasses with references to questions
