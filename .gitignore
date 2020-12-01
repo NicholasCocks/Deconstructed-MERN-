@@ -1,2 +1,4 @@
 /node_modules
-keys.js
+keys_dev.js
+.DS_Store
+.seedgooserc.js

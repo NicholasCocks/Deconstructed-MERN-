@@ -10,10 +10,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
+    answers: [{ type: Schema.Types.ObjectId, ref: 'questions' }],
+    // tasks also go here
+}, {
+    timestamps: true
 });
 
 const User = mongoose.model('users', UserSchema);

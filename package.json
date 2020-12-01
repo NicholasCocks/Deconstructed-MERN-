@@ -7,7 +7,6 @@
         "server": "nodemon app.js",
         "server:debug": "nodemon --inspect app.js",
         "start": "node app.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
         "frontend-install": "npm install --prefix frontend",
         "frontend": "npm start --prefix frontend",
         "dev": "concurrently \"npm run server\" \"npm run frontend\""
@@ -26,6 +25,7 @@
         "jsonwebtoken": "^8.5.1",
         "jwt-decode": "^3.1.2",
         "mongoose": "^5.10.17",
+        "mongoose-seed": "^0.6.0",
         "passport": "^0.4.1",
         "passport-jwt": "^4.0.0",
         "react-redux": "^7.2.2",
@@ -33,6 +33,7 @@
         "redux": "^4.0.5",
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.3.0",
+        "seedgoose": "^2.0.2",
         "validator": "^13.1.17"
     },
     "devDependencies": {
