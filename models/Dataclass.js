@@ -6,7 +6,7 @@ const DataclassSchema = new Schema({
         type: String,
             required: true
     },
-    companiesCollecting: [{ type: Schema.type.objectId, ref: 'questions' }],
+    companiesCollecting: [{ type: Schema.Types.ObjectId, ref: 'questions' }],
 });
 
 

@@ -6,7 +6,10 @@ const QuestionSchema = new Schema({
         type: String,
         required: true
     },
-    dataclassCollection: [{ type: Schema.type.objectId, ref: 'dataclasses' }],
+    url: {
+        type: String
+    },
+    dataclassCollection: [{ type: Schema.Types.ObjectId, ref: 'dataclasses' }],
 });
 
 
