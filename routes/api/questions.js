@@ -14,7 +14,13 @@ router.get('/test', (req, res) => {
 //return all questions (in an array)
 router.get('/', (req, res) => {
     Question.find()
-        .then(questions => res.json(questions))
+        .then(questions => {
+            const obj = {};
+            dataclasses.forEach(dataclass => {
+                obj[dataclass._id] = dataclass
+            })
+            return res.json(obj)
+        })
         .catch(err => console.log(err))
 })
 

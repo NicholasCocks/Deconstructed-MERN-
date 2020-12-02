@@ -13,7 +13,14 @@ router.get('/test', (req, res) => {
 //return all dataclasses
 router.get('/', (req, res) => {
     Dataclass.find()
-        .then(dataclasses => res.json(dataclasses))
+        .then(dataclasses => {
+            const obj = {};
+            debugger
+            dataclasses.forEach(dataclass => {
+                obj[dataclass._id] = dataclass
+            })
+            return res.json(obj)
+        })
         .catch(err => console.log(err))
 })
 

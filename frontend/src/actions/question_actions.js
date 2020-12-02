@@ -3,22 +3,22 @@ import * as QuestionsUtil from '../util/questions_util';
 export const RECEIVE_ALL_QUESTIONS = "RECEIVE_ALL_QUESTIONS";
 export const RECEIVE_ALL_DATA = "RECEIVE_ALL_DATA"
 
-const receiveAllQuestions = questions => ({
-    type: RECEIVE_ALL_DATA,
-    questions
+const receiveAllQuestions = ({ data }) => ({
+    type: RECEIVE_ALL_QUESTIONS,
+    questions: data
 });
 
-const receiveAllData = data => ({
+const receiveAllData = ({ data }) => ({
     type: RECEIVE_ALL_DATA,
-    data
+    dataclasses: data
 });
 
 // thunk action creator
 export const fetchAllQuestions = () => dispatch => {
     return QuestionsUtil.fetchAllQuestions()
-    .then(questions => dispatch(receiveAllQuestions(questions)))
+        .then(questions => dispatch(receiveAllQuestions(questions)))
 };
 export const fetchAllData = () => dispatch => {
     return QuestionsUtil.fetchAllData()
-    .then(data => dispatch(receiveAllData(data)))
+        .then(data => dispatch(receiveAllData(data)))
 };

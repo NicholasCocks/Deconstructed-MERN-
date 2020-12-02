@@ -8,13 +8,13 @@ class QuestionsForm extends React.Component {
     }
 
     render() {
-
-        const questionsLi = this.props.fetchAllQuestions().map((question, i) =>{
+        
+        const questionsLi = Object.values(this.props.fetchAllQuestions()).map((question, i) =>{
             return (
                 <li key={i}>{question}</li>
             )
         })
-
+        
         return (
             <div>
                 <ul>
