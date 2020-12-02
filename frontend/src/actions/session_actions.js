@@ -54,7 +54,6 @@ export const login = user => dispatch => {
 }
 
 
-// thunk action creator (??)
 
 export const logout = () => dispatch => {
     // Remove the token from local storage
@@ -64,3 +63,7 @@ export const logout = () => dispatch => {
         // Dispatch a logout action
     dispatch(logoutUser())
 };
+
+export const updateAnswers = data => dispatch => {
+    return APIUtil.updateAnswers(data).then(data => dispatch(receiveCurrentUser(data)));
+}
