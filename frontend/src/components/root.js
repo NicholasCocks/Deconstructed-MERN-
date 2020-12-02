@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
+import SCSS from '../assets/stylesheets/App.css'
 import App from './app';
 
 const Root = ({ store }) => (

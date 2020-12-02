@@ -1,0 +1,4 @@
+.nav_bar_container {
+    background-color: var(--lightest-gray);
+    font-family: var(--font-arial);
+}
