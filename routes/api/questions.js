@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
     Question.find()
         .then(questions => {
             const obj = {};
-            dataclasses.forEach(dataclass => {
-                obj[dataclass._id] = dataclass
+            questions.forEach(question => {
+                obj[question._id] = question
             })
             return res.json(obj)
         })
