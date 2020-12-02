@@ -1,17 +1,18 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
-import { softShadows, MeshWobbleMaterial, OrbitControls } from "drei";
+import { softShadows, MeshWobbleMaterial, OrbitControls, Html } from "drei";
 import { useSpring, a } from "react-spring/three";
 import * as THREE from 'three';
+import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
 
 // soft Shadows
 softShadows();
 
-const SpinningMesh = ({ position, color, speed, args }) => {
+const SpinningMesh = ({ position, color, speed, args, name }) => {
     //ref to target the mesh
     const mesh = useRef();
-    
-  
+    const font = new THREE.FontLoader().parse(Segoe);
+    const textOptions = { font, size: 1, height: 0.1 };
     //useFrame allows us to re-render/update rotation on each frame
     
     useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
@@ -38,6 +39,17 @@ const SpinningMesh = ({ position, color, speed, args }) => {
           factor={0.6}
         />
       </a.mesh>
+      <mesh position={position}>
+         <Html >
+            <p>{`${name}`}</p>
+         </Html>
+      </mesh>
+
+        
+      {/* <mesh position={position}>
+        <textGeometry attach='geometry' args={[`${name}`, textOptions]} />
+        <meshStandardMaterial attach='material' />
+      </mesh> */}
         </>
     );
   };
@@ -49,7 +61,7 @@ class CanvasComponent extends React.Component {
         const points = this.props.answers.map((answer, index) => {
             debugger;
             return (
-                <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} />
+                <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} name={answer.class}/>
             )
             
         }, this)
@@ -66,30 +78,19 @@ class CanvasComponent extends React.Component {
                     {/* This light makes things look pretty */}
                     <ambientLight intensity={0.3} />
                     {/* Our main source of light, also casting our shadow */}
-                    <directionalLight
-                    castShadow
-                    position={[0, 10, 0]}
-                    intensity={1.5}
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                    shadow-camera-far={50}
-                    shadow-camera-left={-10}
-                    shadow-camera-right={10}
-                    shadow-camera-top={10}
-                    shadow-camera-bottom={-10}
-                    />
+                    
                     {/* A light to help illumnate the spinning boxes */}
                     <pointLight position={[-10, 0, -20]} intensity={0.5} />
                     <pointLight position={[0, -10, 0]} intensity={1.5} />
                     <group>
                     {/* This mesh is the plane (The floor) */}
-                    <mesh
+                    {/* <mesh
                         rotation={[-Math.PI / 2, 0, 0]}
                         position={[0, -3, 0]}
                         receiveShadow>
                         <planeBufferGeometry attach='geometry' args={[100, 100]} />
                         <shadowMaterial attach='material' opacity={0.3} />
-                    </mesh>
+                    </mesh> */}
                         {points}
                     
                     </group>
