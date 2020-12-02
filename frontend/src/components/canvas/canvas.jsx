@@ -83,14 +83,7 @@ class CanvasComponent extends React.Component {
                     <pointLight position={[-10, 0, -20]} intensity={0.5} />
                     <pointLight position={[0, -10, 0]} intensity={1.5} />
                     <group>
-                    {/* This mesh is the plane (The floor) */}
-                    {/* <mesh
-                        rotation={[-Math.PI / 2, 0, 0]}
-                        position={[0, -3, 0]}
-                        receiveShadow>
-                        <planeBufferGeometry attach='geometry' args={[100, 100]} />
-                        <shadowMaterial attach='material' opacity={0.3} />
-                    </mesh> */}
+                   
                         {points}
                     
                     </group>
