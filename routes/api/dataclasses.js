@@ -4,7 +4,6 @@ const Dataclass = require('../../models/Dataclass');
 const validateDataclass = require('../../validation/dataclass');
 
 router.get('/test', (req, res) => {
-    debugger
     res.json({
         msg: "this is the dataclass route"
     })
@@ -15,7 +14,6 @@ router.get('/', (req, res) => {
     Dataclass.find()
         .then(dataclasses => {
             const obj = {};
-            debugger
             dataclasses.forEach(dataclass => {
                 obj[dataclass._id] = dataclass
             })
@@ -26,7 +24,6 @@ router.get('/', (req, res) => {
 
 //create dataclasses
 router.post('/new', (req, res) => {
-    debugger
     const { errors, isValid } = validateDataclass(req.body);
 
     if (!isValid) return res.status(400).json(errors)

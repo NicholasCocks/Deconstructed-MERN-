@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const RECEIVE_ANSWERS = "RECEIVE_ANSWERS";
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -16,6 +17,11 @@ export const receiveCurrentUser = currentUser => ({
 export const receiveUserSignIn = () => ({
     type: RECEIVE_USER_SIGN_IN
 });
+
+export const receiveAnswers = answers => ({
+    type: RECEIVE_ANSWERS,
+    answers
+})
 
 // We dispatch this one to show authentication errors on the frontend
 export const receiveErrors = errors => ({
@@ -65,5 +71,5 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-    return APIUtil.updateAnswers(data).then(data => dispatch(receiveCurrentUser(data)));
+    return APIUtil.updateAnswers(data).then(data => dispatch(receiveAnswers(data)));
 }

@@ -4,7 +4,6 @@ import { updateAnswers } from '../../actions/session_actions';
 import QuestionsForm from './questions_form'
 
 const mSTP = state => {
-    
     return {
         user: state.session.user,
         questions: state.entities.questions,

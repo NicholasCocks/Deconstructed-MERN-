@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "react-three-fiber";
 import { softShadows, MeshWobbleMaterial, OrbitControls } from "drei";
 import { useSpring, a } from "react-spring/three";
+import * as THREE from 'three';
 
 // soft Shadows
 softShadows();
@@ -9,6 +10,7 @@ softShadows();
 const SpinningMesh = ({ position, color, speed, args }) => {
     //ref to target the mesh
     const mesh = useRef();
+    
   
     //useFrame allows us to re-render/update rotation on each frame
     
@@ -36,7 +38,6 @@ const SpinningMesh = ({ position, color, speed, args }) => {
           factor={0.6}
         />
       </a.mesh>
-
         </>
     );
   };
@@ -46,7 +47,7 @@ class CanvasComponent extends React.Component {
 
     render() {
         const points = this.props.answers.map((answer, index) => {
-            // debugger;
+            debugger;
             return (
                 <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} />
             )
