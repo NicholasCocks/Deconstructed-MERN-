@@ -2,26 +2,48 @@ import React from 'react';
 
 class QuestionsForm extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {}
+        this.handleClick = this.handleClick.bind(this)
+        this.inputRef = React.createRef();
+    }
+
     componentDidMount() {
         this.props.fetchAllData()
         this.props.fetchAllQuestions()
     }
 
-    render() {
+    handleClick(e) {
         
-        const questionsLi = Object.values(this.props.fetchAllQuestions()).map((question, i) =>{
-            return (
-                <li key={i}>{question}</li>
-            )
+        if (!this.state[e.currentTarget.value]) {
+            this.setState({[e.currentTarget.value]: true})
+            
+        } else {
+            this.setState({[e.currentTarget.value]: false})
+           
+        }
+        
+        // console.log(this.state)
+    }
+
+    render() {
+        const checkboxes = Object.values(this.props.questions).map((question) => {
+            debugger
+            return <input type="checkbox" ref={this.inputRef} value={question} onClick={this.handleClick} />
         })
         
         return (
             <div>
-                <ul>
-                    {questionsLi}
-                </ul>
+                <form id="questions_form">
+                    <ul>
+                        {checkboxes}
+
+                    </ul>
+                </form>
+            { console.log(this.state)}
             </div>
-        )
+         )
     }
 }
 

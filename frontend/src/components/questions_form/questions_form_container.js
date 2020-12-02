@@ -2,11 +2,12 @@ import { connect } from "react-redux";
 import { fetchAllData, fetchAllQuestions } from '../../actions/question_actions';
 import QuestionsForm from './questions_form'
 
-// const mSTP = state => {
-//     return {
-        
-//     }
-// }
+const mSTP = state => {
+    return {
+        questions: state.entities.questions,
+        data: state.entities.dataclasses
+    }
+}
 
 const mDTP = dispatch => {
     return {
@@ -15,4 +16,4 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(null, mDTP)(QuestionsForm)
+export default connect(mSTP, mDTP)(QuestionsForm)
