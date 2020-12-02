@@ -3,13 +3,6 @@ const router = express.Router();
 const Dataclass = require('../../models/Dataclass');
 const validateDataclass = require('../../validation/dataclass');
 
-router.get('/test', (req, res) => {
-    debugger
-    res.json({
-        msg: "this is the dataclass route"
-    })
-})
-
 //return all dataclasses
 router.get('/', (req, res) => {
     Dataclass.find()
@@ -63,7 +56,7 @@ router.patch('/update', (req, res) => {
                     .then(data => res.json(data))
                     .catch(error => console.log(error))
             } else {
-                errors.class = "can't find this dataclass"
+                errors.class = "Dataclass not found"
                 return res.status(400).json(errors)
             }
         })

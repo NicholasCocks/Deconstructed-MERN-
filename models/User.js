@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    answers: [{ type: Schema.Types.ObjectId, ref: 'questions' }],
+    questionsAnswered: [{ type: Schema.Types.ObjectId, ref: 'questions' }],
     // tasks also go here
 }, {
     timestamps: true
