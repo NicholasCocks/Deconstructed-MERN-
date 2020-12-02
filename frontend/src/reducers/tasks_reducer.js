@@ -1,4 +1,4 @@
-import { RECEIVE_TASK, RECEIEVE_ALL_TASKS } from '../actions/task_actions';
+import { RECEIVE_TASK, RECEIVE_ALL_TASKS } from '../actions/task_actions';
 
 const tasksReducer = (state = {}, action) => {
     Object.freeze(state);
