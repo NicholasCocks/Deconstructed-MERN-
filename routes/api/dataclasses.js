@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     Dataclass.find()
         .then(dataclasses => {
             const obj = {};
-            debugger
             dataclasses.forEach(dataclass => {
                 obj[dataclass._id] = dataclass
             })
@@ -19,7 +18,6 @@ router.get('/', (req, res) => {
 
 //create dataclasses
 router.post('/new', (req, res) => {
-    debugger
     const { errors, isValid } = validateDataclass(req.body);
 
     if (!isValid) return res.status(400).json(errors)
