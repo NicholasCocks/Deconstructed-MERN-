@@ -25,9 +25,9 @@ class QuestionsForm extends React.Component {
     }
 
     render() {
-        const checkboxes = Object.values(this.props.questions).map((question) => {
+        const checkboxes = Object.values(this.props.questions).map((question, index) => {
         return (
-            <div>
+            <div key={index}>
                 <p>{question.question}</p>
                 <input type="checkbox" ref={this.inputRef} value={question.question} onClick={this.handleClick} /> 
             </div>
