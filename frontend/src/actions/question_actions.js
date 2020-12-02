@@ -16,9 +16,7 @@ const receiveAllData = ({ data }) => ({
 // thunk action creator
 export const fetchAllQuestions = () => dispatch => {
     return QuestionsUtil.fetchAllQuestions()
-    .then(questions => {
-        debugger
-        return dispatch(receiveAllQuestions(questions))})
+    .then(questions => dispatch(receiveAllQuestions(questions)))
     
 };
 export const fetchAllData = () => dispatch => {

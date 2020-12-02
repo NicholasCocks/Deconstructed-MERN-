@@ -1,5 +1,5 @@
 import React from 'react';
-
+import CanvasContainer from '../canvas/canvas_container';
 class QuestionsForm extends React.Component {
 
     constructor(props) {
@@ -15,13 +15,10 @@ class QuestionsForm extends React.Component {
     }
 
     handleClick(e) {
-        
         if (!this.state[e.currentTarget.value]) {
-            this.setState({[e.currentTarget.value]: true})
-            
+            this.setState({[e.currentTarget.value]: true})  
         } else {
             this.setState({[e.currentTarget.value]: false})
-           
         }
         
         // console.log(this.state)
@@ -29,19 +26,22 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question) => {
-            debugger
-            return <input type="checkbox" ref={this.inputRef} value={question} onClick={this.handleClick} />
-        })
+        return (
+            <div>
+                <p>{question.question}</p>
+                <input type="checkbox" ref={this.inputRef} value={question.question} onClick={this.handleClick} /> 
+            </div>
+        )})
         
         return (
             <div>
                 <form id="questions_form">
                     <ul>
                         {checkboxes}
-
                     </ul>
                 </form>
-            { console.log(this.state)}
+            {console.log(this.state)}
+            <CanvasContainer answers={this.state} />
             </div>
          )
     }
