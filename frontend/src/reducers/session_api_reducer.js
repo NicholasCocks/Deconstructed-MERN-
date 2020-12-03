@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
     case RECEIVE_USER_LOGOUT:
       return {
         isAuthenticated: false,
-        user: undefined,
+        user: {},
       };
     case RECEIVE_USER_SIGN_IN:
       return {
@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_ANSWERS:
-      // debugger
+      debugger
       return { ...state, user: action.user }
     default:
       return state;

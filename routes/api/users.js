@@ -14,7 +14,6 @@ router.get("/test", (req, res) => {
 
 router.post('/signup', (request, response) => {
     const { errors, isValid } = validateSignupInput(request.body);
-
     if (!isValid) {
         return response.status(400).json(errors)
     }
@@ -44,10 +43,11 @@ router.post('/signup', (request, response) => {
 })
 
 router.post('/login', (req, res) => {
+  
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    // debugger;
+    
     if (!isValid) return res.status(400).json(errors)
 
     User.findOne({ email })
@@ -80,8 +80,9 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
+    
   const { userId } = req.params
-  const questionsAnswered  = JSON.parse(req.body.questionsAnswered)
+  const questionsAnswered  = req.body
   User.findById(userId)
     .then(user => {
       if (!user) {

@@ -4,15 +4,22 @@ class QuestionsForm extends React.Component {
 
     constructor(props) {
         super(props)
-        debugger
-        this.state = {};
+       
+        this.state = this.props.questionsAnswered;
         this.handleClick = this.handleClick.bind(this);
         this.inputRef = React.createRef();
     }
 
     componentDidMount() {
-        this.props.fetchAllData()
-        this.props.fetchAllQuestions() 
+        this.props.fetchAllData();
+        this.props.fetchAllQuestions();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        
+        if (Object.keys(this.props.questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
+            this.setState(this.props.questionsAnswered)
+        }
     }
 
     handleClick(e) {
@@ -32,13 +39,15 @@ class QuestionsForm extends React.Component {
             return stateClone[key];
         })
         
-        debugger;
-        this.props.updateAnswers({id: this.props.user.id, data: keys})
+        if (Object.keys(this.props.user).length !==0 ) {
+            this.props.updateAnswers({id: this.props.user.id, data: keys})
+        }
     }
+    
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-        
+        // debugger
         return (
             <div key={index} className="questions_form_item">
                 <button 
@@ -57,7 +66,6 @@ class QuestionsForm extends React.Component {
                         {checkboxes}
                     </ul>
                 </form>
-                {console.log(this.state)}
                 <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
             </>
          )

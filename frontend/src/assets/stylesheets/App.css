@@ -5,7 +5,8 @@
 @import './components/questions_form.css';
 @import './components/canvas.css';
 @import './components/signup_form.css';
-@import './components//login_form.css';
+@import './components/login_form.css';
+@import './components/tasks_container.css';
 
 
 

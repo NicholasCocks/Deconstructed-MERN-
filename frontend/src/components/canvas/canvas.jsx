@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import { Canvas, useFrame, useThree } from "react-three-fiber";
+import { Canvas, useThree } from "react-three-fiber";
 import { softShadows, MeshWobbleMaterial, OrbitControls, Html } from "drei";
 import { useSpring, a } from "react-spring/three";
 import * as THREE from 'three';
-import { CubeTextureLoader, CubeCamera, WebGLCubeRenderTarget, RGBFormat, LinearMipmapLinearFilter } from 'three';
+import { CubeTextureLoader } from 'three';
 import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
-import { urlencoded } from "body-parser";
+
 
 // soft Shadows
 softShadows();
@@ -90,6 +90,8 @@ class CanvasComponent extends React.Component {
 
     render() {
         const classes = [];
+        debugger;
+        
         const points = this.props.answers.map((answer, index) => {
             
             if (!classes.includes(answer.class)) {
@@ -105,6 +107,7 @@ class CanvasComponent extends React.Component {
         <Canvas
             colorManagement
             shadowMap
+            color='black'
             // style={{height:100,width:100}}
             camera={{ position: [-5, 2, 10], fov: 60 }}>
             <ambientLight intensity={0.3} />

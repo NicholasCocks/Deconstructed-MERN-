@@ -20,8 +20,8 @@ class Tasks extends React.Component {
         })
 
         return (
-            <div>
-                {taskLi}
+            <div className="tasks_container">
+                <p>Task Component</p>
             </div>
         )
     }

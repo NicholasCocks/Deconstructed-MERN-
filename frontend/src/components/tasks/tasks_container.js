@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { fetchAllTasks, fetchTask } from '../../actions/task_actions';
 import Tasks from './tasks'
+import { withRouter } from 'react-router-dom';
 
 const mSTP = (state, ownProps) => {
     return {
@@ -16,4 +17,4 @@ const mDTP = dispatch => {
     }
 }
 
-export default connect(mSTP, mDTP)(Tasks)
+export default withRouter(connect(mSTP, mDTP)(Tasks))
