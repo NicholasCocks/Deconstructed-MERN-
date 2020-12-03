@@ -1,7 +1,28 @@
 const express = require('express');
+const Dataclass = require('../../models/Dataclass');
 const router = express.Router();
 const Question = require('../../models/Question');
 const validateQuestionInput = require('../../validation/question')
+
+router.get('/seed', (req, res) => {
+
+    Question.find({ question: "google" })
+        .then(question => {
+            Dataclass.find({
+                class: "eating habits"})
+                .then(dataclass => {
+                    dataclass.companiesCollecting.push(question._id)
+                    dataclass.save()
+
+                    question.dataclassCollection.push(dataclass._id)
+
+                    dataclass.description = "asdfja"
+                    question.save()
+                        .then(question => res.json(question))
+                        .catch(err => res.json(err))
+                })
+        })
+})
 
 
 router.get('/test', (req, res) => {
