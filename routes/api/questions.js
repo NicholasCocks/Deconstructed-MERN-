@@ -7,17 +7,14 @@ const validateQuestionInput = require('../../validation/question')
 router.get('/seed', (req, res) => {
 
     Question.find({ question: "google" })
-        .then(question => {
-            Dataclass.find({
-                class: "eating habits"})
-                .then(dataclass => {
-                    dataclass.companiesCollecting.push(question._id)
-                    dataclass.save()
+        .then(questionArr => {
+            Dataclass.find({ class: "email messages" })
+                .then(dataclassArr => {
+                    dataclassArr[0].companiesCollecting.push(questionArr[0]._id)
+                    dataclassArr[0].save().then()
 
-                    question.dataclassCollection.push(dataclass._id)
-
-                    dataclass.description = "asdfja"
-                    question.save()
+                    questionArr[0].dataclassCollection.push(dataclassArr[0]._id)
+                    questionArr[0].save()
                         .then(question => res.json(question))
                         .catch(err => res.json(err))
                 })
