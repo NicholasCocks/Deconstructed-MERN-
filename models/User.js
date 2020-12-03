@@ -10,7 +10,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    taskIds: [{ type: Schema.Types.ObjectId, ref: 'tasks' }]
+    questionsAnswered: [{ type: Schema.Types.ObjectId, ref: 'tasks' }]
 }, {
     timestamps: true
 });

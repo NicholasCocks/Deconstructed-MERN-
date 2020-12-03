@@ -88,6 +88,7 @@ router.patch('/:userId', (req, res) => {
         return res.status(400).json({ msg: 'User not found'})
       } else {
         questionsAnswered.forEach(questionId => {
+            
             const newTask = new Task({
                 questionId
             })

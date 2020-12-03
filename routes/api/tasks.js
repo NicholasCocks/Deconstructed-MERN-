@@ -32,4 +32,17 @@ router.get('/:taskId', (req, res) => {
     })
 })
 
+router.delete('/:taskId', (req, res) => {
+  const { taskId } = req.params;
+
+  Task.findById(taskId)
+    .then(task => {
+      if (!task) {
+        return res.status(400).json({ msg: 'Task not found' })
+      } else {
+        
+      }
+    })
+})
+
 module.exports = router;
