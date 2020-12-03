@@ -9,7 +9,7 @@ module.exports = function validateSignupInput(data) {
     data.password2 = validText(data.password2) ? data.password2 : "";
 
     if (Validator.isEmpty(data.email)) {
-        errors.email = "email field is required"
+        errors.email = "Email field is required"
     }
 
     if (!Validator.isEmail(data.email)) {
@@ -17,7 +17,7 @@ module.exports = function validateSignupInput(data) {
     }
 
     if (Validator.isEmpty(data.password)) {
-        errors.password = "password is required"
+        errors.password = "Password is required"
     }
 
     if (!Validator.isLength(data.password, { min: 2, max: 30 })) {

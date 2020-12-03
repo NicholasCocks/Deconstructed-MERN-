@@ -19,5 +19,6 @@ export const login = (userData) => {
 };
 
 export const updateAnswers = (data) => {
+  debugger
   return axios.patch(`/api/users/${data.id}`, data.data)
 }

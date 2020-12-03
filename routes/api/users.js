@@ -6,6 +6,7 @@ const keys = require('../../config/keys_dev');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
+const { route } = require('./dataclasses');
 
 router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
@@ -77,5 +78,26 @@ router.post('/login', (req, res) => {
             })
         })
 })
+
+router.patch('/:userId', (req, res) => {
+    debugger
+  const { userId } = req.params
+  const answerIds  = req.body
+  User.findById(userId)
+    .then(user => {
+      if (!user) {
+        return res.status(400).json({ msg: 'User not found'})
+      } else {
+        debugger
+        user.questionsAnswered.addToSet(...answerIds)
+        user.save()
+          .then(user => {
+            debugger
+            return res.json(user)
+          })
+      }
+    })
+})
+
 
 module.exports = router;

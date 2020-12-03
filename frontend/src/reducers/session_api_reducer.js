@@ -29,6 +29,9 @@ export default function (state = initialState, action) {
         ...state,
         isSignedIn: true,
       };
+    case RECEIVE_ANSWERS:
+      debugger
+      return { ...state, user: action.user }
     default:
       return state;
   }
