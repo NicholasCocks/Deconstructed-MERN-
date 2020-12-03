@@ -12,9 +12,22 @@ router.get('/:userId', (req, res) => {
       if (!user) {
         return res.status(400).json({ msg: 'User not found' })
       } else {
-        user.questionsAnswered.map(questionId => {
-          Task.find({ questionId })
-        })
+          Task.find().all('questionId', user.questionsAnswered )
+            .then(tasks => res.json(tasks))
+            .catch(err => res.json(err))
+      }
+    })
+})
+
+router.get('/:taskId', (req, res) => {
+  const { taskId } = req.params;
+
+  Task.findById(taskId)
+    .then(task => {
+      if (!task) {
+        return res.status(400).json({ msg: 'Task not found' })
+      } else {
+        return res.json(task)
       }
     })
 })

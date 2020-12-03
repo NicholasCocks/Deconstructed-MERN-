@@ -6,7 +6,7 @@ const keys = require('../../config/keys_dev');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
-const { route } = require('./dataclasses');
+const Task = require('../../models/Task');
 
 router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
@@ -87,6 +87,11 @@ router.patch('/:userId', (req, res) => {
       if (!user) {
         return res.status(400).json({ msg: 'User not found'})
       } else {
+        questionsAnswered.forEach(questionId => {
+            const newTask = new Task({
+                questionId
+            })
+        })
         user.questionsAnswered = questionsAnswered
         user.save()
         return res.json(user)

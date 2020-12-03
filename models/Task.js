@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema({
   questionId: {
     type: Schema.Types.ObjectId,
-    ref: 'questions'
+    ref: 'questions',
+    required: true
   },
-  dataclassId: {
-    type: Schema.Types.ObjectId,
-    ref: 'dataclasses'
+  isComplete: {
+    type: Boolean,
+    default: false,
+    required: true
   }
 })
 
