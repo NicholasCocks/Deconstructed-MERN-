@@ -1,4 +1,11 @@
 @import './base/reset.css';
 @import './base/colors.css';
 @import './base/fonts.css';
-@import './components/nav_bar.css'
+@import './components/nav_bar.css';
+@import './components/questions_form.css';
+@import './components/canvas.css';
+
+.page-container {
+    width: 100vw;
+    height: 100vh;
+}

@@ -13,25 +13,30 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
     const mesh = useRef();
     const font = new THREE.FontLoader().parse(Segoe);
     const textOptions = { font, size: 1, height: 0.1 };
-
-    //useFrame allows us to re-render/update rotation on each frame
-    // useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   
     //Basic expand state
     const [expand, setExpand] = useState(false);
     // React spring expand animation
     const props = useSpring({
       scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
+      color: expand ? 'pink' : 'blue'
     });
+
+    const handleClick = () => {
+      setExpand(!expand)
+    } 
+
+    const text = 'text1';
 
     return (<>
       <a.mesh
         position={position}
         ref={mesh}
-        onClick={() => setExpand(!expand)}
+        onClick={() => handleClick()}
         scale={props.scale}
-        castShadow>
-        <boxBufferGeometry attach='geometry' args={args} />
+        castShadow
+        >
+        <sphereGeometry attach='geometry' args={args} />
         <MeshWobbleMaterial
           color={color}
           speed={speed}
@@ -41,7 +46,10 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
       </a.mesh>
       <mesh position={position}>
          <Html >
-            <p>{`${name}`}</p>
+           <div className="data_point">
+            <p >{`${name}`}</p>
+            {expand ? text : ''}
+            </div>
          </Html>
       </mesh>
 
@@ -59,7 +67,7 @@ class CanvasComponent extends React.Component {
     render() {
         const classes = [];
         const points = this.props.answers.map((answer, index) => {
-            debugger;
+            
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
                 return (
@@ -70,29 +78,22 @@ class CanvasComponent extends React.Component {
 
 
         return (
-            <div>
-                Canvas Component
-                <>
+            <div className="page-container">
                 <Canvas
                     colorManagement
                     shadowMap
+                    // style={{height:100,width:100}}
                     camera={{ position: [-5, 2, 10], fov: 60 }}>
-                    {/* This light makes things look pretty */}
                     <ambientLight intensity={0.3} />
-                    {/* Our main source of light, also casting our shadow */}
-                    
-                    {/* A light to help illumnate the spinning boxes */}
                     <pointLight position={[-10, 0, -20]} intensity={0.5} />
                     <pointLight position={[0, -10, 0]} intensity={1.5} />
                     <group>
-                   
+                
                         {points}
                     
                     </group>
-                    {/* Allows us to move the canvas around for different prespectives */}
                     <OrbitControls />
                 </Canvas>
-                </>
             </div>
         )
     }

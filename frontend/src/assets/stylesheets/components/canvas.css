@@ -1,0 +1,11 @@
+.data_point {
+    
+    background-color:  rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 7px;
+} 
+
+.data_point > p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.7);
+}

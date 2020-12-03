@@ -1,0 +1,16 @@
+#questions_form {
+    padding: 5px;
+    color: white;
+    background-color: rgb(10, 10, 10, 0.9);
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.questions_form_item {
+    display: flex;
+    font-family: var(--font-arial);
+    align-items: center;
+    padding: 3px;
+}

@@ -37,22 +37,22 @@ class QuestionsForm extends React.Component {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
         
         return (
-            <div key={index}>
+            <div key={index} className="questions_form_item">
                 <p>{question.question}</p>
                 <input type="checkbox" ref={this.inputRef} value={question._id} onClick={this.handleClick} /> 
             </div>
         )})
         
         return (
-            <div>
+            <>
                 <form id="questions_form">
                     <ul>
                         {checkboxes}
                     </ul>
                 </form>
-            {console.log(this.state)}
-            <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
-            </div>
+                {console.log(this.state)}
+                <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
+            </>
          )
     }
 }

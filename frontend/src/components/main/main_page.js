@@ -5,7 +5,7 @@ import QuestionForm from '../questions_form/questions_form_container';
 class MainPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="page_container">
         <h1>DECONSTRUCTED</h1>
         <QuestionForm />
       </div>
