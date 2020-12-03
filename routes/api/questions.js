@@ -46,7 +46,7 @@ router.post('/new', (req, res) => {
 
 })
 
-router.patch('/upate', (req, res) => {
+router.patch('/update', (req, res) => {
     const { errors, isValid } = validateQuestionInput(req.body);
 
     if (!isValid) return res.status(400).json(errors)
@@ -55,8 +55,8 @@ router.patch('/upate', (req, res) => {
     Question.findOne({ question: toLower })
         .then(question => {
             if (question) {
-                question._doc.dataclassCollection.push(req.body.class)
-                question.update(req.body)
+                question.dataclassCollection.addToSet(req.body.class)
+                question.save()
                     .then(question => res.json(question))
                     .catch(error => console.log(error))
             } else {

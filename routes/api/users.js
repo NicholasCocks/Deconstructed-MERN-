@@ -80,9 +80,9 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
+    debugger
   const { userId } = req.params
-  const answerIds  = JSON.parse(req.body.questionsAnswered)
-  debugger
+  const answerIds  = req.body
   User.findById(userId)
     .then(user => {
       if (!user) {
