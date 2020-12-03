@@ -13,9 +13,9 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
     const mesh = useRef();
     const font = new THREE.FontLoader().parse(Segoe);
     const textOptions = { font, size: 1, height: 0.1 };
+
     //useFrame allows us to re-render/update rotation on each frame
-    
-    useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
+    // useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
   
     //Basic expand state
     const [expand, setExpand] = useState(false);
@@ -56,14 +56,16 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
 
 class CanvasComponent extends React.Component {
 
-
     render() {
+        const classes = [];
         const points = this.props.answers.map((answer, index) => {
             debugger;
-            return (
-                <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} name={answer.class}/>
-            )
-            
+            if (!classes.includes(answer.class)) {
+                classes.push(answer.class);
+                return (
+                    <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} name={answer.class}/>
+                )
+            };
         }, this)
 
 
