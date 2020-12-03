@@ -38,7 +38,7 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
         >
         <sphereGeometry attach='geometry' args={args} />
         <MeshWobbleMaterial
-          color={color}
+          color={expand ? 'pink' : 'white'}
           speed={speed}
           attach='material'
           factor={0.6}
