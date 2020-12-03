@@ -55,7 +55,7 @@ router.patch('/update', (req, res) => {
     Question.findOne({ question: toLower })
         .then(question => {
             if (question) {
-                question.dataclassCollection.addToSet(req.body.class)
+                question.dataclassCollection = req.body.class
                 question.save()
                     .then(question => res.json(question))
                     .catch(error => console.log(error))

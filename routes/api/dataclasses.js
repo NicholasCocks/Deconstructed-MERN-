@@ -48,7 +48,7 @@ router.patch('/update', (req, res) => {
     Dataclass.findOne({ class: toLower })
         .then(dataclass => {
             if (dataclass) {
-                dataclass._doc.companiesCollecting.push(req.body.company)
+                dataclass.companiesCollecting = req.body.company
                 debugger
                 dataclass.update({ class: toLower })
                     .then(data => res.json(data))
