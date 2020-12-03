@@ -47,7 +47,7 @@ router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    debugger;
+    // debugger;
     if (!isValid) return res.status(400).json(errors)
 
     User.findOne({ email })
@@ -59,7 +59,7 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(password, user.password).then(isMatch => {
                 if (isMatch) {
-                    const payload = { id: user.id, email: user.email };
+                    const payload = { id: user.id, email: user.email, questionsAnswered: user.questionsAnswered };
 
                     jwt.sign(
                         payload,
@@ -80,7 +80,7 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
-    debugger
+    // debugger
   const { userId } = req.params
   const answerIds  = req.body
   User.findById(userId)
@@ -88,11 +88,11 @@ router.patch('/:userId', (req, res) => {
       if (!user) {
         return res.status(400).json({ msg: 'User not found'})
       } else {
-        debugger
+        // debugger
         user.questionsAnswered.addToSet(...answerIds)
         user.save()
           .then(user => {
-            debugger
+            // debugger
             return res.json(user)
           })
       }

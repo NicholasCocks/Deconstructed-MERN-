@@ -72,6 +72,6 @@ export const logout = () => dispatch => {
 
 export const updateAnswers = data => dispatch => {
     return APIUtil.updateAnswers(data).then(res => {
-        debugger
+        // debugger
         dispatch(receiveAnswers(res))});
 }

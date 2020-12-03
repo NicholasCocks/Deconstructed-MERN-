@@ -1,16 +1,30 @@
 #questions_form {
     padding: 5px;
     color: white;
-    background-color: rgb(10, 10, 10, 0.9);
+    background-color: rgba(233, 109, 187, 0.8);
     position: absolute;
-    bottom: 10px;
+    bottom: 50%;
     left: 10px;
+    border-radius: 7px;
     z-index: 1;
+    padding: 5px;
 }
 
 .questions_form_item {
     display: flex;
     font-family: var(--font-arial);
     align-items: center;
-    padding: 3px;
+    
 }
+j
+.questions_form_item > button {
+    padding: 7px;
+    border-radius: 7px; 
+    margin: 3px;
+}
+
+.questions_form_button {
+    background-color: rgb(252, 212, 82);
+    border-radius: 5pm; 
+}
+

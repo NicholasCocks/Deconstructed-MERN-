@@ -4,33 +4,36 @@ class QuestionsForm extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
-        this.handleClick = this.handleClick.bind(this)
+        debugger
+        this.state = {};
+        this.handleClick = this.handleClick.bind(this);
         this.inputRef = React.createRef();
     }
 
     componentDidMount() {
         this.props.fetchAllData()
         this.props.fetchAllQuestions() 
-        //this.props.updateAnswers()
     }
 
     handleClick(e) {
+        const stateClone = Object.assign({}, this.state)
         
+
         if (!this.state[e.currentTarget.value]) {
-            this.setState({[e.currentTarget.value]: true})  
+            stateClone[e.currentTarget.value] = true;
+            this.setState({[e.currentTarget.value]: true});
         } else {
-            this.setState({[e.currentTarget.value]: false})
+            stateClone[e.currentTarget.value] = false;
+            this.setState({[e.currentTarget.value]: false});
         }
 
         // EX: {['questionIds']: boolean, ['questionIds']: boolean}
-
-        // this.props.updateAnswers({id: this.props.user.id, 
-        // data: Array.from(this.state)})
-        // dispatch(updateAnswer)
-        // keys = Object.keys(this.state).filter(key => {
-        //    return this.state[key] 
-        // })
+        const keys = Object.keys(stateClone).filter(key => {
+            return stateClone[key];
+        })
+        
+        debugger;
+        this.props.updateAnswers({id: this.props.user.id, data: keys})
     }
 
     render() {
@@ -38,8 +41,12 @@ class QuestionsForm extends React.Component {
         
         return (
             <div key={index} className="questions_form_item">
-                <p>{question.question}</p>
-                <input type="checkbox" ref={this.inputRef} value={question._id} onClick={this.handleClick} /> 
+                <button 
+                value={question._id} 
+                onClick={this.handleClick} 
+                className={this.state[question._id] ? "questions_form_button" : ''} >
+                    {question.question.charAt(0).toUpperCase() + question.question.slice(1)}
+                </button>
             </div>
         )})
         

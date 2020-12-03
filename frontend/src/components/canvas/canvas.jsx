@@ -1,14 +1,35 @@
 import React, { useRef, useState } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
+import { Canvas, useFrame, useThree } from "react-three-fiber";
 import { softShadows, MeshWobbleMaterial, OrbitControls, Html } from "drei";
 import { useSpring, a } from "react-spring/three";
 import * as THREE from 'three';
+import { CubeTextureLoader, CubeCamera, WebGLCubeRenderTarget, RGBFormat, LinearMipmapLinearFilter } from 'three';
 import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
+import { urlencoded } from "body-parser";
 
 // soft Shadows
 softShadows();
 
-const SpinningMesh = ({ position, color, speed, args, name }) => {
+const SkyBox = () => {
+  const { scene } = useThree();
+  const loader = new CubeTextureLoader();
+  // The CubeTextureLoader load method takes an array of urls representing all 6 sides of the cube.
+  const texture = loader.load([
+    '/spiral.png',
+    '/spiral.png',
+    '/spiral.png',
+    '/spiral.png',
+    '/spiral.png',
+    '/spiral.png',
+  ]);
+  
+  // Set the scene background property to the resulting texture.
+  scene.background = texture;
+  return null;
+}
+
+const SpinningMesh = ({ position, color, speed, name }) => {
+    const { scene, gl } = useThree();
     //ref to target the mesh
     const mesh = useRef();
     const font = new THREE.FontLoader().parse(Segoe);
@@ -36,12 +57,15 @@ const SpinningMesh = ({ position, color, speed, args, name }) => {
         scale={props.scale}
         castShadow
         >
-        <sphereGeometry attach='geometry' args={args} />
+        {/* <directionalLight intensity={0.5} /> */}
+        <sphereGeometry attach='geometry' args={[0.8, 10, 10]} />
         <MeshWobbleMaterial
-          color={expand ? 'pink' : 'white'}
-          speed={speed}
+          color={(expand ? 'cyan' : 'pink')}
+          speed={expand ? speed * 2 : speed}
           attach='material'
           factor={0.6}
+          roughness={0.1}
+          metalness={0.8}
         />
       </a.mesh>
       <mesh position={position}>
@@ -86,12 +110,13 @@ class CanvasComponent extends React.Component {
                     camera={{ position: [-5, 2, 10], fov: 60 }}>
                     <ambientLight intensity={0.3} />
                     <pointLight position={[-10, 0, -20]} intensity={0.5} />
-                    <pointLight position={[0, -10, 0]} intensity={1.5} />
+                    <pointLight position={[0, -10, 0]} intensity={0.5} />
                     <group>
                 
-                        {points}
+                       {points}
                     
                     </group>
+                    <SkyBox />
                     <OrbitControls />
                 </Canvas>
             </div>

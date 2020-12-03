@@ -5,7 +5,7 @@ const validateQuestionInput = require('../../validation/question')
 
 
 router.get('/test', (req, res) => {
-    debugger
+    // debugger
     res.json({
         msg: "this is the question route"
     })

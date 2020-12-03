@@ -1,4 +1,15 @@
 .nav_bar_container {
-    background-color: var(--lightest-gray);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: rgba(99, 199, 199, 0.8);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    /* background-color: var(--lightest-gray); */
     font-family: var(--font-arial);
+    z-index: 1;
 }

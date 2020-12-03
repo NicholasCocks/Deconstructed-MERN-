@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Canvas from './canvas';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger
+    debugger
 //    cross reference answers with 
     return {
         questions: state.entities.questions,
