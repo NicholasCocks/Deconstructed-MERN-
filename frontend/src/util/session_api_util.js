@@ -17,8 +17,3 @@ export const login = (userData) => {
   // debugger; 
   return axios.post('/api/users/login', userData);
 };
-
-export const updateAnswers = (data) => {
-  // debugger
-  return axios.patch(`/api/users/${data.id}`, data.data)
-}

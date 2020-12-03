@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/session_api_util';
 import * as AnswersUtil from '../util/answers_util';
+import * as TasksUtil from '../util/tasks_util';
 import jwt_decode from 'jwt-decode';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -7,6 +8,8 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const RECEIVE_ANSWERS = "RECEIVE_ANSWERS";
+// export const RECEIVE_TASK = "RECEIVE_TASK";
+// export const REMOVE_TASK = "REMOVE_TASK"
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -22,7 +25,8 @@ export const receiveUserSignIn = () => ({
 export const receiveAnswers = ({ data }) => ({
     type: RECEIVE_ANSWERS,
     user: data
-})
+});
+
 
 // We dispatch this one to show authentication errors on the frontend
 export const receiveErrors = errors => ({
@@ -76,4 +80,25 @@ export const updateAnswers = data => dispatch => {
     return AnswersUtil.updateAnswers(data).then(res => {
         debugger;
         dispatch(receiveAnswers(res))});
+};
+
+
+export const loginDemoUser = () => dispatch => {
+    APIUtil.login({email: 'usiddiki10282@gmail.com', password: 'hunter12', errors: {}}).then(res => {
+        const { token } = res.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
+        dispatch(receiveCurrentUser(decoded))
+    })
 }
+
+// export const receiveTasks = ({ data }) => ({
+//     type: RECEIVE_TASKS,
+//     user: data
+// })
+
+
+// export const receiveTasks = data => dispatch => {
+//     return TasksUtil.receiveTasks(data).then(res=> dispatch(receuve))
+// }
