@@ -80,21 +80,18 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
-    // debugger
   const { userId } = req.params
-  const answerIds  = req.body
+  const questionsAnswered  = JSON.parse(req.body.questionsAnswered)
   User.findById(userId)
     .then(user => {
       if (!user) {
         return res.status(400).json({ msg: 'User not found'})
       } else {
-        // debugger
-        user.questionsAnswered.addToSet(...answerIds)
+        user.questionsAnswered = questionsAnswered
         user.save()
-          .then(user => {
-            // debugger
+        .then(user => {
             return res.json(user)
-          })
+        })
       }
     })
 })
