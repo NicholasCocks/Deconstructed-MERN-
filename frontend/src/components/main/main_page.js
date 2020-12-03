@@ -5,7 +5,7 @@ import QuestionForm from '../questions_form/questions_form_container';
 class MainPage extends React.Component {
   render() {
     return (
-      <div className="page_container">
+      <div className="canvas_container">
         <QuestionForm />
       </div>
     );

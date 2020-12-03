@@ -4,10 +4,12 @@
 @import './components/nav_bar.css';
 @import './components/questions_form.css';
 @import './components/canvas.css';
+@import './components/signup_form.css';
+@import './components//login_form.css';
 
 
 
-.page-container {
+.canvas_container {
     width: 100vw;
     height: 100vh;
     background-color: rgb(0, 0, 0, 0.1);

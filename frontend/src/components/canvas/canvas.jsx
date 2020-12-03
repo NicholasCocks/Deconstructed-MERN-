@@ -101,25 +101,23 @@ class CanvasComponent extends React.Component {
         }, this)
 
 
-        return (
-            <div className="page-container">
-                <Canvas
-                    colorManagement
-                    shadowMap
-                    // style={{height:100,width:100}}
-                    camera={{ position: [-5, 2, 10], fov: 60 }}>
-                    <ambientLight intensity={0.3} />
-                    <pointLight position={[-10, 0, -20]} intensity={0.5} />
-                    <pointLight position={[0, -10, 0]} intensity={0.5} />
-                    <group>
-                
-                       {points}
-                    
-                    </group>
-                    <SkyBox />
-                    <OrbitControls />
-                </Canvas>
-            </div>
+        return (     
+        <Canvas
+            colorManagement
+            shadowMap
+            // style={{height:100,width:100}}
+            camera={{ position: [-5, 2, 10], fov: 60 }}>
+            <ambientLight intensity={0.3} />
+            <pointLight position={[-10, 0, -20]} intensity={0.5} />
+            <pointLight position={[0, -10, 0]} intensity={0.5} />
+            <group>
+        
+                {points}
+            
+            </group>
+            <SkyBox />
+            <OrbitControls />
+        </Canvas>
         )
     }
 }

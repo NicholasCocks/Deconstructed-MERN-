@@ -4,7 +4,10 @@
     top: 0;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
     padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: rgba(99, 199, 199, 0.8);
     color: white;
     font-weight: bold;
@@ -12,4 +15,10 @@
     /* background-color: var(--lightest-gray); */
     font-family: var(--font-arial);
     z-index: 1;
+}
+
+.nav_bar_buttons_container {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
 }
