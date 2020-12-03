@@ -18,9 +18,9 @@ export const receiveUserSignIn = () => ({
     type: RECEIVE_USER_SIGN_IN
 });
 
-export const receiveAnswers = answers => ({
+export const receiveAnswers = ({ data }) => ({
     type: RECEIVE_ANSWERS,
-    answers
+    user: data
 })
 
 // We dispatch this one to show authentication errors on the frontend
@@ -71,5 +71,7 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-    return APIUtil.updateAnswers(data).then(data => dispatch(receiveAnswers(data)));
+    return APIUtil.updateAnswers(data).then(res => {
+        debugger
+        dispatch(receiveAnswers(res))});
 }

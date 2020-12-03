@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout } from './actions/session_actions';
+import { logout, updateAnswers } from './actions/session_actions';
 import { fetchAllData, fetchAllQuestions } from './actions/question_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.dispatch = store.dispatch;
             window.fetchAllData = fetchAllData;
             window.fetchAllQuestions = fetchAllQuestions;
+            window.updateAnswers = updateAnswers;
 
 
             ReactDOM.render( < Root store = { store }
