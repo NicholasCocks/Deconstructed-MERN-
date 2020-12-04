@@ -22,3 +22,8 @@
     width: 200px;
     justify-content: space-between;
 }
+
+.navbar_logout {
+    position: relative;
+    left: 100px;
+}
