@@ -7,6 +7,11 @@ const TaskSchema = new Schema({
     ref: 'questions',
     required: true
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+    required: true
+  },
   isComplete: {
     type: Boolean,
     default: false,

@@ -3,11 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require("./config/keys_dev").mongoURI;
 const users = require("./routes/api/users")
-const User = require('./models/User');
 const bodyParser = require('body-parser');
-const passport = require('passport');
 const questions = require('./routes/api/questions');
 const dataclasses = require('./routes/api/dataclasses');
+const tasks = require('./routes/api/tasks');
 const path = require('path');
 
 mongoose
@@ -27,7 +26,8 @@ app.get("/", (request, response) => {
 
 app.use("/api/users", users);
 app.use("/api/questions", questions);
-app.use("/api/dataclasses", dataclasses)
+app.use("/api/dataclasses", dataclasses);
+app.use("/api/tasks", tasks)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));

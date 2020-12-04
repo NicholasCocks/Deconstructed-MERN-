@@ -59,7 +59,12 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(password, user.password).then(isMatch => {
                 if (isMatch) {
-                    const payload = { id: user.id, email: user.email };
+                    const payload = { 
+                        id: user.id, 
+                        email: user.email,
+                        questionsAnswered: user.questionsAnswered,
+                        taskIds: user.taskIds
+                     };
 
                     jwt.sign(
                         payload,
@@ -80,24 +85,33 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
-  const { userId } = req.params
-  const questionsAnswered  = JSON.parse(req.body.questionsAnswered)
-  User.findById(userId)
-    .then(user => {
-      if (!user) {
-        return res.status(400).json({ msg: 'User not found'})
-      } else {
-        questionsAnswered.forEach(questionId => {
-            
-            const newTask = new Task({
-                questionId
-            })
+
+    const { userId } = req.params
+    const questionsAnswered = JSON.parse(req.body.questionsAnswered)
+    User.findById(userId)
+        .then(user => {
+            if (!user) {
+                return res.status(400).json({ msg: 'User not found' })
+            } else {
+                user.tasks
+                user.questionsAnswered = questionsAnswered
+                debugger
+                Task.remove({ userId: user.id })
+                const taskIds = questionsAnswered.map(questionId => {
+                    const newTask = new Task({
+                        questionId,
+                        userId: user._id
+                    })
+                    newTask.save()
+                    return newTask._id
+                })
+                user.taskIds = taskIds
+                user.save()
+                    .then(user => {
+                        return res.json(user)
+                    })
+            }
         })
-        user.questionsAnswered = questionsAnswered
-        user.save()
-        return res.json(user)
-      }
-    })
 })
 
 
