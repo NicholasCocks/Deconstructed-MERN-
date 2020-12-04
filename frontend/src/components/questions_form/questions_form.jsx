@@ -19,13 +19,21 @@ class QuestionsForm extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         //if user logs in
+        debugger
         const {user, questionsAnswered } = this.props;
         if (Object.keys(questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
             this.setState(questionsAnswered)
+            return
         } else if (Object.keys(user).length !== Object.keys(prevProps.user).length) {
-            Object.keys(this.state).forEach((key) => {
-                this.state[key] = false
-            })
+            if (Object.keys(user).length === 0) {
+                Object.keys(this.state).forEach((key) => {
+                    this.state[key] = false
+                })
+            } else {
+                Object.keys(questionsAnswered).forEach((key) => {
+                    this.state[key] = true
+                })
+            }
             console.log('component shouldve reset the state')
             this.setState({})
         }
@@ -59,7 +67,7 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-        debugger
+        // debugger
         return (
             <div key={index} className="questions_form_item">
                 <button 

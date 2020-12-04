@@ -80,17 +80,11 @@ const SpinningMesh = ({ position, speed, answer, questions }) => {
             <p className="answer_class">{`${answer.class}`}</p>
             
             <ul className="companies_collecting"> {expand ? companiesCollecting : ''} </ul>
-            {/* {expand ? <button>Generate Task</button> : ''} */}
+           
             </div>
          </Html>
       </mesh>
-
-        
-      {/* <mesh position={position}>
-        <textGeometry attach='geometry' args={[`${name}`, textOptions]} />
-        <meshStandardMaterial attach='material' />
-      </mesh> */}
-        </>
+      </>
     );
   };
 
@@ -104,7 +98,8 @@ class CanvasComponent extends React.Component {
                 classes.push(answer.class);
                 // debugger;
                 return (
-                    <SpinningMesh key={index} position={[(2 / index), index, (2 * index)]} speed={6} answer={answer} questions={this.props.questions}/>
+                                                   //x, y, z
+                    <SpinningMesh key={index} position={[((index * 4 ) - 50), ((index % 9)), ((index * 4) - 50)]} speed={6} answer={answer} questions={this.props.questions}/>
                 )
             };
         }, this)
@@ -117,9 +112,9 @@ class CanvasComponent extends React.Component {
                 shadowMap
                 color='black'
                 // style={{height:100,width:100}}
-                camera={{ position: [-30, 2, 10], fov: 60 }}>
+                camera={{ position: [-80, 2, 10], fov: 60 }}>
                 <ambientLight intensity={0.3} />
-                
+               
                 <ambientLight position={[-10, 0, -20]} intensity={0.5} />
                 <ambientLight position={[0, -10, 0]} intensity={0.5} />
                 <group>
@@ -127,7 +122,7 @@ class CanvasComponent extends React.Component {
                     {points}
                 
                 </group>
-                <SkyBox />
+                {/* <SkyBox /> */}
                 <Stars />
                 <OrbitControls />
                 
