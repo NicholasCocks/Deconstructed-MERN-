@@ -8,8 +8,7 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const RECEIVE_ANSWERS = "RECEIVE_ANSWERS";
-// export const RECEIVE_TASK = "RECEIVE_TASK";
-// export const REMOVE_TASK = "REMOVE_TASK"
+
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -92,13 +91,3 @@ export const loginDemoUser = () => dispatch => {
         dispatch(receiveCurrentUser(decoded))
     })
 }
-
-// export const receiveTasks = ({ data }) => ({
-//     type: RECEIVE_TASKS,
-//     user: data
-// })
-
-
-// export const receiveTasks = data => dispatch => {
-//     return TasksUtil.receiveTasks(data).then(res=> dispatch(receuve))
-// }

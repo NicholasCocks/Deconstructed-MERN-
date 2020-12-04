@@ -6,7 +6,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.logoutUser = this.logoutUser.bind(this);
-        this.getLinks = this.getLinks.bind(this);
+        this.getLinks = this.getLinks.bind(this);       
     }
 
     logoutUser(e) {
@@ -19,16 +19,14 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <>   
-                <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                <div className="nav_bar_buttons_container">
-                    <button className="navbar_logout" onClick={this.logoutUser}>Logout</button>
-                </div>
+                    <div className="nav_bar_buttons_container">
+                        <button className="navbar_logout" onClick={this.logoutUser}>Logout</button>
+                    </div>
                 </>
             );
         } else {
             return (
                 <>
-                    <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
                     <div className="nav_bar_buttons_container">
                         <Link to={'/signup'}><button className="navbar_signup">Signup</button></Link>
                         <Link to={'/login'}><button className="navbar_login">Login</button></Link>
@@ -41,8 +39,10 @@ class NavBar extends React.Component {
     render() {
        
         return (
-            <div className="nav_bar_container">
-                { this.getLinks()}
+            <div className="nav_bar_container" ref={this.wrapperRef}>
+                <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
+                
+                {this.getLinks()}
             </div>
         );
     }

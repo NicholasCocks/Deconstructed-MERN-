@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useThree } from "react-three-fiber";
-import { softShadows, MeshWobbleMaterial, OrbitControls, Html } from "drei";
+import { Stars, softShadows, MeshWobbleMaterial, MeshDistortMaterial, OrbitControls, Html } from "drei";
 import { useSpring, a } from "react-spring/three";
 import * as THREE from 'three';
 import { CubeTextureLoader } from 'three';
 import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
+import TasksContainer from '../tasks/tasks_container';
 
 
 // soft Shadows
@@ -28,7 +29,7 @@ const SkyBox = () => {
   return null;
 }
 
-const SpinningMesh = ({ position, color, speed, name }) => {
+const SpinningMesh = ({ position, speed, answer, questions }) => {
     const { scene, gl } = useThree();
     //ref to target the mesh
     const mesh = useRef();
@@ -47,8 +48,14 @@ const SpinningMesh = ({ position, color, speed, name }) => {
       setExpand(!expand)
     } 
 
-    const text = 'text1';
-
+    //have button here to turn data point into task.
+    const companiesCollecting = answer.companiesCollecting.map((questionId, i) => {
+      debugger;
+      return (
+        <li key={i} > {questions[questionId].question} </li>
+      )
+    });
+    
     return (<>
       <a.mesh
         position={position}
@@ -58,7 +65,7 @@ const SpinningMesh = ({ position, color, speed, name }) => {
         castShadow
         >
         {/* <directionalLight intensity={0.5} /> */}
-        <sphereGeometry attach='geometry' args={[0.8, 10, 10]} />
+        <sphereGeometry attach='geometry' args={[0.8, 7, 7]} />
         <MeshWobbleMaterial
           color={(expand ? 'cyan' : 'pink')}
           speed={expand ? speed * 2 : speed}
@@ -71,8 +78,10 @@ const SpinningMesh = ({ position, color, speed, name }) => {
       <mesh position={position}>
          <Html >
            <div className="data_point">
-            <p >{`${name}`}</p>
-            {expand ? text : ''}
+            <p >{`${answer.class}`}</p>
+            
+            <ul> {expand ? companiesCollecting : ''} </ul>
+            {expand ? <button>Generate Task</button> : ''}
             </div>
          </Html>
       </mesh>
@@ -90,37 +99,50 @@ class CanvasComponent extends React.Component {
 
     render() {
         const classes = [];
-        debugger;
-        
-        const points = this.props.answers.map((answer, index) => {
-            
+        const points = this.props.answers.filter(answer => !!answer).map((answer, index) => {
+            debugger;
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
+                debugger;
                 return (
-                    <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} name={answer.class}/>
+                    <SpinningMesh key={index} position={[(2 / index), index, (2 * index)]} speed={6} answer={answer} questions={this.props.questions}/>
                 )
             };
         }, this)
 
 
-        return (     
-        <Canvas
-            colorManagement
-            shadowMap
-            color='black'
-            // style={{height:100,width:100}}
-            camera={{ position: [-5, 2, 10], fov: 60 }}>
-            <ambientLight intensity={0.3} />
-            <pointLight position={[-10, 0, -20]} intensity={0.5} />
-            <pointLight position={[0, -10, 0]} intensity={0.5} />
-            <group>
-        
-                {points}
+        return ( 
+          <>    
+            <Canvas
+                colorManagement
+                shadowMap
+                color='black'
+                // style={{height:100,width:100}}
+                camera={{ position: [-30, 2, 10], fov: 60 }}>
+                <ambientLight intensity={0.3} />
+                <rectAreaLight
+                  width={3}
+                  height={3}
+                  color={'white'}
+                  intensity={10}
+                  position={[-2, 0, 5]}
+                  lookAt={[0, 0, 0]}
+                  penumbra={1}
+                  castShadow />
+                <ambientLight position={[-10, 0, -20]} intensity={0.5} />
+                <ambientLight position={[0, -10, 0]} intensity={0.5} />
+                <group>
             
-            </group>
-            <SkyBox />
-            <OrbitControls />
-        </Canvas>
+                    {points}
+                
+                </group>
+                <SkyBox />
+                <Stars />
+                <OrbitControls />
+                
+            </Canvas>
+            <TasksContainer />
+          </>
         )
     }
 }

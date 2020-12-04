@@ -1,6 +1,6 @@
 import React from 'react';
 import QuestionForm from '../questions_form/questions_form_container';
-import TasksContainer from '../tasks/tasks_container';
+import Tasks from '../tasks/tasks_container';
 
 
 class MainPage extends React.Component {
@@ -8,7 +8,6 @@ class MainPage extends React.Component {
     return (
       <div className="canvas_container">
         <QuestionForm />
-        <TasksContainer />
       </div>
     );
   }
