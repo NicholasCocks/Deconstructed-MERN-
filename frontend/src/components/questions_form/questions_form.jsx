@@ -19,7 +19,7 @@ class QuestionsForm extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         //if user logs in
-        debugger
+         
         const {user, questionsAnswered } = this.props;
         if (Object.keys(questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
             this.setState(questionsAnswered)
@@ -57,9 +57,9 @@ class QuestionsForm extends React.Component {
         const keys = Object.keys(stateClone).filter(key => {
             return stateClone[key];
         })
-        // debugger
+         
         if (Object.keys(this.props.user).length !== 0 ) {
-            // debugger
+             
             this.props.updateAnswers({id: this.props.user.id, data: keys})
         }
     }
@@ -67,7 +67,7 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-        // debugger
+         
         return (
             <div key={index} className="questions_form_item">
                 <button 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchAllTasks = data => {
-    // debugger;
+     ;
     return axios.get(`/api/tasks/${data}`);
 }
 

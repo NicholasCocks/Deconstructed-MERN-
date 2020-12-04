@@ -34,10 +34,10 @@ router.get('/:taskId', (req, res) => {
 
 router.delete('/:taskId', (req, res) => { // /api/tasks/:taskId
   const { taskId } = req.params;
-  // debugger
+   
   Task.findByIdAndRemove(taskId) 
     .then(task => {
-      // debugger
+       
       if(!task) {
         res.status(404).json({msg: 'Not found'})
       } else {

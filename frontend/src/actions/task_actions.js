@@ -21,10 +21,10 @@ const receiveAllTasks = ({ data }) => ({
 
 // thunk action creator
 export const fetchAllTasks = data => dispatch => {
-    // debugger 
+      
     return TasksUtil.fetchAllTasks(data)
         .then(tasks => {
-            // debugger
+             
             return dispatch(receiveAllTasks(tasks))})
 };
 

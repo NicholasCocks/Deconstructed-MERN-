@@ -5,6 +5,5 @@ import axios from 'axios';
 // }
   
 export const updateAnswers = (data) => {
-    debugger;
     return axios.patch(`/api/users/${data.id}`, data.data)
 }

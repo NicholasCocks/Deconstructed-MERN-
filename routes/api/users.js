@@ -95,7 +95,7 @@ router.patch('/:userId', (req, res) => {
             } else {
                 user.tasks
                 user.questionsAnswered = questionsAnswered
-                // debugger
+                 
                 Task.remove({ userId: user.id })
                 const taskIds = questionsAnswered.map(questionId => {
                     const newTask = new Task({
