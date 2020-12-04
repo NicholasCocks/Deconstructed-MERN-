@@ -28,8 +28,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isSignedIn: true,
-        isAuthenticated: !!action.currentUser,
-        user: action.currentUser
       };
     case RECEIVE_ANSWERS:
        
