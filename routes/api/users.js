@@ -6,7 +6,7 @@ const keys = require('../../config/keys_dev');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
-const { route } = require('./dataclasses');
+const Task = require('../../models/Task');
 
 router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
@@ -59,7 +59,12 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(password, user.password).then(isMatch => {
                 if (isMatch) {
-                    const payload = { id: user.id, email: user.email, questionsAnswered: user.questionsAnswered };
+                    const payload = { 
+                        id: user.id, 
+                        email: user.email,
+                        questionsAnswered: user.questionsAnswered,
+                        taskIds: user.taskIds
+                     };
 
                     jwt.sign(
                         payload,
@@ -80,21 +85,33 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
-    
-  const { userId } = req.params
-  const questionsAnswered  = req.body
-  User.findById(userId)
-    .then(user => {
-      if (!user) {
-        return res.status(400).json({ msg: 'User not found'})
-      } else {
-        user.questionsAnswered = questionsAnswered
-        user.save()
+
+    const { userId } = req.params
+    const questionsAnswered = JSON.parse(req.body.questionsAnswered)
+    User.findById(userId)
         .then(user => {
-            return res.json(user)
+            if (!user) {
+                return res.status(400).json({ msg: 'User not found' })
+            } else {
+                user.tasks
+                user.questionsAnswered = questionsAnswered
+                debugger
+                Task.remove({ userId: user.id })
+                const taskIds = questionsAnswered.map(questionId => {
+                    const newTask = new Task({
+                        questionId,
+                        userId: user._id
+                    })
+                    newTask.save()
+                    return newTask._id
+                })
+                user.taskIds = taskIds
+                user.save()
+                    .then(user => {
+                        return res.json(user)
+                    })
+            }
         })
-      }
-    })
 })
 
 
