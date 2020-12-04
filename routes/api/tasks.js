@@ -2,11 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../models/User');
 const Task = require('../../models/Task');
-[
-  { 
-    questionId: "asdkhfaldhfkhasg",
-    isCompleted: false
-}]
 
 router.get('/:userId', (req, res) => { // /api/tasks/:userId
   const { userId } = req.params;
