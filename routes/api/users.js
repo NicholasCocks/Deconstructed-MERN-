@@ -95,7 +95,7 @@ router.patch('/:userId', (req, res) => {
             } else {
                 user.tasks
                 user.questionsAnswered = questionsAnswered
-                debugger
+                // debugger
                 Task.remove({ userId: user.id })
                 const taskIds = questionsAnswered.map(questionId => {
                     const newTask = new Task({
@@ -108,7 +108,12 @@ router.patch('/:userId', (req, res) => {
                 user.taskIds = taskIds
                 user.save()
                     .then(user => {
-                        return res.json(user)
+                        return res.json({
+                            email: user.email,
+                            id: user.id,
+                            questionsAnswered: user.questionsAnswered,
+                            taskIds: user.taskIds
+                        })
                     })
             }
         })

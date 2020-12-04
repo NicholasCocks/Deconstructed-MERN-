@@ -1,6 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
 import * as AnswersUtil from '../util/answers_util';
-import * as TasksUtil from '../util/tasks_util';
 import jwt_decode from 'jwt-decode';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -75,15 +74,15 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-    debugger;
+    // debugger;
     return AnswersUtil.updateAnswers(data).then(res => {
-        debugger;
+        // debugger;
         dispatch(receiveAnswers(res))});
 };
 
 
-export const loginDemoUser = () => dispatch => {
-    APIUtil.login({email: 'usiddiki10282@gmail.com', password: 'hunter12', errors: {}}).then(res => {
+export const loginDemoUser = user => dispatch => {
+    APIUtil.login(user).then(res => {
         const { token } = res.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);

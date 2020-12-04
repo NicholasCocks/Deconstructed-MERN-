@@ -5,7 +5,6 @@ import { useSpring, a } from "react-spring/three";
 import * as THREE from 'three';
 import { CubeTextureLoader } from 'three';
 import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
-import TasksContainer from '../tasks/tasks_container';
 
 
 // soft Shadows
@@ -50,7 +49,7 @@ const SpinningMesh = ({ position, speed, answer, questions }) => {
 
     //have button here to turn data point into task.
     const companiesCollecting = answer.companiesCollecting.map((questionId, i) => {
-      debugger;
+      // debugger;
       return (
         <li key={i} > {questions[questionId].question} </li>
       )
@@ -78,10 +77,10 @@ const SpinningMesh = ({ position, speed, answer, questions }) => {
       <mesh position={position}>
          <Html >
            <div className="data_point">
-            <p >{`${answer.class}`}</p>
+            <p className="answer_class">{`${answer.class}`}</p>
             
-            <ul> {expand ? companiesCollecting : ''} </ul>
-            {expand ? <button>Generate Task</button> : ''}
+            <ul className="companies_collecting"> {expand ? companiesCollecting : ''} </ul>
+            {/* {expand ? <button>Generate Task</button> : ''} */}
             </div>
          </Html>
       </mesh>
@@ -100,10 +99,10 @@ class CanvasComponent extends React.Component {
     render() {
         const classes = [];
         const points = this.props.answers.filter(answer => !!answer).map((answer, index) => {
-            debugger;
+            // debugger;
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
-                debugger;
+                // debugger;
                 return (
                     <SpinningMesh key={index} position={[(2 / index), index, (2 * index)]} speed={6} answer={answer} questions={this.props.questions}/>
                 )
@@ -133,7 +132,6 @@ class CanvasComponent extends React.Component {
                 <OrbitControls />
                 
             </Canvas>
-            <TasksContainer />
           </>
         )
     }

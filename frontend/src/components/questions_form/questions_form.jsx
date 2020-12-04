@@ -1,5 +1,6 @@
 import React from 'react';
 import CanvasContainer from '../canvas/canvas_container';
+import TasksContainer from '../tasks/tasks_container';
 
 class QuestionsForm extends React.Component {
 
@@ -17,8 +18,9 @@ class QuestionsForm extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        
+        // debugger
         if (Object.keys(this.props.questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
+            // debugger
             this.setState(this.props.questionsAnswered)
         }
     }
@@ -39,8 +41,9 @@ class QuestionsForm extends React.Component {
         const keys = Object.keys(stateClone).filter(key => {
             return stateClone[key];
         })
-        
-        if (Object.keys(this.props.user).length !==0 ) {
+        // debugger
+        if (Object.keys(this.props.user).length !== 0 ) {
+            // debugger
             this.props.updateAnswers({id: this.props.user.id, data: keys})
         }
     }
@@ -63,11 +66,13 @@ class QuestionsForm extends React.Component {
         return (
             <>
                 <form id="questions_form">
+                    <p className="questions_form-title"><b><u>Accounts</u></b></p>
                     <ul>
                         {checkboxes}
                     </ul>
                 </form>
                 <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
+                <TasksContainer />
             </>
          )
     }

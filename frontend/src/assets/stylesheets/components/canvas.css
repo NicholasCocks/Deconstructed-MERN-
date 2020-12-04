@@ -5,7 +5,14 @@
     border-radius: 7px;
 } 
 
-.data_point > p, ul {
+.data_point > .answer_class {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgba(255, 255, 255, 0.9);
 }
+
+.data_point > .companies_collecting {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(233, 109, 187, 0.95);
+    background-color: rgb(252, 212, 82);
+    border-radius: 7px;
+} 

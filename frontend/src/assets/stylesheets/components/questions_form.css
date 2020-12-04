@@ -1,6 +1,6 @@
 #questions_form {
     padding: 5px;
-    color: white;
+    color: black;
     background-color: rgba(233, 109, 187, 0.95);
     position: absolute;
     top: 80px;
@@ -18,13 +18,19 @@
 }
 j
 .questions_form_item > button {
-    padding: 7px;
+    padding: 10px;
     border-radius: 7px; 
     margin: 3px;
 }
 
 .questions_form_button {
     background-color: rgb(252, 212, 82);
-    border-radius: 5pm; 
+    border-radius: 5px; 
+    padding: 2px;
+    margin: 2px 0px 2px 0px;
 }
 
+.questions_form-title {
+    display: flex;
+    justify-content: center;
+}

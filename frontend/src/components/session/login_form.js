@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -57,6 +58,12 @@ class LoginForm extends React.Component {
     );
   }
 
+  handleDemoUser(e) {
+    e.preventDefault();
+    this.state = { email: 'usiddiki10282@gmail.com', password: 'hunter12', errors: {} }
+    this.props.loginDemoUser(this.state)
+  }
+
   render() {
     return (
       <div className="login_form_container">
@@ -77,7 +84,7 @@ class LoginForm extends React.Component {
             <input type="submit" value="Login" />
             <button 
             className="session_demo_user" 
-            onClick={() => this.props.loginDemoUser()} 
+            onClick={this.handleDemoUser} 
             value="Demo User" >Demo User</button>
             {this.renderErrors()}
           </div>
