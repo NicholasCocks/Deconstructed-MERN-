@@ -120,15 +120,7 @@ class CanvasComponent extends React.Component {
                 // style={{height:100,width:100}}
                 camera={{ position: [-30, 2, 10], fov: 60 }}>
                 <ambientLight intensity={0.3} />
-                <rectAreaLight
-                  width={3}
-                  height={3}
-                  color={'white'}
-                  intensity={10}
-                  position={[-2, 0, 5]}
-                  lookAt={[0, 0, 0]}
-                  penumbra={1}
-                  castShadow />
+                
                 <ambientLight position={[-10, 0, -20]} intensity={0.5} />
                 <ambientLight position={[0, -10, 0]} intensity={0.5} />
                 <group>

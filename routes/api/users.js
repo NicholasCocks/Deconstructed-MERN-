@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
 router.patch('/:userId', (req, res) => {
 
     const { userId } = req.params
-    const questionsAnswered = JSON.parse(req.body.questionsAnswered)
+    const questionsAnswered = req.body
     User.findById(userId)
         .then(user => {
             if (!user) {
