@@ -2,7 +2,7 @@
     position: absolute;
     right: 15px;
     top: 60px;
-    z-index: 1;
+    z-index: 5;
     padding: 5px;
     background-color: rgba(99, 199, 199, 0.8);
     color: white;
@@ -23,4 +23,11 @@
     padding: 4px;
     border-radius: 3px;
     color: black;
+}
+
+.session_demo_user {
+    margin-top: 5px;
+    padding: 4px;
+    background-color:  rgba(233, 109, 187, 1);
+    border-radius: 5px;
 }

@@ -78,6 +78,10 @@ class SignupForm extends React.Component {
             />
             <br />
             <input type="submit" value="Create an Account" />
+            <button 
+            className="session_demo_user" 
+            onClick={() => this.props.loginDemoUser()} 
+            value="Demo User" >Demo User</button>
             {this.renderErrors()}
           </div>
         </form>

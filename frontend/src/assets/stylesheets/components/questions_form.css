@@ -1,9 +1,9 @@
 #questions_form {
     padding: 5px;
     color: white;
-    background-color: rgba(233, 109, 187, 0.8);
+    background-color: rgba(233, 109, 187, 0.95);
     position: absolute;
-    bottom: 50%;
+    top: 80px;
     left: 10px;
     border-radius: 7px;
     z-index: 1;
