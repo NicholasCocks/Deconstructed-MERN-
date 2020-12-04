@@ -92,25 +92,29 @@ router.patch('/:userId', (req, res) => {
         .then(user => {
             if (!user) {
                 return res.status(400).json({ msg: 'User not found' })
-            } else {
-                user.tasks
+            } else { 
                 user.questionsAnswered = questionsAnswered
                 debugger
-                Task.remove({ userId: user.id })
-                const taskIds = questionsAnswered.map(questionId => {
-                    const newTask = new Task({
-                        questionId,
-                        userId: user._id
+                questionsAnswered.forEach(questionId => {
+                    Task.findOne({ userId: user._id, questionId })
+                        .then(task => {
+                            debugger
+                            if (!task) {
+                                const newTask = new Task({
+                                    questionId,
+                                    userId: user._id
+                                })
+                                newTask.save()
+                                debugger
+                                user.taskIds.push(newTask._id)
+                            } else {
+                                res.json(user)
+                            }
+                        })
                     })
-                    newTask.save()
-                    return newTask._id
-                })
-                user.taskIds = taskIds
+                }
                 user.save()
-                    .then(user => {
-                        return res.json(user)
-                    })
-            }
+                    .then(resp => res.json(resp))
         })
 })
 
