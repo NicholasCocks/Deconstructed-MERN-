@@ -54,7 +54,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_form_container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation() }>
           <div className="signup_form">
             <input
               type="text"

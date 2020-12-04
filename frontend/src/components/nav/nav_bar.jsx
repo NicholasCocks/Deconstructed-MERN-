@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 // import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.logoutUser = this.logoutUser.bind(this);
-        this.getLinks = this.getLinks.bind(this);       
+        this.getLinks = this.getLinks.bind(this);
+        this.handleSessionForms = this.handleSessionForms.bind(this);       
     }
 
     logoutUser(e) {
@@ -14,6 +15,17 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
+    handleSessionForms(e) {
+        const { location, history } = this.props
+        e.stopPropagation();
+        debugger
+        if (location.pathname === "/login" || location.pathname === "/signup") {
+            return document.addEventListener("click", (event) => {
+                debugger
+                history.push("/")
+            })
+        }
+    }
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
         if (this.props.loggedIn) {
@@ -28,8 +40,8 @@ class NavBar extends React.Component {
             return (
                 <>
                     <div className="nav_bar_buttons_container">
-                        <Link to={'/signup'}><button className="navbar_signup">Signup</button></Link>
-                        <Link to={'/login'}><button className="navbar_login">Login</button></Link>
+                        <Link to={'/signup'}><button onClick={this.handleSessionForms} className="navbar_signup">Signup</button></Link>
+                        <Link to={'/login'}><button onClick={this.handleSessionForms} className="navbar_login">Login</button></Link>
                     </div>
                 </>
             );
@@ -48,4 +60,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

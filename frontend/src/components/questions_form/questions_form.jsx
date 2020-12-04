@@ -18,11 +18,19 @@ class QuestionsForm extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // debugger
-        if (Object.keys(this.props.questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
-            // debugger
-            this.setState(this.props.questionsAnswered)
+        //if user logs in
+        const {user, questionsAnswered } = this.props;
+        if (Object.keys(questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
+            this.setState(questionsAnswered)
+        } else if (Object.keys(user).length !== Object.keys(prevProps.user).length) {
+            Object.keys(this.state).forEach((key) => {
+                this.state[key] = false
+            })
+            console.log('component shouldve reset the state')
+            this.setState({})
         }
+        //if user logs out
+        
     }
 
     handleClick(e) {
@@ -51,7 +59,7 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-        // debugger
+        debugger
         return (
             <div key={index} className="questions_form_item">
                 <button 
@@ -62,7 +70,7 @@ class QuestionsForm extends React.Component {
                 </button>
             </div>
         )})
-        
+        // this.props.user.questionsAnswered.indexOf(question._id) !== -1
         return (
             <>
                 <form id="questions_form">

@@ -8,6 +8,7 @@
     border-radius: 7px;
     z-index: 1;
     padding: 5px;
+   width: 120px;
 }
 
 .questions_form_item {
@@ -16,7 +17,7 @@
     align-items: center;
     
 }
-j
+
 .questions_form_item > button {
     padding: 10px;
     border-radius: 7px; 
@@ -26,11 +27,20 @@ j
 .questions_form_button {
     background-color: rgb(252, 212, 82);
     border-radius: 5px; 
-    padding: 2px;
+    padding: 4px;
     margin: 2px 0px 2px 0px;
 }
 
 .questions_form-title {
     display: flex;
     justify-content: center;
+    width: 100%;
+    border-radius: 4px;
+    background-color: rgba(99, 199, 199, 0.9);
 }
+
+
+.questions_form_item {
+    padding: 3px;
+}
+

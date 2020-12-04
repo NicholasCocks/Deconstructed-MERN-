@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const mSTP = state => {
     const questionsAnswered = {};
-    debugger;
+    // debugger;
     if (!!Object.keys(state.entities.questions).length && !!Object.keys(state.session.user).length) {
         
         state.session.user.questionsAnswered.forEach(question => {
