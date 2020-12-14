@@ -49,7 +49,7 @@ router.patch('/update', (req, res) => {
         .then(dataclass => {
             if (dataclass) {
                 dataclass.companiesCollecting = req.body.company
-                debugger
+                
                 dataclass.update({ class: toLower })
                     .then(data => res.json(data))
                     .catch(error => console.log(error))

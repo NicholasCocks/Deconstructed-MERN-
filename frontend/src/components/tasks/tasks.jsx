@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskItemContainer from './task_item_container';
 
 class Tasks extends React.Component {
 
@@ -6,22 +7,41 @@ class Tasks extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
-        this.props.fetchTask()
-        this.props.fetchAllTasks()
+    componentDidUpdate(prevProps) {
+        const { user } = this.props
+        if (prevProps.user.id !== user.id || 
+            ( user.id && prevProps.user.taskIds.length !== user.taskIds.length)) {
+            const { fetchAllTasks, user } = this.props;
+            fetchAllTasks(user.id);
+        }
+    }
+
+    componentDidMount() { 
+        const { fetchAllTasks, user } = this.props
+        fetchAllTasks(user.id)
     }
 
 
     render() {
-        const taskLi = Object.values(this.props.tasks).map((task, i) => {
-            return (
-                <li key={i}>{task}</li>
-            )
-        })
+        
+        const { user, tasks, questions} = this.props
+        if (!user.id) return null;
+
+        const indexItems = tasks.filter((task, index) => (user.taskIds.includes(task._id)))
+            .map((task, index) => {
+                const { url, question } = questions[task.questionId]
+                return (
+                    <TaskItemContainer key={index} question={question} task={task} url={url} />
+                )
+
+            })
 
         return (
-            <div>
-                {taskLi}
+            <div className="tasks_container">
+                <p className="tasklist-title"><b><u>TASKS</u></b></p>
+                <ul className="task_list">
+                    {indexItems}
+                </ul>
             </div>
         )
     }

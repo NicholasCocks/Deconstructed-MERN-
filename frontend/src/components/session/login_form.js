@@ -13,9 +13,9 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Tweets page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       this.props.history.push('/');
@@ -50,18 +50,24 @@ class LoginForm extends React.Component {
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>
-            {this.state.errors}
+            {this.state.errors[error]}
           </li>
         ))}
       </ul>
     );
   }
 
+  handleDemoUser(e) {
+    e.preventDefault();
+    this.state = { email: 'usiddiki10282@gmail.com', password: 'hunter12', errors: {} }
+    this.props.loginDemoUser(this.state)
+  }
+
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+      <div className="login_form_container">
+        <form onSubmit={this.handleSubmit} onClick={e => e.stopPropagation()} >
+          <div className="login_form">
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
@@ -74,7 +80,11 @@ class LoginForm extends React.Component {
                 placeholder="Password"
               />
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Login" />
+            <button 
+            className="session_demo_user" 
+            onClick={this.handleDemoUser} 
+            value="Demo User" >Demo User</button>
             {this.renderErrors()}
           </div>
         </form>

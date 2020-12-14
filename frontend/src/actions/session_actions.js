@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import * as AnswersUtil from '../util/answers_util';
 import jwt_decode from 'jwt-decode';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -6,6 +7,7 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const RECEIVE_ANSWERS = "RECEIVE_ANSWERS";
+
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -21,7 +23,8 @@ export const receiveUserSignIn = () => ({
 export const receiveAnswers = ({ data }) => ({
     type: RECEIVE_ANSWERS,
     user: data
-})
+});
+
 
 // We dispatch this one to show authentication errors on the frontend
 export const receiveErrors = errors => ({
@@ -71,7 +74,19 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-    return APIUtil.updateAnswers(data).then(res => {
-        debugger
+     ;
+    return AnswersUtil.updateAnswers(data).then(res => {
+         ;
         dispatch(receiveAnswers(res))});
+};
+
+
+export const loginDemoUser = user => dispatch => {
+    APIUtil.login(user).then(res => {
+        const { token } = res.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
+        dispatch(receiveCurrentUser(decoded))
+    })
 }

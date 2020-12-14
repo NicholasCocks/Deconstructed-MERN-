@@ -17,7 +17,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
+      this.props.history.push("/");
     }
 
     this.setState({ errors: nextProps.errors });
@@ -53,15 +53,14 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br />
+      <div className="signup_form_container">
+        <form onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation() }>
+          <div className="signup_form">
             <input
               type="text"
               value={this.state.email}
               onChange={this.update("email")}
-              placeholder="Email"
+              placeholder="Email" 
             />
             <br />
             <input
@@ -78,7 +77,7 @@ class SignupForm extends React.Component {
               placeholder="Confirm Password"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Create an Account" />
             {this.renderErrors()}
           </div>
         </form>

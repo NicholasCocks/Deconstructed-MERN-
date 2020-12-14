@@ -1,4 +1,4 @@
-import { RECEIVE_TASK, RECEIVE_ALL_TASKS } from '../actions/task_actions';
+import { RECEIVE_ALL_TASKS, RECEIVE_TASK } from '../actions/task_actions';
 
 const tasksReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -7,7 +7,8 @@ const tasksReducer = (state = {}, action) => {
         case RECEIVE_ALL_TASKS:
             return action.tasks;
         case RECEIVE_TASK:
-            return {...state, [action.task.id]: action.task};
+            debugger
+            return {...state, [action.task._id]: action.task};
         default:
             return state;
     }

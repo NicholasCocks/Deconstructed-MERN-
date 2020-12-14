@@ -7,13 +7,13 @@ import SignupFormContainer from './session/signup_form_container';
 import MainPage from './main/main_page';
 
 const App = () => (
-        <div>
+        <div className="page_container">
                 <NavBarContainer />
                 <Switch>
                         <AuthRoute path="/login" component={LoginFormContainer} />
                         <AuthRoute path="/signup" component={SignupFormContainer} />
-                        <Route path="/" component={MainPage} />
                 </Switch>
+                <Route path="/" component={MainPage} />
         </div>
 );
 

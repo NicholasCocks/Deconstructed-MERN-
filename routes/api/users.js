@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); //router obj from router
 const User = require('../../models/User');
 const bcrypt = require("bcryptjs");
-const keys = require('../../config/keys_dev');
+const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
@@ -14,7 +14,6 @@ router.get("/test", (req, res) => {
 
 router.post('/signup', (request, response) => {
     const { errors, isValid } = validateSignupInput(request.body);
-
     if (!isValid) {
         return response.status(400).json(errors)
     }
@@ -44,10 +43,11 @@ router.post('/signup', (request, response) => {
 })
 
 router.post('/login', (req, res) => {
+  
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    debugger;
+    
     if (!isValid) return res.status(400).json(errors)
 
     User.findOne({ email })
@@ -87,13 +87,14 @@ router.post('/login', (req, res) => {
 router.patch('/:userId', (req, res) => {
 
     const { userId } = req.params
-    const questionsAnswered = JSON.parse(req.body.questionsAnswered)
+    const questionsAnswered = req.body
     User.findById(userId)
         .then(user => {
             if (!user) {
                 return res.status(400).json({ msg: 'User not found' })
             } else { 
                 user.questionsAnswered = questionsAnswered
+<<<<<<< HEAD
                 debugger
                 questionsAnswered.forEach(questionId => {
                     Task.findOne({ userId: user._id, questionId })
@@ -111,10 +112,30 @@ router.patch('/:userId', (req, res) => {
                                 res.json(user)
                             }
                         })
+=======
+                 
+                Task.remove({ userId: user.id })
+                const taskIds = questionsAnswered.map(questionId => {
+                    const newTask = new Task({
+                        questionId,
+                        userId: user._id
+>>>>>>> freedom-3
                     })
                 }
                 user.save()
+<<<<<<< HEAD
                     .then(resp => res.json(resp))
+=======
+                    .then(user => {
+                        return res.json({
+                            email: user.email,
+                            id: user.id,
+                            questionsAnswered: user.questionsAnswered,
+                            taskIds: user.taskIds
+                        })
+                    })
+            }
+>>>>>>> freedom-3
         })
 })
 

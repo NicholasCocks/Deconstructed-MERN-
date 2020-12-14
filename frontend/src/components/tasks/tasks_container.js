@@ -1,19 +1,20 @@
 import { connect } from "react-redux";
-import { fetchAllTasks, fetchTask } from '../../actions/task_actions';
 import Tasks from './tasks'
+import { withRouter } from 'react-router-dom';
+import { fetchAllTasks } from '../../actions/task_actions';
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state) => {
     return {
-        tasks: state.entities.tasks,
-        task: state.entities.tasks[ownProps.match.params.id]
+        tasks: Object.values(state.entities.tasks),
+        user: state.session.user,
+        questions: state.entities.questions
     }
 }
 
 const mDTP = dispatch => {
     return {
-        fetchTask: () => dispatch(fetchTask()),
-        fetchAllTasks: () => dispatch(fetchAllTasks())
+        fetchAllTasks: userId => dispatch(fetchAllTasks(userId))
     }
 }
 
-export default connect(mSTP, mDTP)(Tasks)
+export default withRouter(connect(mSTP, mDTP)(Tasks))

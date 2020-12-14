@@ -26,7 +26,7 @@ router.get('/seed', (req, res) => {
 
 
 router.get('/test', (req, res) => {
-    debugger
+     
     res.json({
         msg: "this is the question route"
     })
