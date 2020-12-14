@@ -15,5 +15,5 @@ export const deleteTask = data => {
 
 export const updateTask = data => {
     debugger
-    return axios.patch(`api/tasks/${data._id}`, data.data)
+    return axios.patch(`api/tasks/${data._id}`)
 }
