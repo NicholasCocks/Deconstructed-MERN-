@@ -1,18 +1,6 @@
-.data_point {
-    
-    background-color:  rgba(255, 255, 255, 0.2);
-    padding: 5px;
-    border-radius: 7px;
-} 
-
-.data_point > .answer_class {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgba(255, 255, 255, 0.9);
+.points_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: (-50%, -50%);
 }
-
-.data_point > .companies_collecting {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgba(233, 109, 187, 0.95);
-    background-color: rgb(252, 212, 82);
-    border-radius: 7px;
-} 

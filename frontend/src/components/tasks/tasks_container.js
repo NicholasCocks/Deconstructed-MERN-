@@ -8,13 +8,11 @@ const mSTP = (state) => {
         tasks: Object.values(state.entities.tasks),
         user: state.session.user,
         questions: state.entities.questions
-        // task: state.entities.tasks
     }
 }
 
 const mDTP = dispatch => {
     return {
-        // fetchTask: () => dispatch(fetchTask()),
         fetchAllTasks: userId => dispatch(fetchAllTasks(userId))
     }
 }
