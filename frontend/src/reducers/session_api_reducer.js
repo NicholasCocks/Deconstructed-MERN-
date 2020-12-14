@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_ANSWERS:
-      // debugger
+       
       return { ...state, user: action.user }
     // case RECEIVE_TASKS:
     //   return { ...state, user: action.user}

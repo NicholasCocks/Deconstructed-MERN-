@@ -74,9 +74,9 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-    // debugger;
+     ;
     return AnswersUtil.updateAnswers(data).then(res => {
-        // debugger;
+         ;
         dispatch(receiveAnswers(res))});
 };
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); //router obj from router
 const User = require('../../models/User');
 const bcrypt = require("bcryptjs");
-const keys = require('../../config/keys_dev');
+const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
@@ -95,7 +95,7 @@ router.patch('/:userId', (req, res) => {
             } else {
                 user.tasks
                 user.questionsAnswered = questionsAnswered
-                // debugger
+                 
                 Task.remove({ userId: user.id })
                 const taskIds = questionsAnswered.map(questionId => {
                     const newTask = new Task({

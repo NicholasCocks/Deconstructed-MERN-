@@ -49,7 +49,7 @@ const SpinningMesh = ({ position, speed, answer, questions }) => {
 
     //have button here to turn data point into task.
     const companiesCollecting = answer.companiesCollecting.map((questionId, i) => {
-      // debugger;
+      
       return (
         <li key={i} > {questions[questionId].question} </li>
       )
@@ -93,10 +93,10 @@ class CanvasComponent extends React.Component {
     render() {
         const classes = [];
         const points = this.props.answers.filter(answer => !!answer).map((answer, index) => {
-            // debugger;
+           
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
-                // debugger;
+                
                 return (
                                                    //x, y, z
                     <SpinningMesh key={index} position={[((index * 4 ) - 50), ((index % 9)), ((index * 4) - 50)]} speed={6} answer={answer} questions={this.props.questions}/>

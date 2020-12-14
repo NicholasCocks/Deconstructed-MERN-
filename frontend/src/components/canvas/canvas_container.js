@@ -7,13 +7,13 @@ const mapStateToProps = (state, ownProps) => {
         answers = ownProps.answers.map((questionId) => {
             return state.entities.questions[questionId]
         }).map((question) => {
-            // debugger
+            
             return question.dataclassCollection.map((dataclassId) => {
                 return state.entities.dataclass[dataclassId]
             })
         }).flat()
     }
-    // debugger;
+   
     return {
         questions: state.entities.questions,
         dataclass: state.entities.dataclass,

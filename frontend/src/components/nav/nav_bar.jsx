@@ -18,10 +18,10 @@ class NavBar extends React.Component {
     handleSessionForms(e) {
         const { location, history } = this.props
         e.stopPropagation();
-        debugger
+       
         if (location.pathname === "/login" || location.pathname === "/signup") {
             return document.addEventListener("click", (event) => {
-                debugger
+               
                 history.push("/")
             })
         }

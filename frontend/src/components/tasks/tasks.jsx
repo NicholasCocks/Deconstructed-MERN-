@@ -16,17 +16,17 @@ class Tasks extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
+         
         const { fetchAllTasks, user } = this.props
         fetchAllTasks(user.id)
     }
 
 
     render() {
-        // debugger
+         
         const { user, tasks, questions } = this.props
         if (!user.id) return null;
-        // debugger
+         
         const indexItems = tasks.filter((task, index) => (user.taskIds.includes(task._id)))
             .map((task, index) => {
                 const { url, question } = questions[task.questionId]
