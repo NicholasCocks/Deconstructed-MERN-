@@ -8,7 +8,9 @@
     border-radius: 7px;
     z-index: 1;
     padding: 5px;
-   width: 120px;
+    width: 120px;
+    height: 70%;
+    overflow: scroll;
 }
 
 .questions_form_item {
