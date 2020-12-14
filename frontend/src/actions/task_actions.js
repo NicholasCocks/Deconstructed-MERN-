@@ -1,7 +1,7 @@
 import * as TasksUtil from '../util/tasks_util';
 
 export const RECEIVE_ALL_TASKS = "RECEIVE_ALL_TASKS";
-// export const RECEIVE_TASK = "RECEIVE_TASK";
+export const RECEIVE_TASK = "RECEIVE_TASK";
 // export const REMOVE_TASK = "REMOVE_TASK"
 
 const receiveAllTasks = ({ data }) => ({
@@ -9,10 +9,10 @@ const receiveAllTasks = ({ data }) => ({
     tasks: data
 });
 
-// const receiveTask = ({ data }) => ({
-//     type: RECEIVE_TASK,
-//     user: data
-// });
+const receiveTask = ({ data }) => ({
+    type: RECEIVE_TASK,
+    task: data
+});
 
 // const removeTask = ({ data }) => ({
     // type: REMOVE_TASK,
@@ -24,9 +24,15 @@ export const fetchAllTasks = data => dispatch => {
       
     return TasksUtil.fetchAllTasks(data)
         .then(tasks => {
-             
             return dispatch(receiveAllTasks(tasks))})
 };
+
+export const updateTask = data => dispatch => {
+    return TasksUtil.updateTask(data)
+        .then(task => {
+            debugger
+            return dispatch(receiveTask(task))})
+}
 
 // export const fetchTask = () => dispatch => {
 //     return TasksUtil.fetchTask()

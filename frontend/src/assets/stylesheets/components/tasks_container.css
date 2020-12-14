@@ -1,19 +1,60 @@
 .tasks_container {
     bottom: 5px;
     right: 5px;
-    width: 170px;
+    width: 200px;
     height: 300px;
     position: absolute;
     box-sizing: border-box;
-    background-color:rgba(99, 199, 199, 0.9);
+    background-color: wheat;
     color: black;
     z-index: 1;
     padding: 5px;
     color: black;
     border-radius: 7px;
+    overflow: scroll;
 }
 
 .tasklist-title {
     display: flex;
     justify-content: center;
+}
+
+.task_item_container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.task_item_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+}
+
+.task_item_header:hover {
+    cursor: pointer;
+}
+
+.task_item_name {
+    display: flex;
+    align-items: center;
+}
+
+.task_item_name > svg {
+    margin-right: 8px;
+}
+
+@keyframes opening {
+    0% {}
+}
+
+.task_item_open {
+    display: flex;
+    visibility: visible;
+    background-color: white;
+    
+}
+
+.task_item_closed {
+    display: none;
+    visibility: hidden;
 }

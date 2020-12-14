@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskItem from './task_item';
+import TaskItemContainer from './task_item_container';
 
 class Tasks extends React.Component {
 
@@ -16,23 +16,22 @@ class Tasks extends React.Component {
         }
     }
 
-    componentDidMount() {
-         
+    componentDidMount() { 
         const { fetchAllTasks, user } = this.props
         fetchAllTasks(user.id)
     }
 
 
     render() {
-         
-        const { user, tasks, questions } = this.props
+        
+        const { user, tasks, questions} = this.props
         if (!user.id) return null;
-         
+
         const indexItems = tasks.filter((task, index) => (user.taskIds.includes(task._id)))
             .map((task, index) => {
                 const { url, question } = questions[task.questionId]
                 return (
-                    <TaskItem index={index} question={question} url={url} />
+                    <TaskItemContainer key={index} question={question} task={task} url={url} />
                 )
 
             })

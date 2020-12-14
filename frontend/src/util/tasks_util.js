@@ -10,9 +10,10 @@ export const fetchAllTasks = data => {
 // }
 
 export const deleteTask = data => {
-    return axios.delete(`/api/tasks/${data.id}`, data.data);
+    return axios.delete(`/api/tasks/${data._id}`);
 }
 
-// export const createTask = data => {
-//     return axios.get(`api/tasks/${data.id}`)
-// }
+export const updateTask = data => {
+    debugger
+    return axios.patch(`api/tasks/${data._id}`, data.data)
+}
