@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskItem from './task_item';
 
 class Tasks extends React.Component {
 
@@ -31,9 +32,7 @@ class Tasks extends React.Component {
             .map((task, index) => {
                 const { url, question } = questions[task.questionId]
                 return (
-                    <li className="task_list_items" key={index}>
-                        <a href={url} target="_blank" >{question}</a>
-                    </li>
+                    <TaskItem index={index} question={question} url={url} />
                 )
 
             })
