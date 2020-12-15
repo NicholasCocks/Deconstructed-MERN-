@@ -19,8 +19,6 @@ class QuestionsForm extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        //if user logs in
-         
         const {user, questionsAnswered } = this.props;
         if (Object.keys(questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
             this.setState(questionsAnswered)
@@ -42,25 +40,17 @@ class QuestionsForm extends React.Component {
     }
 
     handleClick(e) {
-        const stateClone = Object.assign({}, this.state)
-        
-
-        if (!this.state[e.currentTarget.value]) {
-            stateClone[e.currentTarget.value] = true;
-            this.setState({[e.currentTarget.value]: true});
+        const { value } = e.currentTarget
+        const { user, tasks, createTask, deleteTask } = this.props
+        if (this.state[value]) {
+            debugger
+            this.setState({ [value]: false });
+            const taskIds = Object.keys(tasks)
+            taskIds.forEach(taskId => tasks[taskId].questionId === value ? deleteTask(taskId) : null ) 
         } else {
-            stateClone[e.currentTarget.value] = false;
-            this.setState({[e.currentTarget.value]: false});
-        }
-
-        // EX: {['questionIds']: boolean, ['questionIds']: boolean}
-        const keys = Object.keys(stateClone).filter(key => {
-            return stateClone[key];
-        })
-         
-        if (Object.keys(this.props.user).length !== 0 ) {
-             
-            this.props.updateAnswers({id: this.props.user.id, data: keys})
+            debugger
+            this.setState({ [value]: true });
+            createTask({ userId: user._id, questionId: value })
         }
     }
     
@@ -88,7 +78,7 @@ class QuestionsForm extends React.Component {
                         {checkboxes}
                     </ul>
                 </form>
-                <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
+                <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} />
                 <TasksContainer />
             </>
          )

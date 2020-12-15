@@ -2,30 +2,29 @@ import React from 'react';
 import TaskItemContainer from './task_item_container';
 
 class Tasks extends React.Component {
-
     constructor(props) {
         super(props)
     }
 
     componentDidUpdate(prevProps) {
         const { user } = this.props
-        if (prevProps.user.id !== user.id || 
-            ( user.id && prevProps.user.taskIds.length !== user.taskIds.length)) {
+        if (prevProps.user._id !== user._id || 
+            ( user._id && prevProps.user.taskIds.length !== user.taskIds.length)) {
             const { fetchAllTasks, user } = this.props;
-            fetchAllTasks(user.id);
+            fetchAllTasks(user._id);
         }
     }
 
     componentDidMount() { 
         const { fetchAllTasks, user } = this.props
-        fetchAllTasks(user.id)
+        if (user._id) fetchAllTasks(user._id)
     }
 
 
     render() {
         
         const { user, tasks, questions} = this.props
-        if (!user.id) return null;
+        if (!user._id) return null;
 
         const indexItems = tasks.filter((task, index) => (user.taskIds.includes(task._id)))
             .map((task, index) => {

@@ -2,7 +2,7 @@ import * as TasksUtil from '../util/tasks_util';
 
 export const RECEIVE_ALL_TASKS = "RECEIVE_ALL_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
-// export const REMOVE_TASK = "REMOVE_TASK"
+export const REMOVE_TASK = "REMOVE_TASK"
 
 const receiveAllTasks = ({ data }) => ({
     type: RECEIVE_ALL_TASKS,
@@ -14,27 +14,37 @@ const receiveTask = ({ data }) => ({
     task: data
 });
 
-// const removeTask = ({ data }) => ({
-    // type: REMOVE_TASK,
-    // user: data
-//})
+const removeTask = ({ data }) => ({
+    type: REMOVE_TASK,
+    taskId: data
+})
 
-// thunk action creator
-export const fetchAllTasks = data => dispatch => {
-      
+export const fetchAllTasks = data => dispatch => {  
     return TasksUtil.fetchAllTasks(data)
-        .then(tasks => {
-            return dispatch(receiveAllTasks(tasks))})
-};
-
-export const updateTask = data => dispatch => {
-    return TasksUtil.updateTask(data)
-        .then(task => {
+        .then(res => {
             debugger
-            return dispatch(receiveTask(task))})
-}
+            return dispatch(receiveAllTasks(res))})
+};
 
 // export const fetchTask = () => dispatch => {
 //     return TasksUtil.fetchTask()
 //         .then(task => dispatch(receiveTask(task)))
 // };
+
+export const createTask = data => dispatch => {
+    debugger
+    return TasksUtil.createTask(data)
+        .then(res => {
+            debugger
+            return dispatch(receiveTask(res))})
+}
+
+export const updateTask = data => dispatch => {
+    return TasksUtil.updateTask(data)
+        .then(res => dispatch(receiveTask(res)))
+}
+
+export const deleteTask = data => dispatch => {
+    return TasksUtil.deleteTask
+        .then(res => dispatch(removeTask(res)))
+}

@@ -6,7 +6,14 @@ const Task = require('../../models/Task');
 router.get('/:userId', (req, res) => { // /api/tasks/:userId
   const { userId } = req.params;
   Task.find().all('userId', userId )
-    .then(tasks => res.json(tasks))
+    .then(tasks => {
+      const obj = {}
+      for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        obj[task._id] = task
+      }
+      res.json(obj)
+    })
     .catch(err => res.json(err))
 })
 
