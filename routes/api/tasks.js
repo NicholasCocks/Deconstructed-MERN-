@@ -5,16 +5,9 @@ const Task = require('../../models/Task');
 
 router.get('/:userId', (req, res) => { // /api/tasks/:userId
   const { userId } = req.params;
-  User.findById(userId)
-    .then(user => {
-      if (!user) {
-        return res.status(400).json({ msg: 'User not found' })
-      } else {
-          Task.find().all('userId', user._id )
-            .then(tasks => res.json(tasks))
-            .catch(err => res.json(err))
-      }
-    })
+  Task.find().all('userId', userId )
+    .then(tasks => res.json(tasks))
+    .catch(err => res.json(err))
 })
 
 router.get('/:taskId', (req, res) => {
@@ -30,49 +23,20 @@ router.get('/:taskId', (req, res) => {
     })
 })
 
-<<<<<<< HEAD
-router.patch('/:userId', (req, res) => {
-
-    const { userId } = req.params
-    const questionsAnswered = JSON.parse(req.body.questionsAnswered)
-    User.findById(userId)
-        .then(user => { 
-            if (!user) {
-                return res.status(400).json({ msg: 'User not found' })
-            } else { 
-                user.questionsAnswered = questionsAnswered
-                debugger
-                questionsAnswered.forEach(questionId => {
-                    Task.findOne({ userId: user._id, questionId })
-                        .then(task => {
-                            debugger
-                            if (!task) {
-                                const newTask = new Task({
-                                    questionId,
-                                    userId: user._id
-                                })
-                                newTask.save()
-                                debugger
-                                user.taskIds.push(newTask._id)
-                            } else {
-                                res.json(user)
-                            }
-                        })
-                    })
-                }
-                user.save()
-                    .then(resp => res.json(resp))
-        })
-=======
 router.post('/:userId', (req, res) => {
   const { userId } = req.params;
-  const questionsAnswered = req.body;
+  const { questionId } = req.body;
   User.findById(userId)
     .then(user => {
       if (!user) {
         res.status(404).json({ msg: 'Not found' })
       } else {
-
+        const params = { userId, questionId }
+        const task = new Task(params)
+        task.save()
+        user.taskIds.push(task._id)
+        user.save()
+          .then(() => res.json(task))
       }
     })
 })
@@ -93,7 +57,6 @@ router.patch('/:taskId', (req, res) => {
           .then(() => res.json(task))
       }
     })
->>>>>>> freedom-3
 })
 
 router.delete('/:taskId', (req, res) => { // /api/tasks/:taskId
@@ -101,11 +64,15 @@ router.delete('/:taskId', (req, res) => { // /api/tasks/:taskId
    
   Task.findByIdAndRemove(taskId) 
     .then(task => {
-       
       if(!task) {
         res.status(404).json({msg: 'Not found'})
       } else {
-        
+        User.findByIdAndUpdate(task.userId)
+          .then(user => {
+            user.taskIds.pull(taskId)
+            user.save()
+              .then(() => res.json({ taskId: task._id }))
+          })
       }
     })
 })

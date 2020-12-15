@@ -94,7 +94,6 @@ router.patch('/:userId', (req, res) => {
                 return res.status(400).json({ msg: 'User not found' })
             } else { 
                 user.questionsAnswered = questionsAnswered
-<<<<<<< HEAD
                 debugger
                 questionsAnswered.forEach(questionId => {
                     Task.findOne({ userId: user._id, questionId })
@@ -112,30 +111,10 @@ router.patch('/:userId', (req, res) => {
                                 res.json(user)
                             }
                         })
-=======
-                 
-                Task.remove({ userId: user.id })
-                const taskIds = questionsAnswered.map(questionId => {
-                    const newTask = new Task({
-                        questionId,
-                        userId: user._id
->>>>>>> freedom-3
                     })
                 }
                 user.save()
-<<<<<<< HEAD
                     .then(resp => res.json(resp))
-=======
-                    .then(user => {
-                        return res.json({
-                            email: user.email,
-                            id: user.id,
-                            questionsAnswered: user.questionsAnswered,
-                            taskIds: user.taskIds
-                        })
-                    })
-            }
->>>>>>> freedom-3
         })
 })
 
