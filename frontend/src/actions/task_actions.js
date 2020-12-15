@@ -11,7 +11,8 @@ const receiveAllTasks = ({ data }) => ({
 
 const receiveTask = ({ data }) => ({
     type: RECEIVE_TASK,
-    task: data
+    task: data.task,
+    user: data.user
 });
 
 const removeTask = taskId => ({
@@ -35,8 +36,12 @@ export const createTask = data => dispatch => (
 )
 
 export const updateTask = data => dispatch => {
+    // debugger
     return TasksUtil.updateTask(data)
-        .then(res => dispatch(receiveTask(res)))
+        .then(res => {
+            // debugger
+            dispatch(receiveTask(res))}
+        )
 }
 
 export const deleteTask = taskId => dispatch => {

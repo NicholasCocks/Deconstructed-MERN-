@@ -6,7 +6,6 @@ import QuestionsForm from './questions_form';
 
 const mSTP = state => {
     const questionsAnswered = {};
-    debugger
     if (!!Object.keys(state.entities.questions).length && !!Object.keys(state.session.user).length) {
         
         state.session.user.questionsAnswered.forEach(question => {
@@ -28,10 +27,8 @@ const mDTP = dispatch => {
         fetchAllQuestions: () => dispatch(fetchAllQuestions()),
         fetchAllData: () => dispatch(fetchAllData()),
         createTask: task =>  dispatch(createTask(task)),
-        deleteTask: taskId => {
-            debugger
-            return dispatch(deleteTask(taskId))}
+        deleteTask: taskId => (deleteTask(taskId))}
     }
-}
+            ;
 
 export default withRouter(connect(mSTP, mDTP)(QuestionsForm))

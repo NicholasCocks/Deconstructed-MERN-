@@ -5,6 +5,10 @@ import {
   RECEIVE_ANSWERS
 } from "../actions/session_actions";
 
+import {
+   RECEIVE_TASK
+} from '../actions/task_actions';
+
 const initialState = {
   isAuthenticated: false,
   user: {},
@@ -30,10 +34,9 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_ANSWERS:
-       
       return { ...state, user: action.user }
-    // case RECEIVE_TASKS:
-    //   return { ...state, user: action.user}
+    case RECEIVE_TASK:
+      return { ...state, user: action.user}
     default:
       return state;
   }
