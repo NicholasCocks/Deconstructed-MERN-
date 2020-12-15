@@ -42,6 +42,7 @@ router.post('/:userId', (req, res) => {
         const task = new Task(params)
         task.save()
         user.taskIds.push(task._id)
+        user.questionsAnswered.push(task.questionId)
         user.save()
           .then(() => res.json(task))
       }
@@ -76,6 +77,7 @@ router.delete('/:taskId', (req, res) => { // /api/tasks/:taskId
       } else {
         User.findByIdAndUpdate(task.userId)
           .then(user => {
+            user.questionsAnswered.pull(task.questionId)
             user.taskIds.pull(taskId)
             user.save()
               .then(() => res.json({ taskId: task._id }))
