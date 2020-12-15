@@ -43,12 +43,10 @@ class QuestionsForm extends React.Component {
         const { value } = e.currentTarget
         const { user, tasks, createTask, deleteTask } = this.props
         if (this.state[value]) {
-            debugger
             this.setState({ [value]: false });
             const taskIds = Object.keys(tasks)
             taskIds.forEach(taskId => tasks[taskId].questionId === value ? deleteTask(taskId) : null ) 
         } else {
-            debugger
             this.setState({ [value]: true });
             createTask({ userId: user._id, questionId: value })
         }

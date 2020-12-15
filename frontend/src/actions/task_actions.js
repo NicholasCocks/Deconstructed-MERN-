@@ -14,37 +14,32 @@ const receiveTask = ({ data }) => ({
     task: data
 });
 
-const removeTask = ({ data }) => ({
+const removeTask = taskId => ({
     type: REMOVE_TASK,
-    taskId: data
+    taskId
 })
 
-export const fetchAllTasks = data => dispatch => {  
-    return TasksUtil.fetchAllTasks(data)
-        .then(res => {
-            debugger
-            return dispatch(receiveAllTasks(res))})
-};
+export const fetchAllTasks = data => dispatch => (  
+    TasksUtil.fetchAllTasks(data)
+        .then(res => dispatch(receiveAllTasks(res)))
+);
 
 // export const fetchTask = () => dispatch => {
 //     return TasksUtil.fetchTask()
 //         .then(task => dispatch(receiveTask(task)))
 // };
 
-export const createTask = data => dispatch => {
-    debugger
-    return TasksUtil.createTask(data)
-        .then(res => {
-            debugger
-            return dispatch(receiveTask(res))})
-}
+export const createTask = data => dispatch => (
+    TasksUtil.createTask(data)
+        .then(res => dispatch(receiveTask(res)))
+)
 
 export const updateTask = data => dispatch => {
     return TasksUtil.updateTask(data)
         .then(res => dispatch(receiveTask(res)))
 }
 
-export const deleteTask = data => dispatch => {
-    return TasksUtil.deleteTask
-        .then(res => dispatch(removeTask(res)))
+export const deleteTask = taskId => dispatch => {
+    return TasksUtil.deleteTask(taskId)
+        .then(() => dispatch(removeTask(taskId)))
 }

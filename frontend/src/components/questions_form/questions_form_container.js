@@ -6,7 +6,7 @@ import QuestionsForm from './questions_form';
 
 const mSTP = state => {
     const questionsAnswered = {};
-    
+    debugger
     if (!!Object.keys(state.entities.questions).length && !!Object.keys(state.session.user).length) {
         
         state.session.user.questionsAnswered.forEach(question => {
@@ -27,10 +27,10 @@ const mDTP = dispatch => {
     return {
         fetchAllQuestions: () => dispatch(fetchAllQuestions()),
         fetchAllData: () => dispatch(fetchAllData()),
-        createTask: task => {
+        createTask: task =>  dispatch(createTask(task)),
+        deleteTask: taskId => {
             debugger
-            return dispatch(createTask(task))},
-        deleteTask: taskId => dispatch(deleteTask(taskId))
+            return dispatch(deleteTask(taskId))}
     }
 }
 

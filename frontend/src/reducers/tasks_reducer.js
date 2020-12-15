@@ -11,7 +11,6 @@ const tasksReducer = (state = {}, action) => {
         case RECEIVE_ALL_TASKS:
             return action.tasks;
         case RECEIVE_TASK:
-            debugger
             return {...state, [action.task._id]: action.task};
         case REMOVE_TASK:
             delete newState[action.taskId]

@@ -74,10 +74,8 @@ export const logout = () => dispatch => {
 };
 
 export const updateAnswers = data => dispatch => {
-     ;
-    return AnswersUtil.updateAnswers(data).then(res => {
-         ;
-        dispatch(receiveAnswers(res))});
+    return AnswersUtil.updateAnswers(data)
+        .then(res => dispatch(receiveAnswers(res)));
 };
 
 
