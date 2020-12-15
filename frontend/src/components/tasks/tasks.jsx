@@ -22,12 +22,10 @@ class Tasks extends React.Component {
 
 
     render() {
-        
-        const { user, tasks, questions} = this.props
-        if (!user._id) return null;
+        const { user, tasks, questions } = this.props
+        if ( !user._id || !Object.keys(questions).length ) return null;
 
-        const indexItems = tasks.filter((task, index) => (user.taskIds.includes(task._id)))
-            .map((task, index) => {
+        const indexItems = tasks.map((task, index) => {
                 const { url, question } = questions[task.questionId]
                 return (
                     <TaskItemContainer key={index} question={question} task={task} url={url} />
