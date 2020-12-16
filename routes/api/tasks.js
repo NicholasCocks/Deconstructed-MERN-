@@ -44,7 +44,9 @@ router.post('/:userId', (req, res) => {
         user.taskIds.push(task._id)
         user.questionsAnswered.push(task.questionId)
         user.save()
-          .then(() => res.json(task))
+          .then((response) => {
+            console.log(response)
+            return res.json({ user, task })})
       }
     })
 })
@@ -80,7 +82,7 @@ router.delete('/:taskId', (req, res) => { // /api/tasks/:taskId
             user.questionsAnswered.pull(task.questionId)
             user.taskIds.pull(taskId)
             user.save()
-              .then(() => res.json({ taskId: task._id }))
+              .then(() => res.json({ user, taskId: task._id }))
           })
       }
     })

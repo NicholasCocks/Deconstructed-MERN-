@@ -2,8 +2,9 @@ import {
   RECEIVE_CURRENT_USER,
   RECEIVE_USER_LOGOUT,
   RECEIVE_USER_SIGN_IN,
-  RECEIVE_ANSWERS
+  RECEIVE_USER
 } from "../actions/session_actions";
+import { RECEIVE_TASK, REMOVE_TASK } from "../actions/task_actions";
 
 import {
    RECEIVE_TASK
@@ -24,11 +25,9 @@ export default function (state = initialState, action) {
         user: action.currentUser,
       };
     case RECEIVE_USER_LOGOUT:
-      return {
-        isAuthenticated: false,
-        user: {},
-      };
+      return { isAuthenticated: false, user: {} };
     case RECEIVE_USER_SIGN_IN:
+<<<<<<< HEAD
       return {
         ...state,
         isSignedIn: true,
@@ -36,6 +35,14 @@ export default function (state = initialState, action) {
     case RECEIVE_ANSWERS:
       return { ...state, user: action.user }
     case RECEIVE_TASK:
+=======
+      return { ...state, isSignedIn: true };
+    case RECEIVE_USER:
+      return { ...state, user: action.user }
+    case RECEIVE_TASK:
+      return { ...state, user: action.user }
+    case REMOVE_TASK:
+>>>>>>> master
       return { ...state, user: action.user}
     default:
       return state;

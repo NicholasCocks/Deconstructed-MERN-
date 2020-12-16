@@ -6,6 +6,7 @@ class Tasks extends React.Component {
         super(props)
     }
 
+<<<<<<< HEAD
     componentDidUpdate(prevProps) {
         const { user } = this.props
         // debugger
@@ -16,6 +17,18 @@ class Tasks extends React.Component {
             fetchAllTasks(user._id);
         }
     }
+=======
+    // componentDidUpdate(prevProps) {
+    //     const { user } = this.props
+    //     debugger
+    //     if (!prevProps.user._id || !user._id) return;
+    //     if (prevProps.user._id !== user._id || 
+    //         ( user._id && prevProps.user.taskIds.length !== user.taskIds.length)) {
+    //         const { fetchAllTasks, user } = this.props;
+    //         fetchAllTasks(user._id);
+    //     }
+    // }
+>>>>>>> master
 
     componentDidMount() { 
         const { fetchAllTasks, user } = this.props

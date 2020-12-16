@@ -12,6 +12,12 @@ router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
 });
 
+router.get('/:userId', (req, res) => {
+    const { userId } = req.params
+    User.findById(userId)
+        .then(user => res.json(user))
+})
+
 router.post('/signup', (request, response) => {
     const { errors, isValid } = validateSignupInput(request.body);
     if (!isValid) {

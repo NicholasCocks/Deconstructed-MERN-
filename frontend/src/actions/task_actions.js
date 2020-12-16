@@ -11,15 +11,21 @@ const receiveAllTasks = ({ data }) => ({
 
 const receiveTask = ({ data }) => ({
     type: RECEIVE_TASK,
+<<<<<<< HEAD
     // task: data
     task: data.task,
     user: data.user
 
+=======
+    task: data.task,
+    user: data.user
+>>>>>>> master
 });
 
-const removeTask = taskId => ({
+const removeTask = ({ data }) => ({
     type: REMOVE_TASK,
-    taskId
+    taskId: data.taskId,
+    user: data.user
 })
 
 export const fetchAllTasks = data => dispatch => (  
@@ -48,5 +54,5 @@ export const updateTask = data => dispatch => {
 
 export const deleteTask = taskId => dispatch => {
     return TasksUtil.deleteTask(taskId)
-        .then(() => dispatch(removeTask(taskId)))
+        .then((res) => dispatch(removeTask(res)))
 }
