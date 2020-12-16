@@ -15,9 +15,28 @@ class CanvasComponent extends React.Component {
     componentDidMount() {
         console.log(this.myRef)
         this.drawChart();
+        this.drawBubble();
         // d3.select(this.myRef.current)
         //     .append("p")
         //     .text("Hello from D3");
+    }
+
+    drawBubble() {
+        let width = 500;
+        let height = 500;
+
+        const svg = d3.select("#chart")
+            .append("svg")
+            .attr("height", height)
+            .attr("width", width)
+            .append("g")
+            .attr("transform", "translate(0,0)")
+
+        // const circles = svg.selectAll(".artist")
+        //     .data(datapoints)
+        //     .enter().append("circle")
+        //     .attr("r", 10)
+        //     .attr("fill", "lightblue")
     }
 
     drawChart() {
@@ -63,7 +82,13 @@ class CanvasComponent extends React.Component {
         console.log("Customer legend click func")
     }
 
-        return <div id={"#" + this.props.id}></div>
+        // return <div id={"#" + this.props.id}></div>
+
+        return (
+            <div id="chart">
+
+            </div>
+        )
 
         // return ( 
         //   <div className="points_container" ref={this.myRef}>
