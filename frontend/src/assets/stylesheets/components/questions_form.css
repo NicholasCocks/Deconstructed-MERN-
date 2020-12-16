@@ -39,15 +39,4 @@
     width: 100%;
     border-radius: 4px;
     background-color: rgb(275, 179, 199);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-.questions_form_item {
-    padding: 3px;
-}
-
-.questions_form_icon {
-    margin-right: 3px;
-}
-
