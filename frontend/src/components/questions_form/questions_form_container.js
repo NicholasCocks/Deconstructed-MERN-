@@ -29,21 +29,3 @@ const mDTP = dispatch => {
 
 
 export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))
-
-export default withRouter(connect(mSTP, mDTP)(QuestionsForm))

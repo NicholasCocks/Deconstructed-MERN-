@@ -6,7 +6,7 @@ import Tasks from '../tasks/tasks_container';
 class MainPage extends React.Component {
   render() {
     return (
-      <div className="canvas_container">
+      <div className="app_container">
         <QuestionForm />
       </div>
     );

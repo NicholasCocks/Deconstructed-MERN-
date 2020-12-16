@@ -11,15 +11,8 @@ const receiveAllTasks = ({ data }) => ({
 
 const receiveTask = ({ data }) => ({
     type: RECEIVE_TASK,
-<<<<<<< HEAD
-    // task: data
     task: data.task,
     user: data.user
-
-=======
-    task: data.task,
-    user: data.user
->>>>>>> master
 });
 
 const removeTask = ({ data }) => ({

@@ -11,23 +11,32 @@ class CanvasComponent extends React.Component {
 
     }
 
-    render() {
+    componentDidUpdate() {
+        let container = d3.select(this.refs.myDiv)
+        container.selectAll('*').remove()
+
         const classes = [];
-        const points = this.props.answers.filter(answer => !!answer).map((answer, index) => {
+        this.props.answers.filter(answer => !!answer).map((answer, index) => {
            
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
                 
-                return (
-                    <p key={index}>{answer.class}</p>
-                )
+                d3.select(this.refs.myDiv)
+                    .append("p")
+                    .text(answer.class)
+                
+                d3.selectAll("p")
+                    .transition()
+                    .style("background-color", "red");
+                
             };
         }, this)
+    }
 
+    render() {
+        
         return (
-            <div className="canvas_container">    
-                
-                    {points}
+            <div className="canvas_container" ref="myDiv">    
                 
             </div>
         )
