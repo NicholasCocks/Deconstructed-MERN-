@@ -27,7 +27,7 @@
 }
 
 .questions_form_button {
-    background-color: rgb(252, 212, 82);
+    background-color: rgb(245, 245, 141);
     border-radius: 5px; 
     padding: 4px;
     margin: 2px 0px 2px 0px;
@@ -38,7 +38,7 @@
     justify-content: center;
     width: 100%;
     border-radius: 4px;
-    background-color: white;
+    background-color: rgb(275, 179, 199);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

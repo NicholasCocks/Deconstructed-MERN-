@@ -17,6 +17,8 @@
 .tasklist-title {
     display: flex;
     justify-content: center;
+    background-color: rgb(275, 179, 199);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task_item_container {
