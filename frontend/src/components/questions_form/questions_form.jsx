@@ -71,7 +71,7 @@ class QuestionsForm extends React.Component {
         return (
             <>
                 <form id="questions_form">
-                    <p className="questions_form-title"><b><u>Accounts</u></b></p>
+                    <p className="questions_form-title"><b>Accounts</b></p>
                     <ul className="question_form-ul">
                         {checkboxes}
                     </ul>

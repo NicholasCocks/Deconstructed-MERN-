@@ -26,9 +26,12 @@ const mDTP = dispatch => {
     return {
         fetchAllQuestions: () => dispatch(fetchAllQuestions()),
         fetchAllData: () => dispatch(fetchAllData()),
-        createTask: task =>  dispatch(createTask(task)),
-        deleteTask: taskId => (deleteTask(taskId))}
+        createTask: task => dispatch(createTask(task)),
+        deleteTask: taskId => {
+
+            return dispatch(deleteTask(taskId))
+        }
     }
-            ;
+}
 
 export default withRouter(connect(mSTP, mDTP)(QuestionsForm))

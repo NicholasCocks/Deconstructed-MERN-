@@ -11,8 +11,10 @@ const receiveAllTasks = ({ data }) => ({
 
 const receiveTask = ({ data }) => ({
     type: RECEIVE_TASK,
+    // task: data
     task: data.task,
     user: data.user
+
 });
 
 const removeTask = taskId => ({
