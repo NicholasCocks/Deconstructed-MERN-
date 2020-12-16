@@ -8,29 +8,49 @@ class QuestionsForm extends React.Component {
     constructor(props) {
         super(props)
        
-        this.state = this.props.questionsAnswered;
+        this.state = {}
         this.handleClick = this.handleClick.bind(this);
         this.inputRef = React.createRef();
     }
 
     componentDidMount() {
-        this.props.fetchAllData();
-        this.props.fetchAllQuestions();
+        const { fetchAllData, fetchAllQuestions, fetchUser, user } = this.props
+        fetchAllData();
+        fetchAllQuestions();
+        debugger
+        if (user._id) {
+            user.questionsAnswered.forEach(question => {
+            this.state[question] = true
+        })
+            fetchUser(user._id)
+        };
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {user, questionsAnswered } = this.props;
-        if (Object.keys(questionsAnswered).length !== 0 && Object.keys(prevState).length === 0) {
-            this.setState(questionsAnswered)
+        const { user } = this.props;
+        if (user._id && 
+            Object.keys(this.state).length !== 0 && 
+            Object.keys(prevState).length === 0) {
+            user.questionsAnswered.forEach(question => {
+                this.state[question] = true
+            })
             return
         } else if (Object.keys(user).length !== Object.keys(prevProps.user).length) {
             if (Object.keys(user).length === 0) {
-                Object.keys(this.state).forEach((key) => {
-                    this.state[key] = false
-                })
+                this.state = {};
             } else {
-                Object.keys(questionsAnswered).forEach((key) => {
+                Object.keys(this.state).forEach((key) => {
                     this.state[key] = true
+                })
+            }
+            if (user._id && user.questionsAnswered.length) {
+                user.questionsAnswered.forEach(question => {
+                    this.state[question] = true
+                })
+                Object.keys(this.state).forEach(questionId => {
+                    if (!user.questionsAnswered.includes(questionId)) {
+                        this.state[questionId] = false
+                    }
                 })
             }
             this.setState({})
@@ -54,6 +74,7 @@ class QuestionsForm extends React.Component {
     
 
     render() {
+        debugger
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
             const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
         return (
@@ -67,7 +88,7 @@ class QuestionsForm extends React.Component {
                 </button>
             </div>
         )})
-        // this.props.user.questionsAnswered.indexOf(question._id) !== -1
+
         return (
             <>
                 <form id="questions_form">
