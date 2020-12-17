@@ -49,13 +49,19 @@ class CanvasComponent extends React.Component {
 
         const simulation = d3.forceSimulation() 
         
+       
+
         
-        const circles = bubbleSvg.selectAll(".datesCircles")
-            .data(classes)
-            .enter().append("circle")
-            .attr("class", "datesCircles")
-            .attr("r", 10)
-            .attr("fill", "lightblue")
+            const circles = bubbleSvg.selectAll(".datesCircles")
+                .data(classes)
+                .enter().append("circle")
+                .attr("class", "datesCircles")
+                .attr("r", 10)
+                .attr("fill", "lightblue")
+
+            // simulation.nodes(classes)
+        
+
         
         
 
