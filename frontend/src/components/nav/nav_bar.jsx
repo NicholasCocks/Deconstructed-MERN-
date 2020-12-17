@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 // import './navbar.css'
 
 class NavBar extends React.Component {
@@ -40,8 +43,12 @@ class NavBar extends React.Component {
             return (
                 <>
                     <div className="nav_bar_buttons_container">
-                        <Link to={'/signup'}><button onClick={this.handleSessionForms} className="navbar_signup">Signup</button></Link>
-                        <Link to={'/login'}><button onClick={this.handleSessionForms} className="navbar_login">Login</button></Link>
+                        <button> <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
+                            <FontAwesomeIcon className="question_form_icon" icon={faGithub} />
+                        </a> </button>
+                        <Link to={'/members'}><FontAwesomeIcon icon={faUsers} /></Link>
+                        <Link to={'/signup'}><button onClick={this.handleSessionForms} className="nav_bar_login">Signup</button></Link>
+                        <Link to={'/login'}><button onClick={this.handleSessionForms} className="nav_bar_login">Login</button></Link>
                     </div>
                 </>
             );

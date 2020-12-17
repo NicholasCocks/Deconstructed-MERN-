@@ -10,6 +10,7 @@ class CanvasComponent extends React.Component {
         this.myRef = React.createRef();
 
     }
+    
 
     componentDidUpdate() {
         let container = d3.select(this.refs.myDiv)
@@ -21,16 +22,44 @@ class CanvasComponent extends React.Component {
             if (!classes.includes(answer.class)) {
                 classes.push(answer.class);
                 
-                d3.select(this.refs.myDiv)
-                    .append("p")
-                    .text(answer.class)
+                // d3.select(this.refs.myDiv)
+                //     .append("p")
+                //     .text(answer.class)
                 
-                d3.selectAll("p")
-                    .transition()
-                    .style("background-color", "red");
                 
             };
         }, this)
+
+
+        // classes.forEach(el => {
+        //     d3.select(this.refs.myDiv)
+        //         .append("p")
+        //         .text(el)
+        // })
+
+        let width = 800;
+        let height = 800;
+
+        const bubbleSvg = d3.select(this.refs.myDiv)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(0, 0)")
+
+        const simulation = d3.forceSimulation() 
+        
+        
+        const circles = bubbleSvg.selectAll(".datesCircles")
+            .data(classes)
+            .enter().append("circle")
+            .attr("class", "datesCircles")
+            .attr("r", 10)
+            .attr("fill", "lightblue")
+        
+        
+
+
     }
 
     render() {
