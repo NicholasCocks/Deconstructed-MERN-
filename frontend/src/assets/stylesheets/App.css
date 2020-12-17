@@ -13,7 +13,7 @@
 .canvas_container {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(196, 106, 106);
+    background-color: white;
     /* background-image: url("https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-size: cover; */
 }

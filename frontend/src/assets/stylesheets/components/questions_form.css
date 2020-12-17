@@ -1,33 +1,37 @@
 #questions_form {
+    display: flex;
+    flex-direction: column;
     padding: 5px;
     color: black;
-    background-color: wheat;
+    background-color: rgb(233, 233, 233);
     position: absolute;
     top: 80px;
     left: 10px;
     border-radius: 7px;
     z-index: 1;
     padding: 5px;
-    width: 150px;
+    width: 170px;
     height: 500px;
-    overflow: scroll;
+    max-height: 80%;
+    overflow-y: scroll;
 }
 
 .questions_form_item {
     display: flex;
     font-family: var(--font-arial);
     align-items: center;
-    
 }
 
 .questions_form_item > button {
     padding: 10px;
     border-radius: 7px; 
     margin: 3px;
+    width: 100%;
 }
 
 .questions_form_button {
-    background-color: rgb(245, 245, 141);
+    background-color: rgb(252, 156, 156);
+    width: 100%;
     border-radius: 5px; 
     padding: 4px;
     margin: 2px 0px 2px 0px;
@@ -36,9 +40,11 @@
 .questions_form-title {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 131px;
+    margin-left: 8px;
+    padding: 4px;
     border-radius: 4px;
-    background-color: rgb(275, 179, 199);
+    background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

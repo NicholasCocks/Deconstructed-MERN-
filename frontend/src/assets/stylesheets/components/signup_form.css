@@ -1,12 +1,9 @@
 .signup_form_container {
-    position: absolute;
-    right: 15px;
-    top: 60px;
-    z-index: 5;
+    margin-right: auto;
+    margin-left: auto;
     padding: 5px;
-    background-color: rgba(99, 199, 199, 0.8);
+    background-color: rgb(105, 105, 105);;
     color: white;
-    border-radius: 7px;
 }
 
 .signup_form {
@@ -28,6 +25,6 @@
 .session_demo_user {
     margin-top: 5px;
     padding: 4px;
-    background-color:  rgba(233, 109, 187, 1);
+    background-color:  rgb(275, 179, 199);
     border-radius: 5px;
 }

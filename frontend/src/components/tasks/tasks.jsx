@@ -6,16 +6,16 @@ class Tasks extends React.Component {
         super(props)
     }
 
-    componentDidUpdate(prevProps) {
-        const { user } = this.props
-        debugger
-        if (!prevProps.user._id || !user._id) return;
-        if (prevProps.user._id !== user._id || 
-            ( user._id && prevProps.user.taskIds.length !== user.taskIds.length)) {
-            const { fetchAllTasks, user } = this.props;
-            fetchAllTasks(user._id);
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     const { user } = this.props
+    //     debugger
+    //     if (!prevProps.user._id || !user._id) return;
+    //     if (prevProps.user._id !== user._id || 
+    //         ( user._id && prevProps.user.taskIds.length !== user.taskIds.length)) {
+    //         const { fetchAllTasks, user } = this.props;
+    //         fetchAllTasks(user._id);
+    //     }
+    // }
 
     componentDidMount() { 
         const { fetchAllTasks, user } = this.props
@@ -26,9 +26,9 @@ class Tasks extends React.Component {
     render() {
         const { user, tasks, questions } = this.props
         if ( !user._id || !Object.keys(questions).length ) return null;
-        debugger
+        // debugger
         const indexItems = tasks.map((task, index) => {
-            debugger
+            // debugger
                 const { url, question } = questions[task.questionId]
                 return (
                     <TaskItemContainer key={index} question={question} task={task} url={url} />

@@ -2,16 +2,18 @@
     position: absolute;
     width: 100%;
     top: 0;
+    height: 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: rgb(165, 111, 61);
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
+    background-color: rgb(233, 233, 233);
+    color: black;
+    
+    font-size: 24px;
     /* background-color: var(--lightest-gray); */
     font-family: var(--font-arial);
     z-index: 1;
@@ -19,11 +21,25 @@
 
 .nav_bar_buttons_container {
     display: flex;
+    align-items: center;
     width: 200px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.navbar_logout {
+.nav_bar_logout {
     position: relative;
     left: 100px;
+}
+
+.nav_bar_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    /* border: 1px solid black; */
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 70px;
 }
