@@ -6,6 +6,7 @@ import {
 } from "../actions/session_actions";
 import { RECEIVE_TASK, REMOVE_TASK } from "../actions/task_actions";
 
+
 const initialState = {
   isAuthenticated: false,
   user: {},

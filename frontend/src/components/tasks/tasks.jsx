@@ -26,9 +26,9 @@ class Tasks extends React.Component {
     render() {
         const { user, tasks, questions } = this.props
         if ( !user._id || !Object.keys(questions).length ) return null;
-        debugger
+        // debugger
         const indexItems = tasks.map((task, index) => {
-            debugger
+            // debugger
                 const { url, question } = questions[task.questionId]
                 return (
                     <TaskItemContainer key={index} question={question} task={task} url={url} />

@@ -82,7 +82,7 @@ class QuestionsForm extends React.Component {
                 <button 
                 value={question._id} 
                 onClick={this.handleClick} 
-                className={this.state[question._id] ? "questions_form_button" : ''} >
+                className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
                     <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
                     {` ${title}`}
                 </button>
@@ -92,8 +92,9 @@ class QuestionsForm extends React.Component {
         return (
             <>
                 <form id="questions_form">
-                    <p className="questions_form-title"><b><u>Accounts</u></b></p>
+                    <p className="questions_form-title"><b>Accounts</b></p>
                     <ul className="question_form-ul">
+                        <input type="text" class="question_form_email" placeholder="email"/>
                         {checkboxes}
                     </ul>
                 </form>
