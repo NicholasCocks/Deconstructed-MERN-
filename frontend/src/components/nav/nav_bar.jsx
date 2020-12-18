@@ -5,9 +5,11 @@ import { Link, withRouter } from 'react-router-dom'
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
+        
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
         this.handleSessionForms = this.handleSessionForms.bind(this);       
+        this.handleSearchInput = this.handleSearchInput.bind(this)
     }
 
     logoutUser(e) {
@@ -48,12 +50,29 @@ class NavBar extends React.Component {
         }
     }
 
+    handleSearch(e) {
+        e.preventDefault();
+        debugger
+    }
+
+    handleSearchInput(e) {
+        debugger
+        this.setState({ search: e.currentTarget.value })
+    }
+
     render() {
        
         return (
             <div className="nav_bar_container" ref={this.wrapperRef}>
                 <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                
+                <form onSubmit={this.handleSearch}>
+                    <input type="text" 
+                    onChange={this.handleSearchInput}
+                    id="search-box" 
+                    placeholder="Search"/>
+                    <button>Submit</button>
+                    {/* <FontAwesomeIcon icon={faSearch} className="search-icon" /> */}
+                </form>
                 {this.getLinks()}
             </div>
         );
