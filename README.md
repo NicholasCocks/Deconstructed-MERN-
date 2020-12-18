@@ -6,7 +6,7 @@ Brought to you by
 + [Umarbin Siddiki](github.com/usiddiki97) - Frontend Engineer
 
 Check out our [Live Demo](http://deconstructed.herokuapp.com/) hosted on Heroku!
-![Splash Page](./splash_page.png)
+![Splash Page](./splash_page.gif)
 
 ## Background and Overview
 Deconstructed is an interactive web application that gets users to engage with what data is being gathered on them and empowering them to take control of their data.
