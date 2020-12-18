@@ -1,12 +1,9 @@
 .signup_form_container {
-    position: absolute;
-    right: 15px;
-    top: 60px;
-    z-index: 5;
+    margin-right: auto;
+    margin-left: auto;
     padding: 5px;
-    background-color: rgb(233, 233, 233);;
+    background-color: rgb(105, 105, 105);;
     color: white;
-    border-radius: 7px;
 }
 
 .signup_form {
