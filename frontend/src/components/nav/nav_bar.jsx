@@ -95,7 +95,7 @@ class NavBar extends React.Component {
        
         return (
             <div className="nav_bar_container" ref={this.wrapperRef}>
-                <Link to="/splash"><h1>DECONSTRUCTED</h1> </Link>
+                <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
                 {this.modal()}
                 {this.getLinks()}
             </div>
