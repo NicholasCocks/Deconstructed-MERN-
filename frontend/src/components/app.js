@@ -9,14 +9,13 @@ import MainPage from './main/main_page';
 import Splash from './splash/splash';
 
 const App = () => (
-        <div className="page_container">
-                
+        <div className="page_container">     
                 <Switch>
                         <AuthRoute path="/login" component={LoginFormContainer} />
                         <AuthRoute path="/signup" component={SignupFormContainer} />
                         <Route path="/members" component={TeamMembers} />
-                        <Route path="/splash" component={Splash} />
-                        <Route exact path="/" component={MainPage} />
+                        <Route exact path="/" component={Splash} />
+                        <Route path="/main" component={MainPage} />
                 </Switch>
         </div>
 );

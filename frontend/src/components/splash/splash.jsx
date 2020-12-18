@@ -37,7 +37,7 @@ class Splash extends React.Component {
                     <p>* According to cloud software firm DOMO</p>
                 </div>
             </div>
-                    <Link to='/' className="splash_app_button">Go To App</Link>
+                    <Link to='/main' className="splash_app_button">Go To App</Link>
             
             <footer className="splash_footer">
             <p>by <a href="#" target="_blank">Nicholas Cocks</a>, <a href="#" target="_blank">Umarbin Siddiki</a>
