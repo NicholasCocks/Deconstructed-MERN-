@@ -8,10 +8,28 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { modalOpen: false }
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
         this.handleSessionForms = this.handleSessionForms.bind(this);       
     }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.bodyClick);
+      }
+    
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.bodyClick);
+      }
+    
+    // bodyClick(e) {
+    //     debugger
+    //     if (this.tipContentRef.contains(e.target)) {
+    //       return;
+    //     }
+    
+    //     this.setState({ modalOpen: false });
+    //   }
 
     logoutUser(e) {
         e.preventDefault();
@@ -29,6 +47,13 @@ class NavBar extends React.Component {
             })
         }
     }
+
+    handleClick(e) {
+        if (this.tipContentRef.contains(e.target)) {
+            return;
+        }
+    }
+
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
         if (this.props.loggedIn) {
@@ -46,7 +71,9 @@ class NavBar extends React.Component {
                         <button> <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
                             <FontAwesomeIcon className="question_form_icon" icon={faGithub} />
                         </a> </button>
-                        <Link to={'/members'}><FontAwesomeIcon icon={faUsers} /></Link>
+                        <div ref={"tipContentRef"}>
+                            <FontAwesomeIcon icon={faUsers} onClick={() => this.handleClick()} />
+                        </div>
                         <Link to={'/signup'}><button onClick={this.handleSessionForms} className="nav_bar_login"><p>Signup</p></button></Link>
                         <Link to={'/login'}><button onClick={this.handleSessionForms} className="nav_bar_login"><p>Login</p></button></Link>
                     </div>
@@ -55,12 +82,21 @@ class NavBar extends React.Component {
         }
     }
 
+    modal() {
+        if (this.state.modalOpen) {
+            return (<div>model</div>)
+        } else {
+            return null;
+        }
+    }
+
     render() {
+        
        
         return (
             <div className="nav_bar_container" ref={this.wrapperRef}>
                 <Link to="/splash"><h1>DECONSTRUCTED</h1> </Link>
-                
+                {this.modal()}
                 {this.getLinks()}
             </div>
         );

@@ -1,0 +1,84 @@
+.splash_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    
+    font-family: var(--font-arial);
+    /* background-color: aliceblue; */
+    box-sizing: border-box;
+}
+
+.splash_picture {
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.splash_header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.splash_title {
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.splash_github {
+    position: absolute; 
+    top: 7px;
+    right: 10px;
+    font-size: 30px;
+}
+.splash_content_container {
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.splash_app_button {
+    position: absolute;
+    bottom: 60px;
+    margin-top: 20px;
+    background-color: rgba(23, 33, 54, 0.9);
+    color: wheat;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 2px solid wheat;
+    border-radius: 7px;
+}
+
+.splash_footer {
+    background-color: rgba(23, 33, 54, 0.9);
+    color: wheat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+} 
+
+.splash_footer a {
+    text-decoration: underline;
+}
+
+.splash_footer > svg {
+    margin-bottom: 10px;
+}

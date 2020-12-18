@@ -7,6 +7,7 @@
 @import './components/signup_form.css';
 @import './components/login_form.css';
 @import './components/tasks_container.css';
+@import './components/splash.css';
 
 
 
@@ -20,7 +21,7 @@
 
 ::-webkit-scrollbar {
     padding-top: 3px;
-    width: 16px;
+    width: 6px;
     height: 4px;
 }
 
