@@ -3,33 +3,28 @@ import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import TeamMembers from '../team_members/team_members';
 // import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = { modalOpen: false }
+    
+        this.handleClick = this.handleClick.bind(this);
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
         this.handleSessionForms = this.handleSessionForms.bind(this);       
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.bodyClick);
-      }
+        document.addEventListener('mousedown', this.handleClick);
+    }
     
-      componentWillUnmount() {
-        document.removeEventListener('mousedown', this.bodyClick);
-      }
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick);
+    }
     
-    // bodyClick(e) {
-    //     debugger
-    //     if (this.tipContentRef.contains(e.target)) {
-    //       return;
-    //     }
-    
-    //     this.setState({ modalOpen: false });
-    //   }
 
     logoutUser(e) {
         e.preventDefault();
@@ -49,9 +44,13 @@ class NavBar extends React.Component {
     }
 
     handleClick(e) {
-        if (this.tipContentRef.contains(e.target)) {
-            return;
-        }
+        if (this.node.contains(e.target)) {
+            this.setState({modalOpen: true})
+            console.log('You clicked INSIDE the component.')
+          } else {
+            this.setState({modalOpen: false})
+            console.log('You clicked OUTSIDE the component.')
+         }
     }
 
     // Selectively render links dependent on whether the user is logged in
@@ -68,12 +67,6 @@ class NavBar extends React.Component {
             return (
                 <>
                     <div className="nav_bar_buttons_container">
-                        <button> <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
-                            <FontAwesomeIcon className="question_form_icon" icon={faGithub} />
-                        </a> </button>
-                        <div ref={"tipContentRef"}>
-                            <FontAwesomeIcon icon={faUsers} onClick={() => this.handleClick()} />
-                        </div>
                         <Link to={'/signup'}><button onClick={this.handleSessionForms} className="nav_bar_login"><p>Signup</p></button></Link>
                         <Link to={'/login'}><button onClick={this.handleSessionForms} className="nav_bar_login"><p>Login</p></button></Link>
                     </div>
@@ -84,19 +77,23 @@ class NavBar extends React.Component {
 
     modal() {
         if (this.state.modalOpen) {
-            return (<div>model</div>)
+            return <TeamMembers />
         } else {
             return null;
         }
     }
 
     render() {
-        
-       
         return (
-            <div className="nav_bar_container" ref={this.wrapperRef}>
+            <div className="nav_bar_container" >
                 <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                {this.modal()}
+                <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
+                    <FontAwesomeIcon className="question_form_icon" icon={faGithub} />
+                </a> 
+                <div ref={node => this.node = node}>
+                    <FontAwesomeIcon icon={faUsers} />
+                    {this.modal()}
+                </div>
                 {this.getLinks()}
             </div>
         );
