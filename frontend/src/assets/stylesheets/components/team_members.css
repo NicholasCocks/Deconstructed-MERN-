@@ -1,0 +1,7 @@
+.team_members_container {
+    position: absolute;
+    top: 55px;
+    right: 1%;
+    background-color: aliceblue;
+    font-size: large;
+}

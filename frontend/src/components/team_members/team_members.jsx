@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const TeamMembers = () => (
     <div className='team_members_container'>
         <h3>Meet the Team!</h3>
-x
         <ul>
             <li>
                 Fearless Team Leader: Nicholas Cocks
