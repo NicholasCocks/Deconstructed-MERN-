@@ -5,6 +5,8 @@ Brought to you by
 + [Trieu (JT) Tran](https://github.com/trieutrue) - Backend Engineer
 + [Umarbin Siddiki](github.com/usiddiki97) - Frontend Engineer
 
+Check out our [Live Demo](http://deconstructed.herokuapp.com/) hosted on Heroku!
+![Splash Page](./splash_page.png)
 
 ## Background and Overview
 Deconstructed is an interactive web application that gets users to engage with what data is being gathered on them and empowering them to take control of their data.
@@ -18,4 +20,5 @@ Deconstructed is built on the MERN stack, a combination of four technologies:
 + Express
 + React
 + Node.js
-![Splash Page](./splash_page.png)
+
+## 
