@@ -19,6 +19,11 @@
     z-index: 1;
 }
 
+.nav_bar_container a {
+    display: flex;
+    align-items: center;
+}
+
 .nav_bar_buttons_container {
     display: flex;
     align-items: center;

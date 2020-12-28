@@ -24,7 +24,7 @@ class Splash extends React.Component {
             <div className="splash_container">
             <img src={logo} className="splash_picture"/>
             <header className="splash_header">
-                <h1 className="splash_title">Data Deconstructed</h1>
+                <h1 className="splash_title">Your Data Deconstructed</h1>
             </header>
             
 

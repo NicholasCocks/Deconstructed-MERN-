@@ -9,6 +9,10 @@
     border-radius: 7px;
 }
 
+.login_picture {
+    width: 50%;
+}
+
 .login_form {
     display: flex;
     flex-direction: column;
