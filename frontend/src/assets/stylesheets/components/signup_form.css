@@ -16,7 +16,7 @@ html {
 }
 
 .signup_form_container a {
-    cursor: pointer;
+    
 }
 
 .signup_title {
@@ -67,7 +67,6 @@ input[type="submit"] {
     color: wheat;
     width: 100%;
     text-align: center; 
-    cursor: pointer;
 }
 
 .session_demo_user {
