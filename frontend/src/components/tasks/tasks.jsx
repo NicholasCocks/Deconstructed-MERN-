@@ -8,7 +8,6 @@ class Tasks extends React.Component {
 
     // componentDidUpdate(prevProps) {
     //     const { user } = this.props
-    //        
     //     if (!prevProps.user._id || !user._id) return;
     //     if (prevProps.user._id !== user._id || 
     //         ( user._id && prevProps.user.taskIds.length !== user.taskIds.length)) {
@@ -26,9 +25,7 @@ class Tasks extends React.Component {
     render() {
         const { user, tasks, questions } = this.props
         if ( !user._id || !Object.keys(questions).length ) return null;
-        //    
         const indexItems = tasks.map((task, index) => {
-            //    
                 const { url, question } = questions[task.questionId]
                 return (
                     <TaskItemContainer key={index} question={question} task={task} url={url} />

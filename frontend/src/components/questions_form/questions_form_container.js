@@ -5,7 +5,6 @@ import { fetchUser } from '../../actions/session_actions'
 import { createTask, deleteTask } from '../../actions/task_actions';
 import QuestionsForm from './questions_form';
 
-   
 const mSTP = state => {
     return {
         user: state.session.user,
@@ -16,7 +15,6 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-       
     return {
         fetchUser: userId => dispatch(fetchUser(userId)),
         fetchAllQuestions: () => dispatch(fetchAllQuestions()),

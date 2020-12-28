@@ -13,11 +13,9 @@ export const createTask = data => (
 )
 
 export const updateTask = data => {
-    //    
     return axios.patch(`/api/tasks/${data._id}`)
 }
 
 export const deleteTask = taskId => {
-    //    
     return axios.delete(`/api/tasks/${taskId}`)
 }
