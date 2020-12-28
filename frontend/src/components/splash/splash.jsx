@@ -25,6 +25,7 @@ class Splash extends React.Component {
             <img src={logo} className="splash_picture"/>
             <header className="splash_header">
                 <h1 className="splash_title">Your Data Deconstructed</h1>
+                <Link to='/signup' className="splash_signup_button">Signup/Login</Link>
             </header>
             
 
