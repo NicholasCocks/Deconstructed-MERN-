@@ -17,7 +17,6 @@ class QuestionsForm extends React.Component {
         const { fetchAllData, fetchAllQuestions, fetchUser, user } = this.props
         fetchAllData();
         fetchAllQuestions();
-        debugger
         if (user._id) {
             user.questionsAnswered.forEach(question => {
             this.state[question] = true
@@ -74,7 +73,6 @@ class QuestionsForm extends React.Component {
     
 
     render() {
-        debugger
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
             const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
         return (

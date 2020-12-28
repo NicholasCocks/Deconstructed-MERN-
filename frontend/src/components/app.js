@@ -9,7 +9,7 @@ import MainPage from './main/main_page';
 import Splash from './splash/splash';
 
 const App = () => (
-        <div className="page_container">     
+          
                 <Switch>
                         <AuthRoute path="/login" component={LoginFormContainer} />
                         <AuthRoute path="/signup" component={SignupFormContainer} />
@@ -17,7 +17,7 @@ const App = () => (
                         <Route path="/main" component={MainPage} />
                         <Route exact path="/" component={Splash} />
                 </Switch>
-        </div>
+        
 );
 
 export default App;

@@ -11,18 +11,19 @@ class NavBar extends React.Component {
         super(props);
         this.state = { modalOpen: false }
     
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClickLocation = this.handleClickLocation.bind(this);
+
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
         this.handleSessionForms = this.handleSessionForms.bind(this);       
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleClick);
+        document.addEventListener('mousedown', this.handleClickLocation);
     }
     
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleClick);
+        document.removeEventListener('mousedown', this.handleClickLocation);
     }
     
 
@@ -43,13 +44,16 @@ class NavBar extends React.Component {
         }
     }
 
-    handleClick(e) {
+    handleClickLocation(e) {
         if (this.node.contains(e.target)) {
-            this.setState({modalOpen: true})
-            console.log('You clicked INSIDE the component.')
+            debugger
+            if (this.state.modalOpen && this.svgmodal.contains(e.target)) {
+                this.setState({modalOpen: false})
+            } else {
+                this.setState({modalOpen: true})
+            }
           } else {
             this.setState({modalOpen: false})
-            console.log('You clicked OUTSIDE the component.')
          }
     }
 
@@ -88,10 +92,12 @@ class NavBar extends React.Component {
             <div className="nav_bar_container" >
                 <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
                 <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
-                    <FontAwesomeIcon className="question_form_icon" icon={faGithub} />
+                    <FontAwesomeIcon className="question_form_icon" icon={faGithub} className="modal modalhover"/>
                 </a> 
                 <div ref={node => this.node = node}>
-                    <FontAwesomeIcon icon={faUsers} />
+                    <div ref={svgmodal => this.svgmodal = svgmodal} className="modaldiv">
+                    <FontAwesomeIcon icon={faUsers} className={this.state.modalOpen ? 'modal modalactive' : 'modal modalhover'}/>
+                    </div>
                     {this.modal()}
                 </div>
                 {this.getLinks()}
