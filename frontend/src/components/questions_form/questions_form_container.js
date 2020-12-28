@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
+import { fetchBreaches } from "../../actions/pwnd_actions";
 import { fetchAllData, fetchAllQuestions } from '../../actions/question_actions';
 import { fetchUser } from '../../actions/session_actions'
 import { createTask, deleteTask } from '../../actions/task_actions';
 import QuestionsForm from './questions_form';
 
-debugger
 const mSTP = state => {
     return {
         user: state.session.user,
@@ -16,13 +16,13 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => {
-    debugger
     return {
         fetchUser: userId => dispatch(fetchUser(userId)),
         fetchAllQuestions: () => dispatch(fetchAllQuestions()),
         fetchAllData: () => dispatch(fetchAllData()),
         createTask: task =>  dispatch(createTask(task)),
-        deleteTask: taskId =>  dispatch(deleteTask(taskId))
+        deleteTask: taskId =>  dispatch(deleteTask(taskId)),
+        fetchBreaches: account => dispatch(fetchBreaches(account))
     }
 }
 

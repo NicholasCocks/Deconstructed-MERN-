@@ -7,17 +7,19 @@ import * as Brand from '@fortawesome/free-brands-svg-icons';
 class QuestionsForm extends React.Component {
     constructor(props) {
         super(props)
-       
         this.state = {}
+
         this.handleClick = this.handleClick.bind(this);
         this.inputRef = React.createRef();
+        this.handleBreach = this.handleBreach.bind(this);
+        this.handleBreachInput = this.handleBreachInput.bind(this)
     }
 
     componentDidMount() {
         const { fetchAllData, fetchAllQuestions, fetchUser, user } = this.props
         fetchAllData();
         fetchAllQuestions();
-        debugger
+        
         if (user._id) {
             user.questionsAnswered.forEach(question => {
             this.state[question] = true
@@ -71,10 +73,17 @@ class QuestionsForm extends React.Component {
             createTask({ userId: user._id, questionId: value })
         }
     }
+
+    handleBreach(e) {
+        e.preventDefault();
+        this.props.fetchBreaches(this.state.account)
+    }
     
+    handleBreachInput(e) {
+        this.setState({ account: e.currentTarget.value })
+    }
 
     render() {
-        debugger
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
             const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
         return (
@@ -91,10 +100,14 @@ class QuestionsForm extends React.Component {
 
         return (
             <>
-                <form id="questions_form">
+                <form id="questions_form" onSubmit={this.handleBreach}>
                     <p className="questions_form-title"><b>Accounts</b></p>
                     <ul className="question_form-ul">
-                        <input type="text" class="question_form_email" placeholder="email"/>
+                        <input type="text" 
+                            class="question_form_email" 
+                            placeholder="email"
+                            onChange={this.handleBreachInput}
+                        />
                         {checkboxes}
                     </ul>
                 </form>
