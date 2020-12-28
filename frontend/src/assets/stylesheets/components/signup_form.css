@@ -80,7 +80,7 @@ input[type="password"]:focus {
 
 input[type="submit"] {
     background-color: rgba(23, 33, 54, 0.9);
-    color: wheat;
+    color: #f5deb3;
     width: 100%;
     text-align: center; 
 }
