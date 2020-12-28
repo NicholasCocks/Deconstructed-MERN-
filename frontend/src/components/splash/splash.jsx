@@ -43,7 +43,7 @@ class Splash extends React.Component {
             <footer className="splash_footer">
             <p>by <a href="#" target="_blank">Nicholas Cocks</a>, <a href="#" target="_blank">Umarbin Siddiki</a>
             , <a href="#" target="_blank">Trieu Tran</a> and <a href="#" target="_blank"s>Muzammil Chowhury</a></p>
-            <FontAwesomeIcon icon={faGithub} className="splash_github"/>
+            <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank"><FontAwesomeIcon icon={faGithub} className="splash_github"/></a>
             </footer>
         </div>
             )

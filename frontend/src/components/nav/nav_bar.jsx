@@ -46,7 +46,6 @@ class NavBar extends React.Component {
 
     handleClickLocation(e) {
         if (this.node.contains(e.target)) {
-            debugger
             if (this.state.modalOpen && this.svgmodal.contains(e.target)) {
                 this.setState({modalOpen: false})
             } else {
