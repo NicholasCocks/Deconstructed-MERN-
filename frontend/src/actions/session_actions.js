@@ -44,18 +44,34 @@ const receiveUser = ({ data }) => ({
 })
 
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
-export const signup = user => dispatch => {
-    return APIUtil.signup(user).then(() => (
-        dispatch(receiveUserSignIn())
-    ), err => (
-        dispatch(receiveErrors(err.response.data))
-    ))
-};
+
+export const signup = (user) => (dispatch) => {
+       
+    return APIUtil.signup(user)
+        .then((res) => {
+               
+            const { token } = res.data;
+            localStorage.setItem("jwtToken", token);
+            APIUtil.setAuthToken(token);
+            const decoded = jwt_decode(token);
+            dispatch(receiveCurrentUser(decoded));
+        })
+        .catch((err) => dispatch(receiveErrors(err.response.data))
+)};
+
+// export const signup = user => dispatch => {
+//     return APIUtil.signup(user).then(() => (
+//         dispatch(receiveUserSignIn())
+//     ), err => (
+//         dispatch(receiveErrors(err.response.data))
+//     ))
+// };
 
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
 export const login = user => dispatch => {
   
     return APIUtil.login(user).then(res => {
+               
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);
             APIUtil.setAuthToken(token);
@@ -95,7 +111,7 @@ export const loginDemoUser = user => dispatch => {
 }
 
 export const fetchUser = userId => dispatch => {
-    debugger
+       
     return APIUtil.fetchUser(userId)
         .then(res => dispatch(receiveUser(res)))
 }

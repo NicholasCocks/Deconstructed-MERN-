@@ -15,14 +15,14 @@ class TaskItem extends React.Component{
     }
 
     completeTask() {
-        // debugger
+        //    
         this.props.updateTask(this.props.task)
     }
 
     render() {
         let openClass = this.state.open ? 'task_item_open' : 'task_item_closed';
         let rotate = this.state.open ? 0 : -90;
-        // debugger
+        //    
         return (
             <li className="task_item_container" >
                 <div className="task_item_header"  >
