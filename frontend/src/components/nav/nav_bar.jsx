@@ -11,8 +11,6 @@ class NavBar extends React.Component {
         this.state = { modalOpen: false }
         this.logoutUser = this.logoutUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
-        this.handleSessionForms = this.handleSessionForms.bind(this);       
-        this.handleSearchInput = this.handleSearchInput.bind(this)
     }
 
     componentDidMount() {
@@ -83,16 +81,6 @@ class NavBar extends React.Component {
         }
     }
 
-    handleSearch(e) {
-        e.preventDefault();
-        debugger
-    }
-
-    handleSearchInput(e) {
-        debugger
-        this.setState({ search: e.currentTarget.value })
-    }
-    
     modal() {
         if (this.state.modalOpen) {
             return (<div>model</div>)
@@ -102,19 +90,9 @@ class NavBar extends React.Component {
     }
 
     render() {
-        
-       
         return (
             <div className="nav_bar_container" ref={this.wrapperRef}>
                 <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                <form onSubmit={this.handleSearch}>
-                    <input type="text" 
-                    onChange={this.handleSearchInput}
-                    id="search-box" 
-                    placeholder="Search"/>
-                    <button>Submit</button>
-                    {/* <FontAwesomeIcon icon={faSearch} className="search-icon" /> */}
-                </form>
                 {this.modal()}
                 {this.getLinks()}
             </div>
