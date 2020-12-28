@@ -37,10 +37,8 @@ export const createTask = data => dispatch => (
 )
 
 export const updateTask = data => dispatch => {
-    // debugger
     return TasksUtil.updateTask(data)
         .then(res => {
-            // debugger
             dispatch(receiveTask(res))}
         )
 }
