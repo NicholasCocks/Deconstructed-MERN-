@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faCaretDown, faCheckCircle, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import {faCircle} from '@fortawesome/fontawesome-free'
 
 class TaskItem extends React.Component{ 
     constructor(props) {
