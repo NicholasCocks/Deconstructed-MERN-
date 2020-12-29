@@ -42,7 +42,7 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
     };
 
-    debugger
+    
     
     this.props.processForm(user)
   }

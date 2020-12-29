@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         questions: state.entities.questions,
         dataclass: state.entities.dataclass,
-        answers: answers
+        dataclassAnswers: answers,
+        answers: ownProps.answers                                                                                                                                                                
     }
 }
 

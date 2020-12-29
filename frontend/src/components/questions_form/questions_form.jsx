@@ -92,7 +92,7 @@ class QuestionsForm extends React.Component {
                 <form id="questions_form">
                     <p className="questions_form-title"><b>Accounts</b></p>
                     <ul className="question_form-ul">
-                        <input type="text" class="question_form_email" placeholder="email"/>
+                        <input type="text" className="question_form_email" placeholder="email"/>
                         {checkboxes}
                     </ul>
                 </form>
