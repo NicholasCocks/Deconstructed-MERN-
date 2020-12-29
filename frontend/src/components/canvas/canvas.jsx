@@ -28,6 +28,8 @@ class CanvasComponent extends React.Component {
         const dataclasses = this.props.dataclass;
         const questionsAnswered = this.props.answers;
         
+        if (Object.keys(questions).length === 0 || Object.keys(dataclasses).length === 0) return null;
+        
         
         const objData = {
             'columns': [
@@ -65,9 +67,7 @@ class CanvasComponent extends React.Component {
     render() {
         const { answers } = this.props
         if (answers.length === 0) {
-            return (
-                <div>Please select an account</div>
-                )
+                return null
             } else {
             return (
     
