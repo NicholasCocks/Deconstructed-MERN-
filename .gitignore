@@ -4,3 +4,4 @@ keys_dev.js
 .seedgooserc.js
 ./frontend/.enlistcache
 node_modules
+.env
