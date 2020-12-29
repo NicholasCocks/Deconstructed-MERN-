@@ -5,18 +5,25 @@
     height: 50px;
     display: flex;
     justify-content: space-between;
+    background-image: linear-gradient(to bottom, rgb(202, 202, 202), white);
     align-items: center;
     box-sizing: border-box;
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: rgb(233, 233, 233);
+    /* background-color: rgb(233, 233, 233); */
     color: black;
     
     font-size: 24px;
     /* background-color: var(--lightest-gray); */
     font-family: var(--font-arial);
     z-index: 1;
+
+    -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 14.1 */
+    -moz-animation: fadein 4s; /* Firefox < 16 */
+     -ms-animation: fadein 4s; /* Internet Explorer */
+      -o-animation: fadein 4s; /* Opera < 14.1 */
+         animation: fadein 4s;
 }
 
 .nav_bar_container a {

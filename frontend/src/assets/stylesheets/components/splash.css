@@ -28,6 +28,24 @@
     font-weight: 100;
 }
 
+.splash_signup_button {
+    position: absolute;
+    text-align: center;
+    right: 2%;
+    top: 16px;
+    background-color: rgba(23, 33, 54, 0.9);
+    color: wheat;
+    border: 1px solid wheat;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 7px;
+}
+
+.splash_signup_button:hover {
+    background-color: black;
+}
+
 .splash_github {
     position: absolute; 
     top: 7px;
@@ -62,6 +80,10 @@
     border-radius: 7px;
 }
 
+.splash_app_button:hover {
+    background-color: black;
+}
+
 .splash_footer {
     background-color: rgba(23, 33, 54, 0.9);
     color: wheat;
@@ -79,6 +101,14 @@
     text-decoration: underline;
 }
 
+.splash_footer a:hover {
+    color: white;
+}
+
 .splash_footer > svg {
     margin-bottom: 10px;
+}
+
+.splash_footer > svg:hover {
+    color:white
 }

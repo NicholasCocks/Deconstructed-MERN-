@@ -22,12 +22,25 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.team_members_container div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .team_members_container p {
     margin-right: 5px;
 }
 
 .team_members_container svg {
     margin-left: 3px;
+}
+
+.team_members_container svg:hover {
+    color: white;
 }
 
 .team_members_title {

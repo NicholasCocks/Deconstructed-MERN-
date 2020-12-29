@@ -15,15 +15,15 @@ html {
     color: black;
 }
 
-.signup_form_container a {
-    cursor: pointer;
-}
-
 .signup_title {
     color: rgb(255, 255, 255); 
     font-size: 40px;
     font-family: var(--font-arial);
     position: absolute;
+}
+
+.signup_title:hover {
+    color: wheat;
 }
 
 .signup_picture {
@@ -62,12 +62,31 @@ html {
    
 }
 
+input[type="text"]:hover {
+    box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="text"]:focus {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="password"]:hover {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="password"]:focus {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
 input[type="submit"] {
     background-color: rgba(23, 33, 54, 0.9);
-    color: wheat;
+    color: #f5deb3;
     width: 100%;
     text-align: center; 
-    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
 }
 
 .session_demo_user {
@@ -79,6 +98,10 @@ input[type="submit"] {
     width: 75%;
     text-align: center;
     margin-bottom: 14px;
+}
+
+.session_demo_user:hover {
+    background-color: rgb(255, 208, 119);
 }
 
 .session_blurb_link {

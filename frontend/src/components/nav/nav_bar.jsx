@@ -46,7 +46,6 @@ class NavBar extends React.Component {
 
     handleClickLocation(e) {
         if (this.node.contains(e.target)) {
-            debugger
             if (this.state.modalOpen && this.svgmodal.contains(e.target)) {
                 this.setState({modalOpen: false})
             } else {
@@ -63,7 +62,7 @@ class NavBar extends React.Component {
             return (
                 <>   
                     <div className="nav_bar_buttons_container">
-                        <button className="navbar_logout" onClick={this.logoutUser}>Logout</button>
+                        <button className="nav_bar_login" onClick={this.logoutUser}>Logout</button>
                     </div>
                 </>
             );

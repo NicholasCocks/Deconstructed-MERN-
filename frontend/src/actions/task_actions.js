@@ -2,7 +2,8 @@ import * as TasksUtil from '../util/tasks_util';
 
 export const RECEIVE_ALL_TASKS = "RECEIVE_ALL_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
-export const REMOVE_TASK = "REMOVE_TASK"
+export const REMOVE_TASK = "REMOVE_TASK";
+export const UPDATE_TASK = "UPDATE_TASK";
 
 const receiveAllTasks = ({ data }) => ({
     type: RECEIVE_ALL_TASKS,
@@ -13,6 +14,11 @@ const receiveTask = ({ data }) => ({
     type: RECEIVE_TASK,
     task: data.task,
     user: data.user
+});
+
+const receiveUpdatedTask = ({ data }) => ({
+    type: UPDATE_TASK,
+    data
 });
 
 const removeTask = ({ data }) => ({
@@ -39,7 +45,8 @@ export const createTask = data => dispatch => (
 export const updateTask = data => dispatch => {
     return TasksUtil.updateTask(data)
         .then(res => {
-            dispatch(receiveTask(res))}
+            dispatch(receiveUpdatedTask(res))
+        }
         )
 }
 
