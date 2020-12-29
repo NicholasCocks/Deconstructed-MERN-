@@ -7,7 +7,7 @@ import {
 
 const tasksReducer = (state = {}, action) => {
     Object.freeze(state);
-    debugger
+    
     const newState = { ...state }
     switch (action.type) {
         case RECEIVE_ALL_TASKS:
