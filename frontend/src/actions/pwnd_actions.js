@@ -13,5 +13,11 @@ const receiveBreaches = (res) => {
 export const fetchBreaches = (account) => dispatch => {
   debugger
   return PwndAPI.fetchBreaches(account)
-    .then(res => dispatch(receiveBreaches(res)))
+    .then(res => {
+      debugger
+      return dispatch(receiveBreaches(res))})
+    .catch(err => {
+      debugger
+      console.log(err)
+    })
 }

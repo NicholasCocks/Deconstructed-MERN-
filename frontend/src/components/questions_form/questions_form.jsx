@@ -19,7 +19,7 @@ class QuestionsForm extends React.Component {
         const { fetchAllData, fetchAllQuestions, fetchUser, user } = this.props
         fetchAllData();
         fetchAllQuestions();
-        
+
         if (user._id) {
             user.questionsAnswered.forEach(question => {
             this.state[question] = true
@@ -111,7 +111,7 @@ class QuestionsForm extends React.Component {
                         {checkboxes}
                     </ul>
                 </form>
-                <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} />
+                {/* <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} /> */}
                 <TasksContainer />
             </>
          )
