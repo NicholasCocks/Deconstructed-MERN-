@@ -63,19 +63,19 @@ html {
 }
 
 input[type="text"]:hover {
-    border: 1px solid blue;
+    box-shadow: 0 0 0 0.3px blue inset;
 }
 
 input[type="text"]:focus {
-    border: 1px solid blue;
+     box-shadow: 0 0 0 0.3px blue inset;
 }
 
 input[type="password"]:hover {
-    border: 1px solid blue;
+     box-shadow: 0 0 0 0.3px blue inset;
 }
 
 input[type="password"]:focus {
-    border: 1px solid blue;
+     box-shadow: 0 0 0 0.3px blue inset;
 }
 
 input[type="submit"] {
