@@ -3,6 +3,10 @@ import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
 import rd3 from 'react-d3-library';
 import * as d3 from 'd3';
 import BubbleChart from '@weknow/react-bubble-chart-d3';
+import { IgrTreemapModule } from "igniteui-react-charts";
+import { IgrTreemapComponent } from 'igniteui-react-charts';
+
+IgrTreeMapModule.register();
 
 class CanvasComponent extends React.Component {
     constructor(props) {
@@ -87,7 +91,25 @@ class CanvasComponent extends React.Component {
         
         return (
             <div className="canvas_container" ref="myDiv">    
-                
+                <div style={{ width: "100%", height: "calc(100% - 75px)" }}>
+                    <IgrTreemap
+                        ref={this.onTreeMapRef}
+                        height="100%"
+                        width="100%"
+                        parentIdMemberPath="parent"
+                        idMemberPath="id"
+                        labelMemberPath="name"
+                        valueMemberPath="pop"
+                        transitionDuration="500"
+                        rootTitle="Countries" >
+                        {/* <IgrTreemapNodeStyleMapping
+                    name="fill1"
+                    mappingMode="value"
+                    minimumValue={3000}
+                    maximumValue={3000000}
+                    fill="red" /> */}
+                    </IgrTreemap>
+                </div>
             </div>
         )
         
