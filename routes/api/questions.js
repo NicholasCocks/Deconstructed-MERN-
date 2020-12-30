@@ -4,21 +4,39 @@ const router = express.Router();
 const Question = require('../../models/Question');
 const validateQuestionInput = require('../../validation/question')
 
-router.get('/seed', (req, res) => {
+router.patch('/seed', (req, res) => {
+    debugger
+    const { accounts, dataclasses } = req.body
+    Question.findById(accounts)
+        .then(question => {
+            Dataclass.findById(dataclasses)
+                .then(dataclass => {
+                    if (dataclass.companiesCollecting.includes(accounts)) return console.log(`${question.question} already exists in ${dataclass.class}`)
+                    if (question.dataclassCollection.includes(dataclasses)) return console.log(`${dataclass.class} already exists in ${question.question}`)
+                    dataclass.companiesCollecting.push(accounts)
+                    dataclass.save().then(console.log('Dataclass saved'))
 
-    Question.find({ question: "google" })
-        .then(questionArr => {
-            Dataclass.find({ class: "email messages" })
-                .then(dataclassArr => {
-                    dataclassArr[0].companiesCollecting.push(questionArr[0]._id)
-                    dataclassArr[0].save().then()
+                    question.dataclassCollection.push(dataclasses)
+                    question.save().then(() => {
+                        console.log('Question saved')
+                        res.json({ msg: 'Dataclass & Question saved'})
 
-                    questionArr[0].dataclassCollection.push(dataclassArr[0]._id)
-                    questionArr[0].save()
-                        .then(question => res.json(question))
-                        .catch(err => res.json(err))
+                    })
                 })
         })
+    // Question.find({ question: "google" })
+    //     .then(questionArr => {
+    //         Dataclass.find({ class: "email messages" })
+    //             .then(dataclassArr => {
+    //                 dataclassArr[0].companiesCollecting.push(questionArr[0]._id)
+    //                 dataclassArr[0].save().then()
+
+    //                 questionArr[0].dataclassCollection.push(dataclassArr[0]._id)
+    //                 questionArr[0].save()
+    //                     .then(question => res.json(question))
+    //                     .catch(err => res.json(err))
+    //             })
+    //     })
 })
 
 
