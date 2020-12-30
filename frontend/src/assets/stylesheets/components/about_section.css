@@ -1,0 +1,25 @@
+.about_section_container {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    float: right;
+    margin-bottom: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    height: 400px;
+    margin-bottom: 15px;
+    margin-top: 25px;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: all .5s ease;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+     -ms-animation: fadein 2s; /* Internet Explorer */
+      -o-animation: fadein 2s; /* Opera < 12.1 */
+         animation: fadein 2s;
+}
+
+.about_open {
+    width: 500px;
+} 

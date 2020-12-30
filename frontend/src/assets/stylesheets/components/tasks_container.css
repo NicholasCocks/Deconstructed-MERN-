@@ -1,20 +1,27 @@
+.right_sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    top: 50px;
+}
+
 .tasks_container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     border: 1px solid black;
-    bottom: 5px;
-    right: 5px;
+    border-radius: 7px;
     width: 200px;
     height: 300px;
-    position: absolute;
     box-sizing: border-box;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     color: black;
     padding: 5px;
     color: black;
-    border-radius: 7px;
+    transition: all .5s ease;
     
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -23,13 +30,16 @@
          animation: fadein 2s;
 }
 
+.task_is_expanded {
+    width: 500px;
+}
 .task_list {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
 }
 
-.tasklist-title {
+.task_list_title {
     display: flex;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -37,6 +47,42 @@
     background-color: white;
     width: 60px;
 }
+
+.task_arrow {
+    margin-left: 5px;
+    margin-right: auto;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.task_arrow:hover {
+    background-color: lightgray;
+}
+
+.task_arrow_expanded {
+    /* color: #66bb6a; */
+    -webkit-animation:spin .5s linear 1;
+    -moz-animation:spin .5s linear 1;
+    animation:spin .5s linear 1;
+    animation-fill-mode: forwards;
+}
+
+.task_arrow_collapse {
+    -webkit-animation:spin2 .5s linear 1;
+    -moz-animation:spin2 .5s linear 1;
+    animation:spin2 .5s linear 1;
+    animation-direction: reverse;
+    /* animation-fill-mode: backwards;
+     */
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-180deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-180deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
+
+@-moz-keyframes spin2 { 100% { -moz-transform: rotate(-180deg); } }
+@-webkit-keyframes spin2 { 100% { -webkit-transform: rotate(-180deg); } }
+@keyframes spin2 { 100% { -webkit-transform: rotate(-180deg); transform:rotate(-180deg); } }
 
 .task_item_container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -63,10 +109,6 @@
     margin-right: 8px;
 }
 
-@keyframes opening {
-    0% {}
-}
-
 .task_item_checkbox {
     visibility: hidden;
 }
@@ -80,21 +122,39 @@
     width: 18px;
 }
 
-
-input[type="checkbox"]:checked + label {
-    background-color: #66bb6a;
-    border-color: #66bb6a;
+.caret_up {
+    transform: rotate(-90deg);
+    transition: all .3s ease;
 }
 
-  
-.task_item_open {
-    display: flex;
-    visibility: visible;
-    background-color: white;
-    
+.caret_down {
+    transition: all .3s ease;
 }
 
-.task_item_closed {
+.task_item {
     display: none;
-    visibility: hidden;
+    position: relative;
+    transition: all .5s ease;
+    height: 20px;
+    background-color: white;
+}
+
+.task_item_open {
+    display: inline-block;
+    height: 100px;
+    transform: translateX(0);
+    transform-style: flat;
+    transition: all .5s ease;
+    animation: slide-up .4s ease;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
