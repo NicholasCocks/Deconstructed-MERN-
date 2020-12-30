@@ -10,7 +10,7 @@
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    color: black;
+    color: var(--highlight);
     font-size: 24px;
     font-family: var(--font-arial);
     z-index: 1;
@@ -25,6 +25,10 @@
 .nav_bar_container a {
     display: flex;
     align-items: center;
+}
+
+.nav_bar_container h1:hover {
+    color: white
 }
 
 .nav_bar_buttons_container {
@@ -44,9 +48,15 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    background-color: black;
-    color: white;
+    background-color: var(--highlight);
+    color: var(--dark-blue);
     border-radius: 5px;
     padding: 5px;
     width: 70px;
+}
+
+.nav_bar_login:hover {
+    background-color: var(--dark-blue);
+    color: var(--highlight);
+    border: 1px solid var(--highlight);
 }

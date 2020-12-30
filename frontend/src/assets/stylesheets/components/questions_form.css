@@ -4,7 +4,8 @@
     align-items: center;
     position: absolute;
     color: black;
-    background-color: white;
+    border: 1px solid var(--highlight);
+
     top: 80px;
     left: 10px;
     width: 170px;
@@ -13,7 +14,7 @@
     padding: 5px;
     border-radius: 7px;
     z-index: 1;
-    overflow-y: scroll;
+    
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -55,12 +56,12 @@
 }
 
 .questions_form_button_passive:hover {
-    background-color: #17215a1a;
+    background-color: var(--hover-color);
     
 }
 
 .questions_form_button_active {
-    background-color: rgba(23, 33, 90, 0.3);;
+    background-color: var(--active-color);
     width: 100%;
     border-radius: 5px; 
     padding-left: 4px;
@@ -79,6 +80,10 @@
     
     border-bottom: 1px solid black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.questions_form-ul {
+    overflow-y: scroll;
 }
 
 

@@ -21,8 +21,8 @@ class TaskItem extends React.Component{
         
         return (
             <li className="task_item_container" >
-                <div className="task_item_header"  >
-                    <div onClick={this.onToggle} className={`task_item_name`}>
+                <div className="task_item_header" onClick={this.onToggle}>
+                    <div  className={`task_item_name`}>
                         <FontAwesomeIcon icon={faCaretDown}  className={this.state.open ? "caret_down" : "caret_up"}/>
                         <p>{this.props.question.charAt(0).toUpperCase() + this.props.question.slice(1)}</p>
                     </div>
