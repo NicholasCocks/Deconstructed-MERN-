@@ -53,12 +53,12 @@
 }
 
 .questions_form_button_passive:hover {
-    background-color: rgb(255, 211, 211);
+    background-color: #17215a1a;
     
 }
 
 .questions_form_button_active {
-    background-color: rgb(252, 156, 156);
+    background-color: rgba(23, 33, 90, 0.3);;
     width: 100%;
     border-radius: 5px; 
     padding-left: 4px;
