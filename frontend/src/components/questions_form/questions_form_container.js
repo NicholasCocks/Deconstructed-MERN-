@@ -11,6 +11,7 @@ const mSTP = state => {
         questions: state.entities.questions,
         data: state.entities.dataclasses,
         tasks: state.entities.tasks,
+        loggedIn: state.entities.isAuthenticated
     }
 }
 
