@@ -45,6 +45,5 @@ document.addEventListener('DOMContentLoaded', () => {
             window.updateAnswers = updateAnswers;
 
 
-            ReactDOM.render( < Root store = { store }
-                />, root);
-            });
+            ReactDOM.render( < Root store = { store } />, root);
+});

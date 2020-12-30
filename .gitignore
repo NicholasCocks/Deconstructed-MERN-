@@ -3,3 +3,5 @@ keys_dev.js
 .DS_Store
 .seedgooserc.js
 ./frontend/.enlistcache
+node_modules
+.env

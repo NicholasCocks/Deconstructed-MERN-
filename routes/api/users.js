@@ -2,52 +2,94 @@ const express = require('express');
 const router = express.Router(); //router obj from router
 const User = require('../../models/User');
 const bcrypt = require("bcryptjs");
-const keys = require('../../config/keys_dev');
+const keys = require('../../config/keys');
 const jwt = require('jsonwebtoken');
 const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
-const { route } = require('./dataclasses');
+const Task = require('../../models/Task');
 
 router.get("/test", (req, res) => {
     res.json({ msg: "This is the user route" })
 });
 
-router.post('/signup', (request, response) => {
-    const { errors, isValid } = validateSignupInput(request.body);
+router.get('/:userId', (req, res) => {
+    const { userId } = req.params
+    User.findById(userId)
+        .then(user => res.json(user))
+})
 
+router.post('/signup', (req, res) => {
+    const { errors, isValid } = validateSignupInput(req.body);
     if (!isValid) {
-        return response.status(400).json(errors)
+        return res.status(400).json(errors)
     }
 
 
-    User.findOne({ email: request.body.email })
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (user) {
-                return response.status(400).json({ email: "A user already registered with that email" })
+                // Throw a 400 error if the email address already exists
+                return res.status(400).json({ email: "A user has already registered with this address" })
             } else {
+                // Otherwise create a new user
                 const newUser = new User({
-                    email: request.body.email,
-                    password: request.body.password
-                });
+                    email: req.body.email,
+                    password: req.body.password,
+                })
 
+                // Creates and salts the password digest
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
                         newUser.password = hash;
+
+                        // Saves the new user then sends back the user's information
                         newUser.save()
-                            .then(user => response.json(user))
-                            .catch(err => console.log(err))
+                            .then(user => {
+                                const payload = {
+                                    _id: user._id,
+                                    email: user.email,
+                                    questionsAnswered: user.questionsAnswered,
+                                    taskIds: user.taskIds
+                                };
+
+                                jwt.sign(
+                                    payload,
+                                    keys.secretOrKey,
+                                    { expiresIn: 3600 },
+                                    (err, token) => {
+                                        res.json({
+                                            success: true,
+                                            token: "Bearer " + token,
+                                        })
+                                    }
+                                )
+                            })
+                            .catch(err => console.log(err));
                     })
                 })
             }
         })
 })
+//                 bcrypt.genSalt(10, (err, salt) => {
+//                     bcrypt.hash(newUser.password, salt, (err, hash) => {
+//                         if (err) throw err;
+//                         newUser.password = hash;
+//                         newUser.save()
+//                             .then(user => response.json(user))
+//                             .catch(err => console.log(err))
+//                     })
+//                 })
+//             }
+//         })
+// })
 
 router.post('/login', (req, res) => {
+  
     const { errors, isValid } = validateLoginInput(req.body);
     const email = req.body.email;
     const password = req.body.password;
-    debugger;
+    
     if (!isValid) return res.status(400).json(errors)
 
     User.findOne({ email })
@@ -59,8 +101,12 @@ router.post('/login', (req, res) => {
 
             bcrypt.compare(password, user.password).then(isMatch => {
                 if (isMatch) {
-                    const payload = { id: user.id, email: user.email };
-
+                    const payload = { 
+                        _id: user._id, 
+                        email: user.email,
+                        questionsAnswered: user.questionsAnswered,
+                        taskIds: user.taskIds
+                     };
                     jwt.sign(
                         payload,
                         keys.secretOrKey,
@@ -80,18 +126,34 @@ router.post('/login', (req, res) => {
 })
 
 router.patch('/:userId', (req, res) => {
-  const { userId } = req.params
-  const questionsAnswered  = JSON.parse(req.body.questionsAnswered)
-  User.findById(userId)
-    .then(user => {
-      if (!user) {
-        return res.status(400).json({ msg: 'User not found'})
-      } else {
-        user.questionsAnswered = questionsAnswered
-        user.save()
-        return res.json(user)
-      }
-    })
+
+    const { userId } = req.params
+    const questionsAnswered = req.body
+    User.findById(userId)
+        .then(user => {
+            if (!user) {
+                return res.status(400).json({ msg: 'User not found' })
+            } else { 
+                user.questionsAnswered = questionsAnswered
+                questionsAnswered.forEach(questionId => {
+                    Task.findOne({ userId: user._id, questionId })
+                        .then(task => {
+                            if (!task) {
+                                const newTask = new Task({
+                                    questionId,
+                                    userId: user._id
+                                })
+                                newTask.save() 
+                                user.taskIds.push(newTask._id)
+                            } else {
+                                res.json(user)
+                            }
+                        })
+                    })
+                }
+                user.save()
+                    .then(resp => res.json(resp))
+        })
 })
 
 
