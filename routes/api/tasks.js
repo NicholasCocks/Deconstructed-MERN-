@@ -45,7 +45,6 @@ router.post('/:userId', (req, res) => {
         user.questionsAnswered.push(task.questionId)
         user.save()
           .then((response) => {
-            console.log(response)
             return res.json({ user, task })})
       }
     })

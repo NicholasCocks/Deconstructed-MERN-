@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import logo from '../../assets/images/logo.jpg'
@@ -22,9 +22,10 @@ class Splash extends React.Component {
 
         return (
             <div className="splash_container">
-            <img src={logo} className="splash_picture"/>
+            <img src={logo} className="splash_picture" alt="logo"/>
             <header className="splash_header">
-                <h1 className="splash_title">Data Deconstructed</h1>
+                <h1 className="splash_title">Your Data Deconstructed</h1>
+                <Link to='/signup' className="splash_signup_button">Signup/Login</Link>
             </header>
             
 
@@ -40,9 +41,11 @@ class Splash extends React.Component {
                     <Link to='/main' className="splash_app_button">Go To App</Link>
             
             <footer className="splash_footer">
-            <p>by <a href="#" target="_blank">Nicholas Cocks</a>, <a href="#" target="_blank">Umarbin Siddiki</a>
-            , <a href="#" target="_blank">Trieu Tran</a> and <a href="#" target="_blank"s>Muzammil Chowhury</a></p>
-            <FontAwesomeIcon icon={faGithub} className="splash_github"/>
+            <p>by <a href="https://github.com/NicholasCocks/" target="_blank" rel="noreferrer">Nicholas Cocks</a>
+            , <a href="https://github.com/usiddiki97" target="_blank" rel="noreferrer">Umarbin Siddiki</a>
+            , <a href="https://github.com/trieutrue/" target="_blank" rel="noreferrer">Trieu Tran</a> and <a href="https://github.com/Muz-98" target="_blank" rel="noreferrer">Muzammil Chowhury</a>
+            </p>
+            <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} className="splash_github"/></a>
             </footer>
         </div>
             )

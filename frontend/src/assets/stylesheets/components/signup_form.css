@@ -1,30 +1,116 @@
+html {
+    height: 100vh;
+}
+
 .signup_form_container {
+    display: flex;
     margin-right: auto;
     margin-left: auto;
-    padding: 5px;
-    background-color: rgb(105, 105, 105);;
-    color: white;
+    flex-grow: 1;
+    height: 100%;
+    max-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);;
+    color: black;
+}
+
+.signup_title {
+    color: rgb(255, 255, 255); 
+    font-size: 40px;
+    font-family: var(--font-arial);
+    position: absolute;
+}
+
+.signup_title:hover {
+    color: wheat;
+}
+
+.signup_picture {
+    display: inline-block;
+    object-fit: cover;
+    width: 50%;
+    max-height: 100%;
 }
 
 .signup_form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    flex-grow: 0;
+    width: 250px;
+    font-family: var(--font-arial);
+}
+
+.session_errors {
+    width: 250px;
+    position: absolute;
+    margin-bottom: 25%;
+    color: red;
     font-family: var(--font-arial);
 }
 
 .signup_form > input {
+    border: 1px solid rgb(194, 194, 194);
     background-color: white;
     margin: 5px;
     padding: 4px;
     border-radius: 3px;
     color: black;
+    width: 100%;
+   
+}
+
+input[type="text"]:hover {
+    box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="text"]:focus {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="password"]:hover {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="password"]:focus {
+     box-shadow: 0 0 0 0.3px blue inset;
+}
+
+input[type="submit"] {
+    background-color: rgba(23, 33, 54, 0.9);
+    color: #f5deb3;
+    width: 100%;
+    text-align: center; 
+}
+
+input[type="submit"]:hover {
+    background-color: black;
 }
 
 .session_demo_user {
     margin-top: 5px;
     padding: 4px;
-    background-color:  rgb(275, 179, 199);
+    background-color: wheat;
+    color: rgba(23, 33, 54, 0.9);
     border-radius: 5px;
+    width: 75%;
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.session_demo_user:hover {
+    background-color: rgb(255, 208, 119);
+}
+
+.session_blurb_link {
+    color: rgba(46, 65, 107, 0.9);
+}
+
+.session_password_toggle_icon {
+    color: gray;
+    position: relative;
+    margin-bottom: -29px;
+    margin-left: 200px;
 }

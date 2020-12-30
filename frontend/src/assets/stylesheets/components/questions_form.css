@@ -4,7 +4,6 @@
     align-items: center;
     position: absolute;
     color: black;
-    background-color: rgb(233, 233, 233);
     top: 80px;
     left: 10px;
     width: 170px;
@@ -13,6 +12,12 @@
     padding: 5px;
     border-radius: 7px;
     overflow-y: scroll;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
 }
 
 .questions_form_item {
@@ -48,12 +53,12 @@
 }
 
 .questions_form_button_passive:hover {
-    background-color: rgb(255, 211, 211);
+    background-color: #17215a1a;
     
 }
 
 .questions_form_button_active {
-    background-color: rgb(252, 156, 156);
+    background-color: rgba(23, 33, 90, 0.3);;
     width: 100%;
     border-radius: 5px; 
     padding-left: 4px;
