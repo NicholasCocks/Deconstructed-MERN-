@@ -2,10 +2,6 @@ import React from 'react';
 import TaskItemContainer from './task_item_container';
 
 class Tasks extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() { 
         const { fetchAllTasks, user } = this.props
         if (user._id) fetchAllTasks(user._id)

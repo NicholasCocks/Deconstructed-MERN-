@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import TeamMembers from '../team_members/team_members';
-// import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -90,8 +89,8 @@ class NavBar extends React.Component {
         return (
             <div className="nav_bar_container" >
                 <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
-                    <FontAwesomeIcon className="question_form_icon" icon={faGithub} className="modal modalhover"/>
+                <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank" rel="noreferrer">
+                    <FontAwesomeIcon className="question_form_icon modal modalhover" icon={faGithub} />
                 </a> 
                 <div ref={node => this.node = node}>
                     <div ref={svgmodal => this.svgmodal = svgmodal} className="modaldiv">
