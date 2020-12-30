@@ -1,58 +1,104 @@
 import React from 'react';
 import CanvasContainer from '../canvas/canvas_container';
-class QuestionsForm extends React.Component {
+import TasksContainer from '../tasks/tasks_container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as Brand from '@fortawesome/free-brands-svg-icons';
 
+class QuestionsForm extends React.Component {
     constructor(props) {
         super(props)
+       
         this.state = {}
-        this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this);
         this.inputRef = React.createRef();
     }
 
     componentDidMount() {
-        this.props.fetchAllData()
-        this.props.fetchAllQuestions() 
-        //this.props.updateAnswers()
+        const { fetchAllData, fetchAllQuestions, fetchUser, user } = this.props
+        fetchAllData();
+        fetchAllQuestions();
+        if (user._id) {
+            user.questionsAnswered.forEach(question => {
+            this.state[question] = true
+        })
+            fetchUser(user._id)
+        };
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { user } = this.props;
+        if (user._id && 
+            Object.keys(this.state).length !== 0 && 
+            Object.keys(prevState).length === 0) {
+            user.questionsAnswered.forEach(question => {
+                this.state[question] = true
+            })
+            return
+        } else if (Object.keys(user).length !== Object.keys(prevProps.user).length) {
+            if (Object.keys(user).length === 0) {
+                this.state = {};
+            } else {
+                Object.keys(this.state).forEach((key) => {
+                    this.state[key] = true
+                })
+            }
+            if (user._id && user.questionsAnswered.length) {
+                user.questionsAnswered.forEach(question => {
+                    this.state[question] = true
+                })
+                Object.keys(this.state).forEach(questionId => {
+                    if (!user.questionsAnswered.includes(questionId)) {
+                        this.state[questionId] = false
+                    }
+                })
+            }
+            this.setState({})
+        }
+        //if user logs out
+        
     }
 
     handleClick(e) {
-        
-        if (!this.state[e.currentTarget.value]) {
-            this.setState({[e.currentTarget.value]: true})  
+        const { value } = e.currentTarget
+        const { user, tasks, createTask, deleteTask } = this.props
+        if (this.state[value]) {
+            this.setState({ [value]: false });
+            const taskIds = Object.keys(tasks)
+            taskIds.forEach(taskId => tasks[taskId].questionId === value ? deleteTask(taskId) : null ) 
         } else {
-            this.setState({[e.currentTarget.value]: false})
+            this.setState({ [value]: true });
+            createTask({ userId: user._id, questionId: value })
         }
-
-        // EX: {['questionIds']: boolean, ['questionIds']: boolean}
-
-        // this.props.updateAnswers({id: this.props.user.id, 
-        // data: Array.from(this.state)})
-        // dispatch(updateAnswer)
-        // keys = Object.keys(this.state).filter(key => {
-        //    return this.state[key] 
-        // })
     }
+    
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-        
+            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
         return (
-            <div key={index}>
-                <p>{question.question}</p>
-                <input type="checkbox" ref={this.inputRef} value={question._id} onClick={this.handleClick} /> 
+            <div key={index} className="questions_form_item">
+                <button 
+                value={question._id} 
+                onClick={this.handleClick} 
+                className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
+                    <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
+                    {` ${title}`}
+                </button>
             </div>
         )})
-        
+
         return (
-            <div>
+            <>
                 <form id="questions_form">
-                    <ul>
+                    <p className="questions_form-title"><b>Accounts</b></p>
+                    <ul className="question_form-ul">
+                        <input type="text" className="question_form_email" placeholder="email"/>
                         {checkboxes}
                     </ul>
                 </form>
-            {console.log(this.state)}
-            <CanvasContainer answers={Object.keys(this.state).filter(key => {return this.state[key] })} />
-            </div>
+                <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} />
+                <TasksContainer />
+            </>
          )
     }
 }

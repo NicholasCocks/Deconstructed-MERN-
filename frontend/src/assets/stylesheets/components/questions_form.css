@@ -1,0 +1,90 @@
+#questions_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    color: black;
+    top: 80px;
+    left: 10px;
+    width: 170px;
+    height: 500px;
+    max-height: 80%;
+    padding: 5px;
+    border-radius: 7px;
+    overflow-y: scroll;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+.questions_form_item {
+    display: flex;
+    font-family: var(--font-arial);
+    align-items: center;
+    margin-left: 5px;
+}
+
+.question_form_email {
+    background-color: white;
+    padding: 3px;
+    margin: 3px;
+    width: 135px;
+    margin-left: 13px;
+    font-family: var(--font-arial);
+}
+
+
+.questions_form_item > button {
+    padding: 10px;
+    border-radius: 7px; 
+    margin: 3px;
+    width: 123px;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+
+.questions_form_item svg {
+    margin-right: 10%;
+}
+
+.questions_form_button_passive:hover {
+    background-color: rgb(255, 211, 211);
+    
+}
+
+.questions_form_button_active {
+    background-color: rgb(252, 156, 156);
+    width: 100%;
+    border-radius: 5px; 
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 2px 0px 2px 0px;
+}
+
+.questions_form-title {
+
+    display: flex;
+    justify-content: center;
+    width: 131px;
+    margin-left: 8px;
+    padding: 4px;
+    
+    border-bottom: 1px solid black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.questions_form_item {
+    padding: 3px;
+}
+
+.questions_form_icon {
+    margin-right: 3px;
+}
+

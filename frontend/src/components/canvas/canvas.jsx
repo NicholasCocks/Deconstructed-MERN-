@@ -1,104 +1,103 @@
 import React, { useRef, useState } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
-import { softShadows, MeshWobbleMaterial, OrbitControls } from "drei";
-import { useSpring, a } from "react-spring/three";
-import * as THREE from 'three';
-
-// soft Shadows
-softShadows();
-
-const SpinningMesh = ({ position, color, speed, args }) => {
-    //ref to target the mesh
-    const mesh = useRef();
-    
-  
-    //useFrame allows us to re-render/update rotation on each frame
-    
-    useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01));
-  
-    //Basic expand state
-    const [expand, setExpand] = useState(false);
-    // React spring expand animation
-    const props = useSpring({
-      scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
-    });
-
-    return (<>
-      <a.mesh
-        position={position}
-        ref={mesh}
-        onClick={() => setExpand(!expand)}
-        scale={props.scale}
-        castShadow>
-        <boxBufferGeometry attach='geometry' args={args} />
-        <MeshWobbleMaterial
-          color={color}
-          speed={speed}
-          attach='material'
-          factor={0.6}
-        />
-      </a.mesh>
-        </>
-    );
-  };
+import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
+import { Chart } from "react-google-charts";
 
 class CanvasComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.myRef = React.createRef();
+        // this.getAnswers = this.getAnswers.bind(this);
+        this.getData = this.getData.bind(this);
+    } 
 
+    componentDidMount() {
+        this.getData();
+    }
+
+    componentDidUpdate() {
+        this.getData();
+    }
+
+    // {companiesCollecting: ["5fc69a8dbb2f3c7c35280518"], _id: "5fc7c6923d5527f60a3212c0", class: "Email addresses", __v: 1}
+        // top level: [Big Tech, null, 0, 0]
+        // next : [question name, Big Tech, size + 1 for every answer, 0]
+        // bottom : [dataclass name, question, size + 1 for every answer, size + 1 for every answer]
+
+    getData() {
+        const questions = this.props.questions;
+        const dataclasses = this.props.dataclass;
+        const questionsAnswered = this.props.answers;
+        
+        if (Object.keys(questions).length === 0 || Object.keys(dataclasses).length === 0) return null;
+        
+        
+        const objData = {
+            'columns': [
+                'Name',
+                'Parent',
+                'Number of classes (size)',
+                'size as related to color'
+            ],
+            'parent': ['Big Tech', null, 0, 0]
+        }
+
+        questionsAnswered.forEach(id => {
+            let answerid = id;
+            objData[questions[id].question] = [
+                questions[id].question, 
+                'Big Tech',
+                1 + questions[id].dataclassCollection.length,
+                1 + questions[id].dataclassCollection.length
+            ]
+            questions[id].dataclassCollection.forEach(id => {
+                objData[dataclasses[id].class] = [
+                    dataclasses[id].class, 
+                    questions[answerid].question, 
+                    1 + dataclasses[id].companiesCollecting.length,
+                    1 + dataclasses[id].companiesCollecting.length 
+                ]
+            })
+        })
+        
+        return Object.values(objData)
+    }
+        
+        
 
     render() {
-        const points = this.props.answers.map((answer, index) => {
-            debugger;
+        const { answers } = this.props
+        if (answers.length === 0) {
+                return null
+            } else {
             return (
-                <SpinningMesh key={index} position={[-2, index * 2, -5]} color='pink' speed={6} />
-            )
-            
-        }, this)
-
-
-        return (
-            <div>
-                Canvas Component
-                <>
-                <Canvas
-                    colorManagement
-                    shadowMap
-                    camera={{ position: [-5, 2, 10], fov: 60 }}>
-                    {/* This light makes things look pretty */}
-                    <ambientLight intensity={0.3} />
-                    {/* Our main source of light, also casting our shadow */}
-                    <directionalLight
-                    castShadow
-                    position={[0, 10, 0]}
-                    intensity={1.5}
-                    shadow-mapSize-width={1024}
-                    shadow-mapSize-height={1024}
-                    shadow-camera-far={50}
-                    shadow-camera-left={-10}
-                    shadow-camera-right={10}
-                    shadow-camera-top={10}
-                    shadow-camera-bottom={-10}
+    
+                <div className="canvas_container" ref="myDiv">    
+                    <Chart
+                        width={'800px'}
+                        height={'500px'}
+                        chartType="TreeMap"
+                        loader={<div>Loading Chart</div>}
+                        
+                        data={this.getData()}
+                        options={{
+                            highlightOnMouseOver: true,
+                            maxDepth: 1,
+                            maxPostDepth: 2,
+                            // minHighlightColor: '#8c6bb1',
+                            // midHighlightColor: '#9ebcda',
+                            // maxHighlightColor: '#edf8fb',
+                            minColor: '#f00',
+                            midColor: '#ddd',
+                            maxColor: '#0d0',
+                            headerHeight: 15,
+                            fontColor: 'black',
+                            showScale: true,
+                        }}
+                        rootProps={{ 'data-testid': '1' }}
                     />
-                    {/* A light to help illumnate the spinning boxes */}
-                    <pointLight position={[-10, 0, -20]} intensity={0.5} />
-                    <pointLight position={[0, -10, 0]} intensity={1.5} />
-                    <group>
-                    {/* This mesh is the plane (The floor) */}
-                    <mesh
-                        rotation={[-Math.PI / 2, 0, 0]}
-                        position={[0, -3, 0]}
-                        receiveShadow>
-                        <planeBufferGeometry attach='geometry' args={[100, 100]} />
-                        <shadowMaterial attach='material' opacity={0.3} />
-                    </mesh>
-                        {points}
-                    
-                    </group>
-                    {/* Allows us to move the canvas around for different prespectives */}
-                    <OrbitControls />
-                </Canvas>
-                </>
-            </div>
-        )
+                </div>
+            )   
+        }   
     }
 }
 
