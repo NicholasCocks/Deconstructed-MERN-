@@ -2,14 +2,15 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import TeamMembers from '../team_members/team_members';
+import QuestionForm from '../questions_form/questions_form_container';
 // import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { modalOpen: false }
+        this.state = { modalOpen: false, theme: false }
     
         this.handleClickLocation = this.handleClickLocation.bind(this);
 
@@ -25,7 +26,6 @@ class NavBar extends React.Component {
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClickLocation);
     }
-    
 
     logoutUser(e) {
         e.preventDefault();
@@ -54,6 +54,16 @@ class NavBar extends React.Component {
           } else {
             this.setState({modalOpen: false})
          }
+    }
+
+    replaceTheme = () => {
+        if (!this.state.theme) {
+            document.getElementById('app_container').className = "dark-theme"
+            this.setState({modalOpen: this.state.modalOpen, theme: !this.state.theme})
+        } else {
+            document.getElementById('app_container').className = "light-theme"
+            this.setState({modalOpen: this.state.modalOpen, theme: !this.state.theme})
+        }
     }
 
     // Selectively render links dependent on whether the user is logged in
@@ -88,19 +98,30 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div className="nav_bar_container" >
-                <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
-                <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
-                    <FontAwesomeIcon className="question_form_icon" icon={faGithub} className="modal modalhover"/>
-                </a> 
-                <div ref={node => this.node = node}>
-                    <div ref={svgmodal => this.svgmodal = svgmodal} className="modaldiv">
-                    <FontAwesomeIcon icon={faUsers} className={this.state.modalOpen ? 'modal modalactive' : 'modal modalhover'}/>
+            <>
+            <div id="app_container" className="light-theme">
+                <div className="nav_bar_container" >
+                    <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
+                    <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank">
+                        <FontAwesomeIcon className="question_form_icon" icon={faGithub} className="modal modalhover"/>
+                    </a> 
+                    <div ref={node => this.node = node}>
+                        <div ref={svgmodal => this.svgmodal = svgmodal} className="modaldiv">
+                        <FontAwesomeIcon icon={faUsers} className={this.state.modalOpen ? 'modal modalactive' : 'modal modalhover'}/>
+                        </div>
+                        {this.modal()}
                     </div>
-                    {this.modal()}
+                    <div> 
+                        <FontAwesomeIcon icon={this.state.theme ? faMoon : faSun} />
+                        <input type="checkbox" id="toggle" class="checkbox" onChange={this.replaceTheme} />  
+                        <label for="toggle" class="switch"></label>
+                    </div>
+                    {/* <button onClick={this.replaceTheme} >Change theme</button> */}
+                    {this.getLinks()}
                 </div>
-                {this.getLinks()}
+                <QuestionForm />
             </div>
+            </>
         );
     }
 }

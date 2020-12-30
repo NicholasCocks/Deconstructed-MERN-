@@ -11,10 +11,12 @@
 @import './components/team_members.css';
 @import './components/about_section.css';
 
-.app_container {
+#app_container {
     display: flex;
     justify-content: center;
     height: 100vh;
+    transition: all .5s ease;
+    background-color: var(--dark-blue);
 }
 
 ::-webkit-scrollbar {

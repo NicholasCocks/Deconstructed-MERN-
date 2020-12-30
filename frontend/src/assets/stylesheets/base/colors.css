@@ -1,8 +1,16 @@
-:root {
+.light-theme {
     --lightest-gray: #f7f7f5;
     --dark-blue: white;
     --highlight: black;
     --hover-color: rgba(211, 211, 211, 0.363);
-    --active-color: rgba(23, 33, 54, 0.308);
+    --active-color: rgba(23, 33, 54, 0.2);
+}
+
+.dark-theme {
+    --lightest-gray: #f7f7f5;
+    --dark-blue: rgb(23, 33, 54);
+    --highlight: wheat;
+    --hover-color: rgba(211, 211, 211, 0.363);
+    --active-color: rgba(211, 211, 211, 0.5);
 }
 

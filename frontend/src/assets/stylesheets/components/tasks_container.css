@@ -92,6 +92,10 @@
     padding: 3px;
 }
 
+.task_item_container h1 {
+    font-size: large;
+}
+
 .task_item_header {
     display: flex;
     align-items: center;

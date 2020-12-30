@@ -7,16 +7,10 @@ class MainPage extends React.Component {
   render() {
     return (
       <>
-      <NavBarContainer />
-      <div className="app_container">
-        <QuestionForm />
-      </div>
+        <NavBarContainer />
       </>
     );
   }
 }
-// canvas 
-//task container
-
 
 export default MainPage;
