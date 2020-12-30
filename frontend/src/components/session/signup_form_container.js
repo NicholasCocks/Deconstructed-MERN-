@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from "react-redux";
 import { signup, loginDemoUser } from "../../actions/session_actions";
 import {  withRouter, Link } from "react-router-dom";

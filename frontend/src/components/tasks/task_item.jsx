@@ -28,7 +28,7 @@ class TaskItem extends React.Component{
                         <FontAwesomeIcon icon={faCaretDown}  transform={{ rotate: rotate }}/>
                         <p>{this.props.question.charAt(0).toUpperCase() + this.props.question.slice(1)}</p>
                     </div>
-                    <FontAwesomeIcon color={this.props.task.isComplete ? "green" : "white"} icon={this.props.task.isComplete ? faCheckCircle : faCircle} onClick={() => this.completeTask()}/>
+                    <FontAwesomeIcon color={this.props.task.isComplete ? "green" : "lightgray"} icon={this.props.task.isComplete ? faCheckCircle : faCircle} onClick={() => this.completeTask()}/>
                 </div>
                 <div className={openClass}>
                     <a href={this.props.url} target="_blank" >More Info</a>
