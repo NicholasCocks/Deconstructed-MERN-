@@ -29,7 +29,6 @@ class CanvasComponent extends React.Component {
         
         if (Object.keys(questions).length === 0 || Object.keys(dataclasses).length === 0) return null;
         
-        
         const objData = {
             'columns': [
                 'Name',
@@ -48,9 +47,10 @@ class CanvasComponent extends React.Component {
                 1 + questions[id].dataclassCollection.length,
                 1 + questions[id].dataclassCollection.length
             ]
+            debugger
             questions[id].dataclassCollection.forEach(id => {
-                objData[dataclasses[id].class] = [
-                    dataclasses[id].class, 
+                objData[[dataclasses[id].class, answerid]] = [
+                    `${dataclasses[id].class} (${questions[answerid].question})`, 
                     questions[answerid].question, 
                     1 + dataclasses[id].companiesCollecting.length,
                     1 + dataclasses[id].companiesCollecting.length 
@@ -82,12 +82,12 @@ class CanvasComponent extends React.Component {
                             highlightOnMouseOver: true,
                             maxDepth: 1,
                             maxPostDepth: 2,
-                            // minHighlightColor: '#8c6bb1',
-                            // midHighlightColor: '#9ebcda',
-                            // maxHighlightColor: '#edf8fb',
-                            minColor: '#f00',
-                            midColor: '#ddd',
-                            maxColor: '#0d0',
+                            minHighlightColor: '#8c6bb1',
+                            midHighlightColor: '#9ebcda',
+                            maxHighlightColor: '#edf8fb',
+                            minColor: '#fff',
+                            midColor: '#',
+                            maxColor: '#17215',
                             headerHeight: 15,
                             fontColor: 'black',
                             showScale: true,
