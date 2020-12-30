@@ -2,6 +2,7 @@ import React from 'react';
 import TaskItemContainer from './task_item_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import AboutSection from '../about_section/about_section';
 
 class Tasks extends React.Component {
     constructor(props) {

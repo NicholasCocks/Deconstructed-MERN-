@@ -4,6 +4,7 @@
     align-items: center;
     position: absolute;
     color: black;
+    background-color: white;
     top: 80px;
     left: 10px;
     width: 170px;
@@ -11,6 +12,7 @@
     max-height: 80%;
     padding: 5px;
     border-radius: 7px;
+    z-index: 1;
     overflow-y: scroll;
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */

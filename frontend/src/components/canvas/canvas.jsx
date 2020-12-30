@@ -48,7 +48,6 @@ class CanvasComponent extends React.Component {
                 1 + questions[id].dataclassCollection.length,
                 1 + questions[id].dataclassCollection.length
             ]
-            debugger
             questions[id].dataclassCollection.forEach(id => {
                 objData[[dataclasses[id].class, answerid]] = [
                     `${dataclasses[id].class} (${questions[answerid].question})`, 
@@ -73,8 +72,8 @@ class CanvasComponent extends React.Component {
     
                 <div className="canvas_container" ref="myDiv">    
                     <Chart
-                        width={'800px'}
-                        height={'500px'}
+                        width={'100%'}
+                        height={'100%'}
                         chartType="TreeMap"
                         loader={<div>Loading Chart</div>}
                         
