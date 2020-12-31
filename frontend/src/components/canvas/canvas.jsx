@@ -18,10 +18,7 @@ class CanvasComponent extends React.Component {
         this.getData();
     }
 
-    // {companiesCollecting: ["5fc69a8dbb2f3c7c35280518"], _id: "5fc7c6923d5527f60a3212c0", class: "Email addresses", __v: 1}
-        // top level: [Big Tech, null, 0, 0]
-        // next : [question name, Big Tech, size + 1 for every answer, 0]
-        // bottom : [dataclass name, question, size + 1 for every answer, size + 1 for every answer]
+    
 
     getData() {
         const questions = this.props.questions;
@@ -61,6 +58,10 @@ class CanvasComponent extends React.Component {
         return Object.values(objData)
     }
         
+    showStaticTooltip() {
+        return '<div style="background:#fd9; padding:10px; border-style:solid">' +
+        'Read more about how this data is sourced <a href="https://haveibeenpwned.com/API/v3" target="_blank" style="color:blue; text-decoration: underline">here</a>.</div>';
+    }
         
 
     render() {
@@ -85,14 +86,17 @@ class CanvasComponent extends React.Component {
                             minHighlightColor: '#8c6bb1',
                             midHighlightColor: '#9ebcda',
                             maxHighlightColor: '#edf8fb',
-                            minColor: '#fff',
-                            midColor: '#e1e1e1',
-                            maxColor: '#17215',
-                            headerHeight: 15,
+                            minColor: '#f5deb3',
+                            midColor: '#ce80d1',
+                            maxColor: '#003f96',
+                            headerHeight: 25,
                             fontColor: 'black',
-                            showScale: true,
+                            fontSize: 14,
+                            fontFamily: 'Arial',
+                            showScale: true, 
+                            generateTooltip: this.showStaticTooltip,
                         }}
-                        rootProps={{ 'data-testid': '1' }}
+                        
                     />
                 </div>
             )   

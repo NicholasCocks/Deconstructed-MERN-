@@ -8,7 +8,7 @@ export default function AboutSection(props) {
     return (
     <div className={modal ? "about_section_container about_open" : "about_section_container"}>
         <FontAwesomeIcon icon={faAngleLeft} onClick={() => openModal(!modal)} className={modal ? "task_arrow task_arrow_expanded" : "task_arrow task_arrow_collapse"} />
-        <p>About Section</p>
+        <p className="about_section_title">About </p>
     </div>
     )
 }

@@ -24,3 +24,12 @@
 .about_open {
     width: 40vw;
 } 
+
+.about_section_title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -17px;
+    background-color: var(--dark-blue);
+    width: 60px;
+}

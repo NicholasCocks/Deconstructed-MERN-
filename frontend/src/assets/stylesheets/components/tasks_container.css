@@ -54,6 +54,7 @@
     margin-right: auto;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .task_arrow:hover {
@@ -87,7 +88,7 @@
 
 .task_item_container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-top: 1px solid white;
+    border-top: 1px solid var(--hover-color);
     margin-right: 3px;
     padding: 3px;
 }
