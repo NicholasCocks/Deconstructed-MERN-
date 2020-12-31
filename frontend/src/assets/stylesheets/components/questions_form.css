@@ -9,12 +9,13 @@
     border: 1px solid var(--highlight);
     top: 80px;
     left: 10px;
-    width: 180px;
+    width: 185px;
     height: 500px;
     max-height: 100%;
     margin-bottom: 15px;
-    padding: 2px;
+    padding: 5px;
     border-radius: 7px;
+    box-sizing: border-box;
     z-index: 1;
     transition: all .5s ease;
 
