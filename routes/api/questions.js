@@ -39,7 +39,6 @@ router.patch('/seed', (req, res) => {
     //     })
 })
 
-
 router.get('/test', (req, res) => {
      
     res.json({
@@ -73,7 +72,7 @@ router.post('/new', (req, res) => {
                 errors.question = 'Question already exists'
                 return res.status(400).json(errors)
             } else {
-                const newQuestion = new Question({ question: toLower })
+                const newQuestion = new Question({ question: toLower, url: req.body.url })
                 newQuestion.save()
                     .then(question => res.json(question))
                     .catch(error => console.log(error))
@@ -92,6 +91,7 @@ router.patch('/update', (req, res) => {
         .then(question => {
             if (question) {
                 question.dataclassCollection = req.body.class
+                question.url = req.body.url
                 question.save()
                     .then(question => res.json(question))
                     .catch(error => console.log(error))

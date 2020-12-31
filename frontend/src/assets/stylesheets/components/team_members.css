@@ -13,6 +13,19 @@
     color: wheat;
     font-size: large;
     z-index: 2;
+    transition: all .5s ease;
+    animation: slide-down 0.4s ease;
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .team_members_container li {
@@ -61,9 +74,9 @@
 }
 
 .modalhover:hover {
-    background-color: lightgray;
+    background-color: var(--hover-color);
 }
 
 .modalactive {
-    background-color: rgba(23, 33, 54, 0.308);
+    background-color: var(--active-color)
 }

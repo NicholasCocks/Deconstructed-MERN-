@@ -7,9 +7,9 @@ const questions = [
     "Twitter",
     "Amazon",
     "Microsoft",
-    "Samsung",
+    "Snapchat",
     "LinkedIn",
     "Tik/Tok",
-    "Netflix",
+    "Spotify",
 ]
 

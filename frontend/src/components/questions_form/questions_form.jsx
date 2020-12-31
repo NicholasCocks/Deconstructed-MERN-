@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasContainer from '../canvas/canvas_container';
 import TasksContainer from '../tasks/tasks_container';
+import AboutSection from '../about_section/about_section';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Brand from '@fortawesome/free-brands-svg-icons';
 
@@ -87,18 +88,19 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
-        return (
-            <div key={index} className="questions_form_item">
-                <button 
-                value={question._id} 
-                onClick={this.handleClick} 
-                className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
-                    <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
-                    {` ${title}`}
-                </button>
-            </div>
-        )})
+            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1).toLowerCase()
+            return (
+                <div key={index} className="questions_form_item">
+                    <button 
+                    value={question._id} 
+                    onClick={this.handleClick} 
+                    className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
+                        <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
+                        {` ${question.question}`}
+                    </button>
+                </div>
+            )
+        })
 
         return (
             <>
@@ -110,11 +112,14 @@ class QuestionsForm extends React.Component {
                             placeholder="email"
                             onChange={this.handleBreachInput}
                         />
-                        {checkboxes}
                     </ul>
+                    {checkboxes}
                 </form>
                 {/* <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} /> */}
-                <TasksContainer />
+                <div className="right_sidebar">
+                    <AboutSection />
+                    <TasksContainer />
+                </div>
             </>
          )
     }

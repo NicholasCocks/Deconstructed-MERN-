@@ -10,7 +10,7 @@
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    color: black;
+    color: var(--highlight);
     font-size: 24px;
     font-family: var(--font-arial);
     z-index: 1;
@@ -26,6 +26,49 @@
     display: flex;
     align-items: center;
 }
+
+.nav_bar_container h1:hover {
+    color: var(--active-color);
+    cursor: pointer;
+}
+
+.slider {
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch {
+    margin-left: 5px;
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+  .switch::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius:50%;
+    background-color: white;
+    top: 1px;
+    left: 1px;
+    transition: all 0.3s;
+  }
+  
+  .checkbox:checked + .switch::after {
+    left : 20px;
+  }
+  .checkbox:checked + .switch {
+    background-color: var(--highlight);
+  }
+  .checkbox {
+    display : none;
+  }
 
 .nav_bar_buttons_container {
     display: flex;
@@ -44,9 +87,17 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    background-color: black;
-    color: white;
+    background-color: var(--highlight);
+    color: var(--dark-blue);
     border-radius: 5px;
     padding: 5px;
     width: 70px;
+    transition: all .2s ease-in;
+    border: 1px solid var(--highlight);
+}
+
+.nav_bar_login:hover {
+    /* background-color: var(--dark-blue); */
+    color: var(--highlight);
+    box-shadow: inset 6.5em 0 0 0 var(--dark-blue);
 }
