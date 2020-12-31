@@ -9,12 +9,13 @@
     border: 1px solid var(--highlight);
     top: 80px;
     left: 10px;
-    width: 180px;
+    width: 185px;
     height: 500px;
     max-height: 100%;
     margin-bottom: 15px;
-    padding: 2px;
+    padding: 5px;
     border-radius: 7px;
+    box-sizing: border-box;
     z-index: 1;
     transition: all .5s ease;
 
@@ -44,7 +45,7 @@
 .questions_form_item > button {
     padding: 5px;
     margin: 3px;
-    width: 123px;
+    width: 100%;
 }
 
 .questions_form_item svg {
@@ -65,17 +66,18 @@
 }
 
 .questions_form-title {
-
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
     padding: 4px;
-    margin-top: -18px;
+    margin-top: -22px;
+    font-weight: 200;
     background-color: var(--dark-blue);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .questions_form-ul {
+    width: 100%;
     overflow-y: scroll;
 }
 

@@ -30,7 +30,7 @@ class Tasks extends React.Component {
 
         return (
             <div className={this.state.open ? "tasks_container task_is_expanded" : "tasks_container "}>
-                <p className="task_list_title">TASKS</p>
+                <p className="task_list_title">Todo</p>
                 <FontAwesomeIcon icon={faAngleLeft} onClick={this.onToggle} className={this.state.open ? "task_arrow task_arrow_expanded" : "task_arrow task_arrow_collapse"} />
                 <ul className="task_list">
                     {indexItems}

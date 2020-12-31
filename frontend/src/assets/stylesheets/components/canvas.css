@@ -6,8 +6,9 @@
 }
 
 .canvas_container {
+    font-family: var(--font-arial);
     margin-top: 50px;
-    margin-bottom: 17px;
+    margin-bottom: 15px;
     margin-left: 215px;
     margin-right: 215px;
     min-height: 80vh;
@@ -15,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .tooltip {

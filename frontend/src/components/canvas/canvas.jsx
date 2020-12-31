@@ -85,9 +85,9 @@ class CanvasComponent extends React.Component {
                             minHighlightColor: '#8c6bb1',
                             midHighlightColor: '#9ebcda',
                             maxHighlightColor: '#edf8fb',
-                            minColor: '#f5deb3',
-                            midColor: '#ce80d1',
-                            maxColor: '#003f96',
+                            minColor: '#5e61ff',
+                            midColor: '#f5deb3',
+                            maxColor: '#ff5e5e',
                             headerHeight: 25,
                             fontColor: 'black',
                             fontSize: 14,
@@ -97,6 +97,7 @@ class CanvasComponent extends React.Component {
                         }}
                         
                     />
+                    <p>Right click on the chart to go back to the previous screen.</p>
                 </div>
             )   
         }   
