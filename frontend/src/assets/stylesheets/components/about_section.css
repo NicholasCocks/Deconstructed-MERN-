@@ -13,7 +13,7 @@
     padding: 5px;
     box-sizing: border-box;
     transition: all .5s ease;
-    /* overflow: scroll; */
+    overflow: scroll;
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -26,11 +26,35 @@
     width: 40vw;
 } 
 
-.about_section_title {
+.about_title {
+    margin: 0px auto 5px auto;
     display: flex;
     justify-content: center;
+    font-style: italic;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: -17px;
-    background-color: var(--dark-blue);
-    width: 60px;
+    border-bottom: 1px solid lightgray;
+}
+
+.about_desc {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+
+.about_howto_title {
+    margin: 0px auto 5px auto;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 1px solid lightgray;
+}
+
+.howto_list {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.howto_list li {
+    list-style: armenian;
+    padding: 2px;
 }
