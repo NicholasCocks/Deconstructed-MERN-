@@ -5,16 +5,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import AboutSection from '../about_section/about_section';
 
 class Tasks extends React.Component {
-<<<<<<< HEAD
-    constructor(props) {
-        super(props)
-        this.state = {open: false}
-    }
-
-    componentDidMount = () => { 
-=======
     componentDidMount() { 
->>>>>>> 7cc6e59d72fa3bf8151d3da1d3097388c7e8d143
         const { fetchAllTasks, user } = this.props
         if (user._id) fetchAllTasks(user._id)
     }
