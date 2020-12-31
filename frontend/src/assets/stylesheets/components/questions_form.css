@@ -45,10 +45,6 @@
     padding: 5px;
     margin: 3px;
     width: 123px;
-    -moz-transition: all .1s ease-in;
-    -o-transition: all .1s ease-in;
-    -webkit-transition: all .1s ease-in;
-    transition: all .2s ease-in;
 }
 
 .questions_form_item svg {
@@ -72,11 +68,10 @@
 
     display: flex;
     justify-content: center;
-    width: 131px;
     margin-bottom: 5px;
     padding: 4px;
-    
-    border-bottom: 1px solid var(--highlight);
+    margin-top: -18px;
+    background-color: var(--dark-blue);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

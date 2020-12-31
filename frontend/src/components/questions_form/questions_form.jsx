@@ -37,7 +37,10 @@ class QuestionsForm extends React.Component {
             return
         } else if (Object.keys(user).length !== Object.keys(prevProps.user).length) {
             if (Object.keys(user).length === 0) {
-                this.state = {};
+                Object.keys(this.state).forEach(questionId => {
+                    this.state[questionId] = false;
+                })
+                this.setState({});
             } else {
                 Object.keys(this.state).forEach((key) => {
                     this.state[key] = true
@@ -93,7 +96,7 @@ class QuestionsForm extends React.Component {
         return (
             <>
                 <form id="questions_form">
-                    <p className="questions_form-title"><b>Accounts</b></p>
+                    <p className="questions_form-title">ACCOUNTS</p>
                     <ul className="questions_form-ul">
                         {checkboxes}
                     </ul>

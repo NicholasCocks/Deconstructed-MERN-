@@ -19,8 +19,6 @@ export default function AboutSection(props) {
     // Right click on the chart to go back to the previous screen!
 
     // Create an account and log in to gain access to a task list, providing you links to each company's privacy settings along with company-specific instructions on how to protect your data.
-
-
     return (
     <div className={modal ? "about_section_container about_open" : "about_section_container"}>
         <FontAwesomeIcon icon={faAngleLeft} onClick={() => openModal(!modal)} className={modal ? "task_arrow task_arrow_expanded" : "task_arrow task_arrow_collapse"} />
