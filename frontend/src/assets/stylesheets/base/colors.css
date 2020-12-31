@@ -9,7 +9,7 @@
 .dark-theme {
     --lightest-gray: #f7f7f5;
     --dark-blue: rgb(23, 33, 54);
-    --highlight: wheat;
+    --highlight: #f5deb3;
     --hover-color: rgba(211, 211, 211, 0.363);
     --active-color: rgba(211, 211, 211, 0.5);
 }

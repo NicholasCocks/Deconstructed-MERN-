@@ -29,7 +29,6 @@
 
 .nav_bar_container h1:hover {
     color: var(--active-color);
-    cursor: pointer;
 }
 
 .slider {
@@ -47,6 +46,7 @@
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     transition: all 0.3s;
+    cursor: pointer;
   }
   .switch::after {
     content: '';

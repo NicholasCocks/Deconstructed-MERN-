@@ -7,7 +7,7 @@
 
 .canvas_container {
     margin-top: 50px;
-    margin-bottom: 5px;
+    margin-bottom: 17px;
     margin-left: 215px;
     margin-right: 215px;
     min-height: 80vh;
@@ -17,4 +17,12 @@
     align-items: center;
 }
 
-
+.tooltip {
+    background:#fd9; 
+    padding:10px; 
+    border-style: solid;
+}
+.tooltip a {
+    text-decoration: underline;
+    color: blue;
+}
