@@ -86,7 +86,7 @@ class CanvasComponent extends React.Component {
                             midHighlightColor: '#9ebcda',
                             maxHighlightColor: '#edf8fb',
                             minColor: '#fff',
-                            midColor: '#',
+                            midColor: '#e1e1e1',
                             maxColor: '#17215',
                             headerHeight: 15,
                             fontColor: 'black',

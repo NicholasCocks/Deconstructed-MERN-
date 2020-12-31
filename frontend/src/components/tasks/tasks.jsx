@@ -23,7 +23,7 @@ class Tasks extends React.Component {
         const indexItems = tasks.map((task, index) => {
                 const { url, question } = questions[task.questionId]
                 return (
-                    <TaskItemContainer key={index} question={question} task={task} url={url} />
+                    <TaskItemContainer key={index} question={questions[task.questionId]} task={task} url={url} />
                 )
             })
         console.log(this.state.open)

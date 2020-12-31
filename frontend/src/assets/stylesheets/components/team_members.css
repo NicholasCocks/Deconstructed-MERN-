@@ -74,9 +74,9 @@
 }
 
 .modalhover:hover {
-    background-color: lightgray;
+    background-color: var(--hover-color);
 }
 
 .modalactive {
-    background-color: rgba(23, 33, 54, 0.308);
+    background-color: var(--active-color)
 }

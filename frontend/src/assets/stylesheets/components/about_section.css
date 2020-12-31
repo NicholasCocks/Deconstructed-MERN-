@@ -1,9 +1,10 @@
 .about_section_container {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--dark-blue);
+    color: var(--highlight);
     position: relative;
     float: right;
     margin-bottom: auto;
-    border: 1px solid black;
+    border: 1px solid var(--highlight);
     border-radius: 5px;
     width: 200px;
     height: 400px;
@@ -22,18 +23,5 @@
 }
 
 .about_open {
-    width: 500px;
+    width: 40vw;
 } 
-
-.about_title {
-    display: flex;
-    justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: -17px;
-    background-color: white;
-    width: 60px;
-    position: absolute;
-    top: 9px;
-    right: 65px;
-    
-}

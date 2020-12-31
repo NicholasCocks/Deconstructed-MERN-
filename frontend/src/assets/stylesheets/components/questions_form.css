@@ -2,18 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: absolute;
-    color: black;
-    background-color: white;
+    color: var(--highlight);
+    background-color: var(--dark-blue);
+    border: 1px solid var(--highlight);
     top: 80px;
     left: 10px;
-    width: 170px;
+    width: 180px;
     height: 500px;
-    max-height: 80%;
-    padding: 5px;
+    max-height: 100%;
+    margin-bottom: 15px;
+    padding: 2px;
     border-radius: 7px;
     z-index: 1;
-    overflow-y: scroll;
+    transition: all .5s ease;
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -38,16 +41,14 @@
     font-family: var(--font-arial);
 }
 
-
 .questions_form_item > button {
-    padding: 10px;
-    border-radius: 7px; 
+    padding: 5px;
     margin: 3px;
     width: 123px;
     -moz-transition: all .1s ease-in;
     -o-transition: all .1s ease-in;
     -webkit-transition: all .1s ease-in;
-    transition: all .1s ease-in;
+    transition: all .2s ease-in;
 }
 
 .questions_form_item svg {
@@ -55,14 +56,12 @@
 }
 
 .questions_form_button_passive:hover {
-    background-color: #17215a1a;
-    
+    background-color: var(--hover-color);
 }
 
 .questions_form_button_active {
-    background-color: rgba(23, 33, 90, 0.3);;
+    background-color: var(--active-color);
     width: 100%;
-    border-radius: 5px; 
     padding-left: 4px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -74,11 +73,15 @@
     display: flex;
     justify-content: center;
     width: 131px;
-    margin-left: 8px;
+    margin-bottom: 5px;
     padding: 4px;
     
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--highlight);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.questions_form-ul {
+    overflow-y: scroll;
 }
 
 

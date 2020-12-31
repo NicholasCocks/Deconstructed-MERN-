@@ -92,7 +92,7 @@ class QuestionsForm extends React.Component {
             <>
                 <form id="questions_form">
                     <p className="questions_form-title"><b>Accounts</b></p>
-                    <ul className="question_form-ul">
+                    <ul className="questions_form-ul">
                         {checkboxes}
                     </ul>
                 </form>
