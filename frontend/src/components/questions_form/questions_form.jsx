@@ -64,13 +64,15 @@ class QuestionsForm extends React.Component {
 
     handleClick(e) {
         const { value } = e.currentTarget
-        const { user, tasks, createTask, deleteTask } = this.props
+        const { user, tasks, loggedIn, createTask, deleteTask } = this.props
         if (this.state[value]) {
             this.setState({ [value]: false });
+            if (!loggedIn) return;
             const taskIds = Object.keys(tasks)
             taskIds.forEach(taskId => tasks[taskId].questionId === value ? deleteTask(taskId) : null ) 
         } else {
             this.setState({ [value]: true });
+            if (!loggedIn) return;
             createTask({ userId: user._id, questionId: value })
         }
     }
@@ -78,15 +80,15 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
+            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1).toLowerCase()
         return (
             <div key={index} className="questions_form_item">
                 <button 
                 value={question._id} 
                 onClick={this.handleClick} 
                 className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
-                    <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}`]} />
-                    {` ${title}`}
+                    <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
+                    {` ${question.question}`}
                 </button>
             </div>
         )})

@@ -67,3 +67,8 @@
     background-color: var(--dark-blue);
     width: 60px;
 }
+
+.about_innerul li {
+    padding-left: 15px;
+    list-style: none;
+}

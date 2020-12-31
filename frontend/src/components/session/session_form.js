@@ -83,7 +83,7 @@ class SignupForm extends React.Component {
     return (
       <div className="signup_form_container">
         <Link to="/" ><h1 className="signup_title">Deconstructed</h1></Link>
-        <img src={logocropped} className="signup_picture"/>
+        <img src={logocropped} className="signup_picture" alt="background-img"/>
         <form onSubmit={this.handleSubmit} onClick={(e) => e.stopPropagation() } className="signup_form">
           {this.renderErrors()}
             <input

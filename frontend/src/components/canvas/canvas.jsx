@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import Segoe from '../../assets/fonts json/Segoe UI_Regular.json';
+import React from "react";
 import { Chart } from "react-google-charts";
 
 class CanvasComponent extends React.Component {
