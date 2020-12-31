@@ -25,31 +25,35 @@
 
 .about_open {
     width: 40vw;
+    text-indent: 50px;
 } 
 
 .about_title {
     margin: 0px;
     margin-top: -45px;
     margin-bottom: 20px;
-    margin-right: 70px;
+    margin-right: 63px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     font-weight: 200;
     background-color: var(--dark-blue);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 50px;
+    padding-right: 7px;
 }
 
 .about_body {
     box-sizing: border-box;
     overflow-y: scroll;
     max-height: 350px;
+    
 }
 
 .about_desc {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2px;
     margin-bottom: 10px;
+    
 }
 
 .about_howto_title {
@@ -63,9 +67,14 @@
 
 .howto_list {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style-position: inside;
+    list-style-type: decimal;
+    text-indent: 0px;
+    /* display:list-item; */
 }
 
 .howto_list li {
-    list-style: armenian;
+    /* list-style-type: circle; */
     padding: 2px;
+    margin-bottom: 10px;
 }
