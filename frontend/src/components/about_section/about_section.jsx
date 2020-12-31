@@ -25,7 +25,7 @@ export default function AboutSection(props) {
     <div className={modal ? "about_section_container about_open" : "about_section_container"}>
         <FontAwesomeIcon icon={faAngleLeft} onClick={() => openModal(!modal)} className={modal ? "task_arrow task_arrow_expanded" : "task_arrow task_arrow_collapse"} />
         <p className="about_title">About</p>
-        <p><i> Deconstructed is a dynamic app to bring light to how much data is being collected from Big Tech companies we interact with daily.Nowadays with everything being online, it’s more important than ever to protect your data and privacy.We aim to let users engage with what data is being gathered on them and empowering them to take control of their data.This app was designed to be used anonymously, but with the added functionality of a curated task list for each logged in user.This task list provides detailed instructions on how to make their data more secure.</i></p>
+        <p className="about_desc"><i> Deconstructed is a dynamic app to bring light to how much data is being collected from Big Tech companies we interact with daily.Nowadays with everything being online, it’s more important than ever to protect your data and privacy.We aim to let users engage with what data is being gathered on them and empowering them to take control of their data.This app was designed to be used anonymously, but with the added functionality of a curated task list for each logged in user.This task list provides detailed instructions on how to make their data more secure.</i></p>
 
     </div>
     )
