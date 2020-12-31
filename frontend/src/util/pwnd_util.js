@@ -5,10 +5,10 @@ const hibpAPIKey = process.env.REACT_APP_HIBP_API_KEY
 // hibp-api-key: [your key]
 
 export const fetchBreaches = email => {
+    const url = `https://haveibeenpwned.com/api/v3/breachedaccount/${email}?truncateResponse=false`
     debugger
-    return axios.request({
-        url: `https://haveibeenpwned.com/api/v3/breachedaccount/${email}?truncateResponse=false`,
-        method: 'get',
+    return axios.get(url, {
+        type: "json",
         headers: {
             'hibp-api-key': hibpAPIKey,
             'Access-Control-Allow-Origin': '*',
