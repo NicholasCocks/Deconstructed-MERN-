@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasContainer from '../canvas/canvas_container';
 import TasksContainer from '../tasks/tasks_container';
+import AboutSection from '../about_section/about_section';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as Brand from '@fortawesome/free-brands-svg-icons';
 
@@ -91,13 +92,16 @@ class QuestionsForm extends React.Component {
             <>
                 <form id="questions_form">
                     <p className="questions_form-title"><b>Accounts</b></p>
-                    <ul className="question_form-ul">
-                        <input type="text" className="question_form_email" placeholder="email"/>
+                    <ul className="questions_form-ul">
                         {checkboxes}
                     </ul>
                 </form>
+                
                 <CanvasContainer answers={Object.keys(this.state).filter(key => this.state[key])} />
-                <TasksContainer />
+                <div className="right_sidebar">
+                    <AboutSection />
+                    <TasksContainer />
+                </div>
             </>
          )
     }

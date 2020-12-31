@@ -9,13 +9,14 @@
 @import './components/tasks_container.css';
 @import './components/splash.css';
 @import './components/team_members.css';
+@import './components/about_section.css';
 
-.canvas_container {
-    width: 100vw;
+#app_container {
+    display: flex;
+    justify-content: center;
     height: 100vh;
-    background-color: white;
-    /* background-image: url("https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    background-size: cover; */
+    transition: all .5s ease;
+    background-color: var(--dark-blue);
 }
 
 ::-webkit-scrollbar {
@@ -25,7 +26,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #f5f5f5;
+    background: var(--hover-color);
     border-radius: 10px;
 }
 
@@ -35,7 +36,7 @@
 }
 
  ::-webkit-scrollbar-thumb:hover {
-    background: #999;
+    background: var(--active-color);
 }
 
 @keyframes fadein {

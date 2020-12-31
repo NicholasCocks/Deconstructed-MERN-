@@ -7,10 +7,13 @@ import SignupFormContainer from './session/signup_form_container';
 import TeamMembers from './team_members/team_members'
 import MainPage from './main/main_page';
 import Splash from './splash/splash';
+import SeedContainer from './seed/seed_container';
+import Seed from './seed/seed';
 
 const App = () => (
           
                 <Switch>
+                        <Route path="/seed" component={SeedContainer} />
                         <AuthRoute path="/login" component={LoginFormContainer} />
                         <AuthRoute path="/signup" component={SignupFormContainer} />
                         <Route path="/members" component={TeamMembers} />
