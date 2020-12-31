@@ -48,11 +48,22 @@ export default function AboutSection(props) {
     )
 }
 
-//                 <li>Right click on the chart to go back to the previous screen!</li>
-//                 <li>Create an account and log in to gain access to a task list, providing you links to each company's privacy settings along with company-specific instructions on how to protect your data.</li>
-//             </ul>
-// >>>>>>> 2289550adf30eb1c0abe8dd3f6530c46a7e54876
-//     </div>
-//     )
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
