@@ -12,6 +12,7 @@
     padding: 5px;
     box-sizing: border-box;
     transition: all .5s ease;
+    /* overflow: scroll; */
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -23,3 +24,16 @@
 .about_open {
     width: 500px;
 } 
+
+.about_title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: -17px;
+    background-color: white;
+    width: 60px;
+    position: absolute;
+    top: 9px;
+    right: 65px;
+    
+}
