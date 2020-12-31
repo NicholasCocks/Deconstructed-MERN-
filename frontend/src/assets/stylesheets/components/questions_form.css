@@ -44,7 +44,7 @@
 .questions_form_item > button {
     padding: 5px;
     margin: 3px;
-    width: 123px;
+    width: 100%;
 }
 
 .questions_form_item svg {
@@ -65,17 +65,18 @@
 }
 
 .questions_form-title {
-
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
     padding: 4px;
-    margin-top: -18px;
+    margin-top: -20px;
+    font-weight: 200;
     background-color: var(--dark-blue);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .questions_form-ul {
+    width: 100%;
     overflow-y: scroll;
 }
 
