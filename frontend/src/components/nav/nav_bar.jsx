@@ -110,7 +110,7 @@ class NavBar extends React.Component {
                 </div>
                 <QuestionForm />
             </div>
-            </>
+            
         );
     }
 }
