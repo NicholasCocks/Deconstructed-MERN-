@@ -28,9 +28,8 @@ class TaskItem extends React.Component{
                     </div>
                     <FontAwesomeIcon color={this.props.task.isComplete ? "green" : "lightgray"} icon={this.props.task.isComplete ? faCheckCircle : faCircle} onClick={() => this.completeTask()}/>
                 </div>
-                <div className={this.state.open ? 'task_item task_item_open' : 'task_item'}>
-                    <a href={this.props.url} target="_blank" >Link.</a>
-                    <p>{this.props.question.instructions}</p>
+                <div className={openClass}>
+                    <a href={this.props.url} target="_blank" rel="noreferrer">More Info</a>
                 </div>
             </li>
         )

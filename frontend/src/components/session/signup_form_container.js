@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { signup, loginDemoUser } from "../../actions/session_actions";
-import {  withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SignupForm from "./session_form";
 
 const mapStateToProps = (state) => {

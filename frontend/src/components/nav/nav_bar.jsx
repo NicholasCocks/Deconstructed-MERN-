@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUsers, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import TeamMembers from '../team_members/team_members';
-import QuestionForm from '../questions_form/questions_form_container';
-// import './navbar.css'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -98,6 +96,7 @@ class NavBar extends React.Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <>
             <div id="app_container" className="light-theme">
                 <div className="nav_bar_container" >
@@ -115,6 +114,16 @@ class NavBar extends React.Component {
                         <FontAwesomeIcon icon={this.state.theme ? faMoon : faSun} />
                         <input type="checkbox" id="toggle" class="checkbox" onChange={this.replaceTheme} />  
                         <label for="toggle" class="switch"></label>
+=======
+            <div className="nav_bar_container" >
+                <Link to="/"><h1>DECONSTRUCTED</h1> </Link>
+                <a href="https://github.com/NicholasCocks/Deconstructed-MERN-" target="_blank" rel="noreferrer">
+                    <FontAwesomeIcon className="question_form_icon modal modalhover" icon={faGithub} />
+                </a> 
+                <div ref={node => this.node = node}>
+                    <div ref={svgmodal => this.svgmodal = svgmodal} className="modaldiv">
+                    <FontAwesomeIcon icon={faUsers} className={this.state.modalOpen ? 'modal modalactive' : 'modal modalhover'}/>
+>>>>>>> 7cc6e59d72fa3bf8151d3da1d3097388c7e8d143
                     </div>
                     {/* <button onClick={this.replaceTheme} >Change theme</button> */}
                     {this.getLinks()}
