@@ -77,7 +77,7 @@ class QuestionsForm extends React.Component {
 
     render() {
         const checkboxes = Object.values(this.props.questions).map((question, index) => {
-            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1)
+            const title = question.question.charAt(0).toUpperCase() + question.question.slice(1).toLowerCase()
         return (
             <div key={index} className="questions_form_item">
                 <button 
@@ -85,7 +85,7 @@ class QuestionsForm extends React.Component {
                 onClick={this.handleClick} 
                 className={this.state[question._id] ? "questions_form_button_active" : 'questions_form_button_passive'} >
                     <FontAwesomeIcon className="question_form_icon" icon={Brand[`fa${title}`]} />
-                    {` ${title}`}
+                    {` ${question.question}`}
                 </button>
             </div>
         )})
