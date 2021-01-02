@@ -14,7 +14,6 @@
     padding: 5px;
     box-sizing: border-box;
     transition: all .5s ease;
-    /* overflow: hidden; */
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -43,13 +42,15 @@
 }
 
 .about_body {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     overflow-y: scroll;
-    max-height: 350px;
+    /* max-height: 350px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 2px;
     margin-bottom: 10px;
-    
+    max-height: 40vh;
 }
 
 .about_desc {
@@ -99,6 +100,10 @@
 
 .about_hide {
     display: none;
+}
+.about_btns {
+    margin-top: -15px;
+    margin-right: 63px;
 }
 
 .about_btns button {

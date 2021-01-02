@@ -12,8 +12,12 @@ class AboutContent extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <h4 className="about_title">About</h4>
+                    <div className="about_btns">
+                        <button onClick={() => this.setState({ isActive: false })}><FontAwesomeIcon icon={faArrowLeft} /></button>
+                        <button onClick={() => this.setState({ isActive: true })}><FontAwesomeIcon icon={faArrowRight} /></button>
+                    </div>
                 <div className="about_body">
                     <div className={this.state.isActive ? "about_hide" : "about_desc"}>
                         <p><i className="wordItalic">Deconstructed</i> is a dynamic app to bring light to how much data is being collected
@@ -45,11 +49,8 @@ class AboutContent extends React.Component {
                     </div>
                 </div>
 
-                <div className="about_btns">
-                    <button onClick={() => this.setState({ isActive: false })}><FontAwesomeIcon icon={faArrowLeft} /></button>
-                    <button onClick={() => this.setState({ isActive: true })}><FontAwesomeIcon icon={faArrowRight} /></button>
-                </div>
-            </div>
+                
+            </>
         )
     }
 }
