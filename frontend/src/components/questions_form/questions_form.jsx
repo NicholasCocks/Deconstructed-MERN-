@@ -67,12 +67,12 @@ class QuestionsForm extends React.Component {
         const { user, tasks, loggedIn, createTask, deleteTask } = this.props
         if (this.state[value]) {
             this.setState({ [value]: false });
-            if (!loggedIn) return;
+            if (loggedIn) return;
             const taskIds = Object.keys(tasks)
             taskIds.forEach(taskId => tasks[taskId].questionId === value ? deleteTask(taskId) : null ) 
         } else {
             this.setState({ [value]: true });
-            if (!loggedIn) return;
+            if (loggedIn) return;
             createTask({ userId: user._id, questionId: value })
         }
     }
