@@ -16,8 +16,7 @@ Users can submit an anonymous quiz to start seeing the data types that are being
 
 Logged in users have access to an additional task tracker and anonymous message board allowing them to keep track of where they want to pull their data from and share with other users about their experiences.
 
-+ (Insert image of what main page looks like)
-+ (Insert image of task component rendered)
+## Technologies 
 
 Deconstructed is built on the MERN stack, a combination of four technologies:
 + MongoDB
