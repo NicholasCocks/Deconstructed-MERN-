@@ -21,11 +21,12 @@ Logged in users have access to an additional task tracker and anonymous message 
 Deconstructed is built on the MERN stack, a combination of four technologies:
 + MongoDB
 + Express
++ Mongoose
 + React / Redux
-+ Node.js
++ Node.js 
 + React Google Charts
 
 ## Functionality & MVP
-+ Full User Auth 
-+ Adding / Removing tasks 
-+ Dynamic visualization of data classes collected
++ Full User Authentication with Demo User avalible.
++ Adding / Removing tasks.
++ Dynamic visualization of data classes collected.
