@@ -24,7 +24,7 @@ class AboutContent extends React.Component {
                         from Big Tech companies we interact with daily. Nowadays with everything being online,
                         it’s more important than ever to protect your data and privacy. <br /><br /> <p>We aim to let users
                         engage with what data is being gathered on them and empowering them to take control of
-                        heir data. This app was designed to be used anonymously, but with the added functionality
+                        their data. This app was designed to be used anonymously, but with the added functionality
                         of a curated task list for each logged in user. This task list provides detailed instructions
                         for each user to make their data more secure.</p></p>
                     </div >
@@ -38,7 +38,7 @@ class AboutContent extends React.Component {
                             <li>Click on any company displayed on the chart to see specific data classes it may be collecting</li>
                             <li>Deciphering the color scale:
                             <ul>
-                                    <li>The darker a data class is directly proportional to the number of companies collecting this specific data class.For example, “Email addresses” is green because practically every company collects email addresses.</li>
+                                    <li>The darker a data class is directly proportional to the number of companies collecting this specific data class.For example, “Email addresses” is really dark because practically every company collects email addresses.</li>
                                     <li>Conversely, the lighter a data class is, fewer and fewer companies collect this specific data class.</li>
                                 </ul>
                             </li>
