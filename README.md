@@ -1,5 +1,5 @@
 # DECONSTUCTED
-Brought to you by 
+Brought to you by:
 + [Nicholas Cocks](https://github.com/NicholasCocks) - Team Lead
 + [Muzammil Chowdhury](https://github.com/Muz-98) - FLEX Engineer 
 + [Trieu (JT) Tran](https://github.com/trieutrue) - Backend Engineer
